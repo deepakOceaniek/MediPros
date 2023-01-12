@@ -4,13 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { verify, clearErrors } from "../../../actions/userAction";
 import { useAlert } from "react-alert";
+import OTPInput from "react-otp-input";
 
 const UserOtpScreen = (props) => {
   const dispatch = useDispatch();
   const Navigate = useNavigate();
   const alert = useAlert();
 
-  const { error, loading, isAuthenticated, user } = useSelector(
+  const { error, loading, isAuthenticated } = useSelector(
     (state) => state.user
   );
   console.log(`data----------${props.data[0]}`);
@@ -24,13 +25,14 @@ const UserOtpScreen = (props) => {
   //   separator={<span>&nbsp;&nbsp;</span>}
   //   inputStyle={{ width: "2.5vw" }}
   // />
-
-  const [otpData, setOtpData] = useState({
-    otpInput1: "",
-    otpInput2: "",
-    otpInput3: "",
-    otpInput4: "",
-  });
+  const [OTP, setOTP] = useState("");
+  console.log(OTP);
+  // const [otpData, setOtpData] = useState({
+  //   otpInput1: "",
+  //   otpInput2: "",
+  //   otpInput3: "",
+  //   otpInput4: "",
+  // });
   useEffect(() => {
     if (error) {
       alert.error(error);
@@ -41,28 +43,34 @@ const UserOtpScreen = (props) => {
     }
   }, [dispatch, alert, error, isAuthenticated, Navigate]);
 
-  let inputName, value;
-  const loginInputHandler = (e) => {
-    inputName = e.target.name;
-    value = e.target.value;
-    setOtpData({ ...otpData, [inputName]: value });
-  };
+  // let inputName, value;
+  // const loginInputHandler = (e) => {
+  //   inputName = e.target.name;
+  //   value = e.target.value;
+  //   setOtpData({ ...otpData, [inputName]: value });
+  // };
 
-  const str = otpData.otpInput1;
-  const otp = str.concat(
-    otpData.otpInput2,
-    otpData.otpInput3,
-    otpData.otpInput4
-  );
+  // const str = otpData.otpInput1;
+  // const otp = str.concat(
+  //   otpData.otpInput2,
+  //   otpData.otpInput3,
+  //   otpData.otpInput4
+  // );
 
   console.log(`loading ${loading}`);
   console.log(`authenticate ${isAuthenticated}`);
+
+  function handleChange(OTP) {
+    console.log(OTP);
+    setOTP(OTP);
+  }
+
   const submitOtp = (e) => {
     e.preventDefault();
 
     dispatch(
       verify(
-        otp,
+        OTP,
         props.data[0],
         props.data[1]
         // route.params.contact
@@ -88,7 +96,14 @@ const UserOtpScreen = (props) => {
           <p className="header_text_2"> Please Verify?</p>
 
           <div className="form-field" id="otp">
-            <div className="input-field">
+            <OTPInput
+              onChange={handleChange}
+              value={OTP}
+              numInputs={4}
+              inputStyle={{ width: "2.5vw" }}
+              separator={<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>}
+            />
+            {/* <div className="input-field">
               <input
                 className="otp-input"
                 type="number"
@@ -124,7 +139,7 @@ const UserOtpScreen = (props) => {
                 value={otpData.otpInput4}
                 onChange={loginInputHandler}
               />
-            </div>
+            </div> */}
           </div>
           <p className="footer_text">Don’t not receive OTP?</p>
 

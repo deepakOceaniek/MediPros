@@ -72,6 +72,9 @@ router
   .put(isAuthenticatedAdmin, authorizeRoles("admin"), updateBanner)
   .delete(isAuthenticatedAdmin, authorizeRoles("admin"), deleteBanner);
 
+router
+  .route("/prescription/new")
+  .post(isAuthenticated, addPrescription);
 router.route("/admin/prescription").get(getAllPrescription);
 router
   .route("/admin/prescription/new")

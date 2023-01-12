@@ -190,7 +190,7 @@ exports.createProductReview = catchAsyncErrors(async (req, res, next) => {
   product.reviews.forEach((review) => {
     avg += review.rating;
   });
-  product.ratings = avg / product.reviews.length;
+  product.ratings = parseFloat(avg / product.reviews.length).toFixed(1)    ;
 
   await product.save({ validateBeforeSave: false });
   res.status(200).json({
@@ -656,7 +656,7 @@ exports.getCartItems = catchAsyncErrors(async (req, res, next) => {
      let totalSaving = 0
      let newProducts = []
 
-   console.log(cart.products.length)
+
      for(let product of cart.products ){
          product = {
         productId : product.productId._id,
@@ -666,7 +666,6 @@ exports.getCartItems = catchAsyncErrors(async (req, res, next) => {
         quantity: product.quantity,
         discount:product.productId.discount
       };
-      console.log(product)
       newProducts.push(product)
        
       
@@ -687,13 +686,14 @@ exports.getCartItems = catchAsyncErrors(async (req, res, next) => {
     }
     cart.amountToBePaid = afterDiscountPrice + cart.shippingFee 
     cart.save()
+    console.log(cart)
      res.status(200).send(cart);
    }else{
      res.status(200).json({message:"Your Cart is Empty Add Some Product"});      
    }
 });
 
-//Delete to item from cart 
+//Delete item from cart 
 exports.deleteFromCart = catchAsyncErrors(async (req, res, next) => {
   const  productId  = req.query.productId; 
   const userId = req.user.id; 

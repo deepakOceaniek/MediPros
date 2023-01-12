@@ -2,20 +2,27 @@ import "./sidebar.css";
 // import logo from "./images/Group";
 import { Link, useNavigate } from "react-router-dom";
 import { TreeView, TreeItem } from "@material-ui/lab";
+import { logout } from "../../actions/userAction";
+import { useDispatch, useSelector } from "react-redux";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AddIcon from "@material-ui/icons/Add";
-import ImportExportIcon from "@material-ui/icons/ImportExport";
 import ListAltIcon from "@material-ui/icons/ListAlt";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import PeopleIcon from "@material-ui/icons/People";
 import RateReviewIcon from "@material-ui/icons/RateReview";
 import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
 import VerticalAlignTopIcon from "@material-ui/icons/VerticalAlignTop";
-import UsbIcon from "@material-ui/icons/Usb";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../actions/userAction";
+import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
+import ViewCarouselIcon from "@mui/icons-material/ViewCarousel";
+import CategoryIcon from "@mui/icons-material/Category";
+import Shop2Icon from "@mui/icons-material/Shop2";
+import ScienceIcon from "@mui/icons-material/Science";
+import BloodtypeIcon from "@mui/icons-material/Bloodtype";
+import BiotechIcon from "@mui/icons-material/Biotech";
+import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
+import FilterIcon from "@mui/icons-material/Filter";
 
 const Sidebar = () => {
   const { loading, isAuthenticated, user } = useSelector((state) => state.user);
@@ -44,7 +51,7 @@ const Sidebar = () => {
             <Link>
               <TreeView
                 defaultCollapseIcon={<ExpandMoreIcon />}
-                defaultExpandIcon={<ImportExportIcon />}
+                defaultExpandIcon={<Shop2Icon />}
               >
                 <TreeItem nodeId="1" label="Products">
                   <Link as={Link} to="/admin/products">
@@ -74,7 +81,7 @@ const Sidebar = () => {
             </Link>
             <Link to="/admin/prescription">
               <p>
-                <RateReviewIcon />
+                <InsertDriveFileIcon />
                 Prescription
               </p>
             </Link>
@@ -86,14 +93,14 @@ const Sidebar = () => {
             </Link>
             <Link to="/admin/addPrescription">
               <p>
-                <PeopleIcon /> Add Prescription
+                <FilterIcon /> Add Prescription
               </p>
             </Link>
 
             <Link>
               <TreeView
                 defaultCollapseIcon={<VerticalAlignTopIcon />}
-                defaultExpandIcon={<UsbIcon />}
+                defaultExpandIcon={<ViewCarouselIcon />}
               >
                 <TreeItem nodeId="1" label="Banner">
                   {/* using UserView */}
@@ -115,7 +122,7 @@ const Sidebar = () => {
             <Link>
               <TreeView
                 defaultCollapseIcon={<VerticalAlignTopIcon />}
-                defaultExpandIcon={<UsbIcon />}
+                defaultExpandIcon={<CategoryIcon />}
               >
                 <TreeItem nodeId="1" label="Category">
                   <Link to="/admin/categories">
@@ -168,7 +175,7 @@ const Sidebar = () => {
             </Link>
             <Link to="/admin/prescription">
               <p>
-                <RateReviewIcon />
+                <InsertDriveFileIcon />
                 Prescription
               </p>
             </Link>
@@ -180,13 +187,13 @@ const Sidebar = () => {
             </Link>
             <Link to="/admin/addPrescription">
               <p>
-                <PeopleIcon /> Add Prescription
+                <FilterIcon /> Add Prescription
               </p>
             </Link>
             <Link>
               <TreeView
                 defaultCollapseIcon={<ExpandMoreIcon />}
-                defaultExpandIcon={<ImportExportIcon />}
+                defaultExpandIcon={<BloodtypeIcon />}
               >
                 <TreeItem nodeId="1" label="Sample">
                   <Link to="/admin/samples">
@@ -207,7 +214,7 @@ const Sidebar = () => {
             <Link>
               <TreeView
                 defaultCollapseIcon={<VerticalAlignTopIcon />}
-                defaultExpandIcon={<UsbIcon />}
+                defaultExpandIcon={<ScienceIcon />}
               >
                 <TreeItem nodeId="1" label="Lab Category">
                   <Link to="/admin/labcategories">
@@ -228,7 +235,7 @@ const Sidebar = () => {
             <Link>
               <TreeView
                 defaultCollapseIcon={<ExpandMoreIcon />}
-                defaultExpandIcon={<ImportExportIcon />}
+                defaultExpandIcon={<BiotechIcon />}
               >
                 <TreeItem nodeId="1" label="Test">
                   <Link to="/admin/tests">
@@ -249,7 +256,7 @@ const Sidebar = () => {
             <Link>
               <TreeView
                 defaultCollapseIcon={<ExpandMoreIcon />}
-                defaultExpandIcon={<ImportExportIcon />}
+                defaultExpandIcon={<LocalHospitalIcon />}
               >
                 <TreeItem nodeId="1" label="Package">
                   <Link to="/admin/packages">

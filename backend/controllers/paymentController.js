@@ -47,7 +47,7 @@ exports.paymentVerification = catchAsyncErrors(async (req, res, next) => {
   // const token =
   //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYTljOGUzMGRiNjRjNjYzMmU3OWRiYiIsImlhdCI6MTY3MzI1ODMyMywiZXhwIjoxNjczODYzMTIzfQ.6AAlYsl0TaAHAVR-6uEAQEkyqjiz9yDzNquR22j18wY";
   // console.log(`Token ${token}`);
-  const userId = req.param.id;
+  const userId = req.query.id;
 
   // const decodedData = jwt.verify(token, process.env.JWT_SECRET);
   // console.log(`decodedData ${JSON.stringify(decodedData)}`);
@@ -99,7 +99,7 @@ exports.paymentVerification = catchAsyncErrors(async (req, res, next) => {
     // ];
     let cart = await Cart.findOne({ user: userId });
     // .populate(query);
-    // console.log(`cart ${cart}`);
+    console.log(`cart ${cart}`);
 
     const {
       user,
@@ -114,7 +114,7 @@ exports.paymentVerification = catchAsyncErrors(async (req, res, next) => {
     const order = await Order.create({
       ordersBy: "pharmacy",
       orderItems: products,
-      paymentInfo: { id: razorpay_payment_id, status: "Paid" },
+      paymentInfo: { id: razorpay_payment_id, status: "succeeded" },
       totalPrice,
       totalSaving,
       shippingFee,
@@ -122,10 +122,11 @@ exports.paymentVerification = catchAsyncErrors(async (req, res, next) => {
       paidAt: Date.now(),
       user: userId,
     });
-    //cart.remove(); //Todo uncomment later
-    // res.status(200).json({
-    //   success: "ok",
-    // });
+    console.log(`order ${order}`)
+    cart.remove(); //Todo uncomment later
+    res.status(200).json({
+      success: "ok",
+    });
     // res.redirect(
     //   `http://localhost:3000/paymentsuccess?reference=${razorpay_payment_id}`
     // );
