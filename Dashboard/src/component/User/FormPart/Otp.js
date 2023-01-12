@@ -84,8 +84,8 @@ const UserOtpScreen = (props) => {
             <h1> OTP Verification</h1>
           </label>
 
-          <p className="text2">Enter OTP code send to your number</p>
-          <p className="text1"> Please Verify?</p>
+          <p className="header_text">Enter OTP code send to your mobile number</p>
+          <p className="header_text_2"> Please Verify?</p>
 
           <div className="form-field" id="otp">
             <div className="input-field">
@@ -126,9 +126,9 @@ const UserOtpScreen = (props) => {
               />
             </div>
           </div>
-          <p className="text3">Don’t not receive OTP?</p>
+          <p className="footer_text">Don’t not receive OTP?</p>
 
-          <p className="text4">Resend OTP?</p>
+          <p className="footer_text_2">Resend OTP?</p>
 
           <button className="VerifyBtn " type="submit">
             Verify

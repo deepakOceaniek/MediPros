@@ -131,7 +131,7 @@ const OrderList = () => {
       rows.push({
         id: item._id,
         itemsQty: item.orderItems.length,
-        amount: item.totalPrice,
+        amount: item.amountToBePaid,
         status: item.orderStatus,
       });
     });

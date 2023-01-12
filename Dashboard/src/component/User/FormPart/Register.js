@@ -102,7 +102,7 @@ const Register = ({ setRegisterData }) => {
             <div className="container">
               <div className="registration-content ">
                 <div className="registration-form  ">
-                  <h4 className="form-title ">Register</h4>
+                  <h1 className="form-title ">Register</h1>
 
                   <form
                     className="register-form"
@@ -111,121 +111,141 @@ const Register = ({ setRegisterData }) => {
                     onSubmit={registerSubmit}
                   >
                     <div className="form-group dropDown">
-                      <label htmlFor="category"></label>
+                      <div className="register_label">
+                        <select
+                          name="category"
+                          id="category"
+                          onChange={registerDataChange}
+                        >
+                          <option
+                            value="selectCategory"
+                            selected
+                            disabled
+                            hidden
 
-                      <select
-                        name="category"
-                        id="category"
-                        value={category}
-                        onChange={registerDataChange}
-                      >
-                        <option value="selectCategory" selected disabled hidden>
-                          Select Category
-                        </option>
-                        <option value="Pharmacy">Pharmacy</option>
-                        <option value="Lab">Lab </option>
-                      </select>
+                          >
+                            Select Category
+                          </option>
+                          <option value="Pharmacy">Pharmacy</option>
+                          <option value="Lab">Lab </option>
+                        </select>
+                      </div>
                     </div>
 
                     <div className="form-group">
-                      <input
-                        type="text"
-                        placeholder="Name"
-                        required
-                        name="name"
-                        value={name}
-                        onChange={registerDataChange}
-                      />
+                      <div className="register_label">
+                        <label>Name</label>
+                        <input
+                          type="text"
+                          placeholder="Name"
+                          required
+                          name="name"
+                          value={name}
+                          onChange={registerDataChange}
+                        />
+                      </div>
                     </div>
                     <div className="form-group">
-                      <label htmlFor="contact">
-                        <i className="zmdi zmdi-email zmdi-hc-lg material-icon-name"></i>
-                      </label>
-                      <input
-                        type="number"
-                        placeholder="Contact"
-                        required
-                        name="contact"
-                        value={contact}
-                        onChange={registerDataChange}
-                      />
+                      <div className="register_label">
+                        <label>Contact</label>
+                        <input
+                          type="number"
+                          placeholder="Contact"
+                          required
+                          name="contact"
+                          value={contact}
+                          onChange={registerDataChange}
+                        />
+                      </div>
                     </div>
                     <div className="form-group">
-                      <label htmlFor="address">
-                        <i className="zmdi zmdi-address zmdi-hc-lg material-icon-name"></i>
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="Address"
-                        required
-                        name="address"
-                        value={address}
-                        onChange={registerDataChange}
-                      />
+                      <i className="zmdi zmdi-address zmdi-hc-lg material-icon-name"></i>
+                      <div className="register_label">
+                        <label>Address</label>
+                        <input
+                          type="text"
+                          placeholder="Address"
+                          required
+                          name="address"
+                          value={address}
+                          onChange={registerDataChange}
+                        />
+                      </div>
                     </div>
 
                     <div className="form-group-profileImage">
-                      <label htmlFor="image">
-                        <i className="zmdi zmdi-account zmdi-hc-lg material-icon-name"></i>
-                      </label>
-                      <input
-                        type="file"
-                        name="profileImage"
-                        value={""}
-                        // value="image/*"
-                        onChange={registerDataChange}
-                      />
+                      <i className="zmdi zmdi-account zmdi-hc-lg material-icon-name"></i>
+                      <div className="register_label">
+                        <label>Profile Image</label>
+                        <input
+                          type="file"
+                          name="profileImage"
+                          accept="image/png, image/gif, image/jpeg"
+                          // value={""}
+                          // value="image/*"
+                          onChange={registerDataChange}
+                        />
+                      </div>
                     </div>
 
                     <div className="form-group-profileImage">
-                      <label htmlFor="image"></label>
-                      <input
-                        type="file"
-                        name="certificateImage"
-                        value={""}
-                        // value="image/*"
-                        onChange={registerDataChange}
-                      />
+                      <div className="register_label">
+                        <label>Certificate Image</label>
+                        <input
+                          type="file"
+                          name="certificateImage"
+                          accept="image/png, image/gif, image/jpeg"
+
+                          // value={""}
+                          // value="image/*"
+                          onChange={registerDataChange}
+                        />
+                      </div>
                     </div>
 
-                    <div className="form-group dropDown">
-                      <label htmlFor="status"></label>
-                      <select
-                        name="status"
-                        id="status"
-                        onChange={registerDataChange}
-                      >
-                        <option value={status} selected disabled hidden>
-                          Status
-                        </option>
-                        <option value="Open">Open</option>
-                        <option value="Close">Close</option>
-                      </select>
+                    <div className="form_group_dropDown">
+                      <div className="register_label">
+                        <label>Status</label>
+                        <select
+                          name="status"
+                          id="status"
+                          onChange={registerDataChange}
+                        >
+                          <option value={status} selected disabled hidden>
+                            Status
+                          </option>
+                          <option value="Open">Open</option>
+                          <option value="Close">Close</option>
+                        </select>
+                      </div>
                     </div>
 
                     <div className="form-Time">
-                      <label className="mx-2 " htmlFor="Time">
-                        <div className="text"> Time</div>
-                      </label>
-                      <input
-                        type="time"
-                        placeholder="Opening Time"
-                        required
-                        name="fromTime"
-                        value={fromTime}
-                        onChange={registerDataChange}
-                      />
-                      <input
-                        type="time"
-                        placeholder="Closing Time"
-                        required
-                        name="toTime"
-                        value={toTime}
-                        onChange={registerDataChange}
-                      />
+                      <div className="register_label">
+                        <label>Opening Time</label>
+                        <input
+                          type="time"
+                          placeholder="Opening Time"
+                          required
+                          name="fromTime"
+                          value={fromTime}
+                          onChange={registerDataChange}
+                        />
+                      </div>
+                      <div className="register_label">
+                        <label>Closing Time</label>
+                        <input
+                          type="time"
+                          placeholder="Closing Time"
+                          required
+                          name="toTime"
+                          value={toTime}
+                          onChange={registerDataChange}
+                        />
+                      </div>
                     </div>
 
-                    <div className="form-group form-submit">
+                    <div className="form-group form-submit-btn">
                       <input
                         type="submit"
                         name="register"
@@ -234,9 +254,11 @@ const Register = ({ setRegisterData }) => {
                         value="Register"
                       />
                     </div>
-                    <span>
-                      Already have an account? <Link to="/login">Login</Link>
-                    </span>
+                    <div className="span_text">
+                      <span>
+                        Already have an account? <Link style={{ color:"rgba(0, 144, 153, 1)"}} to="/">Login</Link>
+                      </span>
+                    </div>
                   </form>
                 </div>
               </div>

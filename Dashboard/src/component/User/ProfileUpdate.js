@@ -128,7 +128,7 @@ const ProfileUpdate = () => {
                   <div className="inner_content_div">
                     <div className="profile_update_label">
                       <label> Name</label>
-                      <div className="updateProfileName">
+                      <div className="updateProfileInput">
                         <input
                           type="text"
                           placeholder="Name"
@@ -141,7 +141,7 @@ const ProfileUpdate = () => {
                     </div>
                     <div className="profile_update_label">
                       <label>Contact</label>
-                      <div className="updateProfileContact">
+                      <div className="updateProfileInput">
                         <input
                           type="number"
                           placeholder="Contact"
@@ -154,7 +154,7 @@ const ProfileUpdate = () => {
                     </div>
                     <div className="profile_update_label">
                       <label>Address</label>
-                      <div className="updateProfileAddress">
+                      <div className="updateProfileInput">
                         <input
                           type="text"
                           placeholder="Address"
@@ -168,12 +168,15 @@ const ProfileUpdate = () => {
                     <div className="profile_update_label">
                       <label>Profile Image</label>
                       <div id="updateProfileImageAdmin">
-                        <input
-                          type="file"
-                          name="profileImagePreview"
-                          accept="image/*"
-                          onChange={updateProfileDataChange}
-                        />
+                        <div className="updateProfileInput">
+                          <input
+                            id="updateProfileImageAdmin"
+                            type="file"
+                            name="profileImagePreview"
+                            accept="image/*"
+                            onChange={updateProfileDataChange}
+                          />
+                        </div>
                         <img src={profileImagePreview} alt="Profile Preview" />
                       </div>
                     </div>
@@ -186,7 +189,7 @@ const ProfileUpdate = () => {
                       />
                       <div className="profile_update_label">
                         <label>Certificate Image</label>
-                        <div>
+                        <div className="updateProfileInput">
                           <input
                             type="file"
                             name="certificateImagePreview"
@@ -198,7 +201,7 @@ const ProfileUpdate = () => {
                     </div>
                     <div className="profile_update_label">
                       <label>Status</label>
-                      <div className="updateProfileStatus">
+                      <div className="updateProfileInput">
                         <input
                           type="text"
                           placeholder="Status"
@@ -211,7 +214,7 @@ const ProfileUpdate = () => {
                     </div>
                     <div className="profile_update_label">
                       <label>From Time</label>
-                      <div className="updateProfileTime">
+                      <div className="updateProfileInput">
                         <input
                           type="time"
                           placeholder="fromTime"
@@ -220,21 +223,24 @@ const ProfileUpdate = () => {
                           value={fromTime}
                           onChange={(e) => setFromTime(e.target.value)}
                         />
-                        <label>To Time</label>
-                        <input
-                          type="time"
-                          placeholder="toTime"
-                          required
-                          name="toTime"
-                          value={toTime}
-                          onChange={(e) => setToTime(e.target.value)}
-                        />
+                        <div className="profile_update_label">
+                          <label>To Time</label>
+                          <div className="updateProfileInput">
+                            <input
+                              type="time"
+                              placeholder="toTime"
+                              required
+                              name="toTime"
+                              value={toTime}
+                              onChange={(e) => setToTime(e.target.value)}
+                            />
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <button className="updateProfileBtn"> Save
-                </button>
+                <button className="updateProfileBtn"> Save</button>
               </form>
             </div>
           </div>
