@@ -1,21 +1,19 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 // import Loader from "../layout/Loader/Loader";
 import "./Login.css";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { login,clearErrors } from "../../../actions/userAction";
+import { login, clearErrors } from "../../../actions/userAction";
 import { useAlert } from "react-alert";
 
-
-const Login = ({setContactData}) => {
+const Login = ({ setContactData }) => {
   const dispatch = useDispatch();
   const Navigate = useNavigate();
   const alert = useAlert();
 
-
-    const { error, loading, isAuthenticated } = useSelector(
-      (state) => state.user
-    );
+  const { error, loading, isAuthenticated } = useSelector(
+    (state) => state.user
+  );
 
   const [loginContact, setLoginPassword] = useState("");
 
@@ -24,16 +22,21 @@ const Login = ({setContactData}) => {
       alert.error(error);
       dispatch(clearErrors());
     }
-    if (isAuthenticated ===true) {
+    if (isAuthenticated === true) {
       Navigate("/admin/dashboard");
     }
-  }, [dispatch, alert, error, isAuthenticated, Navigate, 
+  }, [
+    dispatch,
+    alert,
+    error,
+    isAuthenticated,
+    Navigate,
     // redirect
   ]);
 
   const loginSubmit = (e) => {
     e.preventDefault();
-    setContactData(loginContact)
+    setContactData(loginContact);
     dispatch(login(loginContact));
     Navigate("/otp");
   };
@@ -44,18 +47,24 @@ const Login = ({setContactData}) => {
           <img src="/images/loginLogo.png" alt="logo" />
         </div>
         <h1>Login</h1>
-        <input
-          className="input"
-          type="number"
-          placeholder="Contact"
-          required
-          value={loginContact}
-          onChange={(e) => setLoginPassword(e.target.value)}
-        />
-        <input className="subBtn " type="submit" value="Login" />
-        <span>
-          Don’t have an account? <Link to="/admin/register">Signup here</Link>
-        </span>
+        <div className="login_input_row">
+          <input
+            className="input"
+            type="number"
+            placeholder="Enter Mobile Number"
+            required
+            value={loginContact}
+            onChange={(e) => setLoginPassword(e.target.value)}
+          />
+        </div>
+        <div className="login_submit_btn">
+          <input className="subBtn " type="submit" value="Login" />
+        </div>
+        <div className="span_text_login">
+          <span>
+            Don’t have an account? <Link  style={{ color:"rgba(0, 144, 153, 1)"}} to="/admin/register">Register here</Link>
+          </span>
+        </div>
       </form>
     </>
   );

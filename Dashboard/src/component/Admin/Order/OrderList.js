@@ -140,9 +140,11 @@ const OrderList = () => {
     orders.forEach((item) => {
       rows.push({
         id: item._id,
+
+
         ids: `#${item._id.slice(4, 19)}`,
         itemsQty: `${item.orderItems.length} Items`,
-        amount: `₹ ${parseFloat(item.amountToBePaid).toFixed(2)}`,
+        amount: `₹ ${parseFloat(item.amountToBePaid).toFixed(2)}`
         status: item.orderStatus,
       });
     });

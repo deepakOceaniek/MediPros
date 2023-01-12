@@ -131,46 +131,86 @@ const NewProduct = () => {
                 onSubmit={createProductSubmitHandler}
               >
                 <div className="product_row">
-                  <h1>Add Product</h1>
+                  <h3>Add Product</h3>
                 </div>
-                <div className="product_row field">
+                <div className="product_row">
                   <div className="inputdiv">
-                    <input
-                      type="text"
-                      className="productadd"
-                      placeholder="Product Name"
-                      required
-                      onChange={(e) => setName(e.target.value)}
-                    />
-                    <input
-                      type="text"
-                      className="productadd"
-                      placeholder="Product Description"
-                      onChange={(e) => setDescription(e.target.value)}
-                      cols="30"
-                      rows="1"
-                    />
-                    <input
-                      type="number"
-                      className="productadd"
-                      placeholder=" Price"
-                      required
-                      onChange={(e) => setPrice(e.target.value)}
-                    />
-                    <input
-                      type="number"
-                      className="productadd"
-                      placeholder="Type"
-                      required
-                      onChange={(e) => setType(e.target.value)}
-                    />
-                    <input
-                      type="text"
-                      className="productadd"
-                      placeholder="Salt"
-                      required
-                      onChange={(e) => setSalt(e.target.value)}
-                    />
+                    <div className="add_product_label">
+                      <label>Product Name</label>
+
+                      <input
+                        type="text"
+                        className="productadd"
+                        placeholder="Name"
+                        required
+                        onChange={(e) => setName(e.target.value)}
+                      />
+                    </div>
+                  
+                    <div className="add_product_label">
+                      <label>Price</label>
+
+                      <input
+                        type="number"
+                        className="productadd"
+                        placeholder="Price"
+                        required
+                        onChange={(e) => setPrice(e.target.value)}
+                      />
+                    </div>
+                    <div className="add_product_label">
+                      <label>Medicine Type</label>
+
+                      <input
+                        type="number"
+                        className="productadd"
+                        placeholder="Type"
+                        required
+                        onChange={(e) => setType(e.target.value)}
+                      />
+                    </div>
+               
+                
+                    <div className="add_product_label">
+                      <label>Expired</label>
+
+                      <input
+                        className="productadd"
+                        type="date"
+                        placeholder="Expiry Date"
+                        required
+                        onChange={(e) => setExpired(e.target.value)}
+                      />
+                    </div>
+                    <div className="add_product_label">
+                      <label>Product Quantity</label>
+
+                      <input
+                        className="productadd"
+                        type="number"
+                        placeholder="Enter No. Of Tablet/ml/gm"
+                        required
+                        onChange={(e) => setProductQuantity(e.target.value)}
+                      />
+                    </div>
+                  </div>
+
+
+                  <div className="inputdiv" >
+                  <div className="add_product_label">
+                      <label>Product Description</label>
+
+                      <input
+                        type="text"
+                        className="productadd"
+                        placeholder="Description"
+                        onChange={(e) => setDescription(e.target.value)}
+                        cols="30"
+                        rows="1"
+                      />
+                    </div>
+                    <div className="add_product_label">
+                      <label>Choose Category</label>
                     <select
                       className="productadd"
                       onChange={(e) => setCategory(e.target.value)}
@@ -183,74 +223,98 @@ const NewProduct = () => {
                           </option>
                         ))}
                     </select>
-                    <input
-                      className="productadd"
-                      type="date"
-                      placeholder="expired"
-                      required
-                      onChange={(e) => setExpired(e.target.value)}
-                    />
-                    <input
-                      className="productadd"
-                      type="number"
-                      placeholder="Product Quantity"
-                      required
-                      onChange={(e) => setProductQuantity(e.target.value)}
-                    />
+                    </div>
+                    <div className="add_product_label">
+                      <label>Company</label>
+
+                      <input
+                        type="text"
+                        className="productadd"
+                        placeholder="Company"
+                        required
+                        onChange={(e) => setCompany(e.target.value)}
+                      />
+                    </div>
+                    <div className="add_product_label">
+                      <label>Stock</label>
+                      <input
+                        type="number"
+                        className="productadd"
+                        placeholder="Stock"
+                        required
+                        onChange={(e) => setStock(e.target.value)}
+                      />
+                    </div>
+                    <div className="add_product_label">
+                      <label>Discount On Product</label>
+
+                      <input
+                        type="number"
+                        className="productadd"
+                        placeholder="Discount"
+                        required
+                        onChange={(e) => setDiscount(e.target.value)}
+                      />
+                    </div>
                   </div>
                   <div className="inputdiv">
-                    <input
-                      type="text"
-                      className="productadd"
-                      placeholder="company"
-                      required
-                      onChange={(e) => setCompany(e.target.value)}
-                    />
-                    <input
-                      type="number"
-                      className="productadd"
-                      placeholder="stock"
-                      required
-                      onChange={(e) => setStock(e.target.value)}
-                    />
-                    <input
-                      type="number"
-                      className="productadd"
-                      placeholder="discount"
-                      required
-                      onChange={(e) => setDiscount(e.target.value)}
-                    />
-                    <input
-                      type="text"
-                      className="productadd"
-                      placeholder="gst"
-                      required
-                      onChange={(e) => setGst(e.target.value)}
-                    />
-                    <input
-                      type="text"
-                      className="productadd"
-                      placeholder="batchCode"
-                      required
-                      onChange={(e) => setBatchCode(e.target.value)}
-                    />
+                  <div className="add_product_label">
+                      <label>Salt</label>
 
-                    <input
-                      type="text"
-                      className="productadd"
-                      placeholder=" hsnCode"
-                      required
-                      onChange={(e) => setHsnCode(e.target.value)}
-                    />
-                    <input
-                      type="file"
-                      className="addImage"
-                      placeholder=" Product Image Upload"
-                      name="avatar"
-                      accept="image/*"
-                      onChange={createProductImagesChange}
-                      multiple
-                    />
+                      <input
+                        type="text"
+                        className="productadd"
+                        placeholder="Salt"
+                        required
+                        onChange={(e) => setSalt(e.target.value)}
+                      />
+                    </div>
+                    <div className="add_product_label">
+                      <label>Gst</label>
+
+                      <input
+                        type="text"
+                        className="productadd"
+                        placeholder="Gst"
+                        required
+                        onChange={(e) => setGst(e.target.value)}
+                      />
+                    </div>
+                    <div className="add_product_label">
+                      <label>Batch Code</label>
+
+                      <input
+                        type="text"
+                        className="productadd"
+                        placeholder="BatchCode"
+                        required
+                        onChange={(e) => setBatchCode(e.target.value)}
+                      />
+                    </div>
+                    <div className="add_product_label">
+                      <label>Hsn Code</label>
+
+                      <input
+                        type="text"
+                        className="productadd"
+                        placeholder="HsnCode"
+                        required
+                        onChange={(e) => setHsnCode(e.target.value)}
+                      />
+                    </div>
+                    <div className="add_product_label">
+                      <label>Product Image</label>
+
+                      <input
+                        type="file"
+                        className="addImage"
+                        placeholder=" Product Image Upload"
+                        name="avatar"
+                        accept="image/*"
+                        onChange={createProductImagesChange}
+                        multiple
+                      />
+                    </div>
                   </div>
                 </div>
                 <div id="createProductFormImage">
@@ -258,9 +322,9 @@ const NewProduct = () => {
                     <img key={index} src={image} alt="Product Preview" />
                   ))}
                 </div>
-                <div className="button_row">
+                <div className="button_row_update_product">
                   <button
-                    id="createProductBtn"
+                    id="createUpdateProductBtn"
                     type="submit"
                     disabled={loading ? true : false}
                   >
