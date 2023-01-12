@@ -3,7 +3,6 @@ import "../Product/newProduct.css";
 import { useSelector, useDispatch } from "react-redux";
 import { clearErrors, createPrescription} from "../../../actions/productAction";
 import { useAlert } from "react-alert";
-import { Button } from "@material-ui/core";
 import MetaData from "../../layout/MetaData";
 import SideBar from "../Sidebar";
 import Loader from "../../layout/Loader/Loader";
@@ -84,7 +83,7 @@ const NewPrescription = () => {
             <div id="createProductFormFile">
               <input
                 type="file"
-                name="avatar"
+                name="prescription"
                 accept="image/*"
                 onChange={createProductImagesChange}
                 multiple

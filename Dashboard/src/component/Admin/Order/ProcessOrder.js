@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import MetaData from "../../layout/MetaData";
 import { Link, useParams } from "react-router-dom";
-import { Typography } from "@material-ui/core";
 import SideBar from "../Sidebar";
 import {
   getOrderDetails,
@@ -11,7 +10,6 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../../layout/Loader/Loader";
 import { useAlert } from "react-alert";
-import AccountTreeIcon from "@material-ui/icons/AccountTree";
 import { Button } from "@material-ui/core";
 import { UPDATE_ORDER_RESET } from "../../../constants/orderConstant";
 import "./processOrder.css";
@@ -88,12 +86,12 @@ const ProcessOrder = () => {
                       <p>Phone :</p>
                       <p>
                         &nbsp;&nbsp;&nbsp;
-                        {order.shippingInfo &&
-                          order.shippingInfo.address.defaultAddress[0].contact}
+                        {order.user &&
+                          order.user.defaultAddress[0].contact}
                       </p>
                     </div>
                     <div>
-                      <p>Address :</p>
+                      <p>Address:</p>
                       <p>
                         {order.user &&
                           `${order.user.defaultAddress[0].address}, ${order.user.defaultAddress[0].area}, ${order.user.defaultAddress[0].city}, ${order.user.defaultAddress[0].pinCode}, ${order.user.defaultAddress[0].state}`}
@@ -122,8 +120,8 @@ const ProcessOrder = () => {
                     </div>
 
                     <div>
-                      <p>Amount :</p>
-                      <p>{order.totalPrice && order.totalPrice}</p>
+                      <p>Total Amount :</p>
+                      <p><b>₹{parseFloat(order.amountToBePaid && order.amountToBePaid).toFixed(2)}</b></p>
                     </div>
                   </div>
 
@@ -190,22 +188,22 @@ const ProcessOrder = () => {
                       <p>Product Image</p>
                       <p>Name</p>
                       <p>quantity</p>
-                      <p>price</p>
-                      <p>totalPrice</p>
+                      <p>Product price</p>
+                      <p>Product Total Price</p>
                     </div>
                   </div>
                   <div className="confirmCartItemsContainer">
                     {order.orderItems &&
                       order.orderItems.map((item) => (
                         <div key={item._id}>
-                          <img src={item.images[0].url} alt="Product" />
-                          <Link to={`/product/${item.productId}`}>
-                            {item.name}
-                          </Link>
+                          <p><img src={item.images[0].url} alt="Product" /></p>
+                         
+                           <p> <Link to={`/product/${item.productId}`}>{item.name} </Link></p> 
+                         
                           <p>{item.quantity}</p>
-                          <p>₹{item.price}</p>
+                          <p>₹{parseFloat(item.price).toFixed(2)}</p>
                           <p>
-                            <b>₹{item.price * item.quantity}</b>
+                            <b>₹{parseFloat(item.price * item.quantity).toFixed(2)}</b>
                           </p>
                         </div>
                       ))}

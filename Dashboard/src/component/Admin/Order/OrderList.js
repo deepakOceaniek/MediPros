@@ -60,6 +60,16 @@ const OrderList = () => {
       flex: 0.1,
       headerAlign: "center",
       align: "center",
+      hide:true,
+    },
+    {
+      field: "ids",
+      headerName: "Order ",
+      minWidth: 300,
+      flex: 0.1,
+      headerAlign: "center",
+      align: "center",
+      
     },
 
     {
@@ -130,8 +140,9 @@ const OrderList = () => {
     orders.forEach((item) => {
       rows.push({
         id: item._id,
-        itemsQty: item.orderItems.length,
-        amount: item.totalPrice,
+        ids: `#${item._id.slice(4, 19)}`,
+        itemsQty: `${item.orderItems.length} Items`,
+        amount: `₹ ${parseFloat(item.amountToBePaid).toFixed(2)}`,
         status: item.orderStatus,
       });
     });

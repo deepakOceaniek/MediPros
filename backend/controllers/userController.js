@@ -149,7 +149,7 @@ exports.optVerify = catchAsyncErrors(async (req, res, next) => {
   const { contact, code } = req.body;
 
   // let contact = req.query.phonenumber;
-  const user = await User.findOne({ contact })
+  const user = await User.findOne({ contact }).select("user._id")
   const admin = await Admin.findOne({ contact });
   // console.log(`User-----${user}`);
   // console.log(`Admin-----${admin}`);
