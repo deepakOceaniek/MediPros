@@ -84,7 +84,8 @@ const NewBanner = () => {
                     <h1>Create Banner</h1>
                   </div>
 
-                  <div className="banner_row">
+                  <div className="banner_row_label">
+                      <label>Banner Image</label>
                     <div className="input_banner_upload">
                       <input
                         type="file"

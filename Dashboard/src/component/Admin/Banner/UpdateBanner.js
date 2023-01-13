@@ -107,12 +107,13 @@ const UpdateBanner = () => {
             encType="multipart/form-data"
             onSubmit={updateProductSubmitHandler}
           >
-            <div className="content_banner_Category">
+            <div className="content_update_banner">
               <div className="banner_row">
                 <h1>Update Banner</h1>
               </div>
 
-              <div className="banner_row">
+              <div className="banner_row_label">
+                <label>Banner Image</label>
                 <div className="input_banner_upload">
                   <input
                     type="file"

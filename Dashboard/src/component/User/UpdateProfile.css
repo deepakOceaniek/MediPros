@@ -81,7 +81,10 @@
   border-radius: 5px;
   color: #ffffff;
   text-align: center;
-  margin: 1em 0em 0em 28em;
+  margin: 1em 0em 0em 30em;
+  font-family: "Lato";
+  font-weight: 500;
+  font-size: 18px;
 }
 
 .updateProfileBtn:hover {

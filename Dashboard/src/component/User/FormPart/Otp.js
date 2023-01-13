@@ -100,7 +100,7 @@ const UserOtpScreen = (props) => {
               onChange={handleChange}
               value={OTP}
               numInputs={4}
-              inputStyle={{ width: "2.5vw" }}
+              inputStyle={{width:"2.5vw", border:"1px solid grey",borderRadius:"5px" ,height:"5vh"}}
               separator={<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>}
             />
             {/* <div className="input-field">
