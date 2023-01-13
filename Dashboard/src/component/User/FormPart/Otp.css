@@ -45,6 +45,9 @@ input::-webkit-inner-spin-button {
   align-items: center;
   flex-direction: row;
 }
+.form-field{
+  margin:0.5em 0em ;
+}
 
 .footer_text,
 .footer_text_2,
