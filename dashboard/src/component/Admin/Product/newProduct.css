@@ -1,0 +1,282 @@
+.newProductContainer {
+  display: flex;
+  justify-content: center;
+}
+/* .product_row > h3 {
+  color: rgba(0, 0, 0, 0.733);
+  font: 300 2rem "Roboto";
+  text-align: center;
+} */
+.content_addproduct,
+.inputdiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content_addproduct {
+  display: flex;
+  height: 95vh;
+  justify-content: space-around;
+  margin-top: 0.1em;
+  box-shadow: 0px 2px 12px 2px;
+  width: 75vw;
+  border-radius: 30px;
+  background-color: #fff;
+  background-image: url("../../../../public/Images/backcoveradmin.png");
+  /* padding: 2em 0em; */
+}
+.addproductrow {
+  padding: 1em 0em;
+}
+.product_row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.product_row > h3 {
+  border-radius: 5px;
+  background-color: #308c89;
+  color: #fff;
+  width: 20vw;
+  text-align: center;
+  height: 5vh;
+  font-size: 20px;
+}
+
+.productadd {
+  width: 24vw;
+  height: 5vh;
+  margin: 0.4em 1em;
+  border-radius: 5px;
+  border: 1px solid #ada7a7;
+  padding-left: 0.5em;
+}
+
+.button_row_update_product {
+  margin-top: 0.2em;
+}
+#createUpdateProductBtn {
+  height: 6vh;
+  width: 10vw;
+  padding: 0.2em 0em;
+  border-radius: 8px;
+  color: white;
+  background-color: #308c89;
+  font-family: "Lato";
+  font-weight: 500;
+  font-size: 16px;
+}
+
+#createUpdateProductBtn:hover {
+  background-color: #359c98;
+}
+
+#createProductFormImage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+#createProductFormImage > img {
+  width: 9vmax;
+  height: 10vh;
+  margin: 0em 1em 0em 0em;
+}
+
+.addImage {
+  margin: 0.4em 1em;
+}
+.add_product_label {
+  display: flex;
+  flex-direction: column;
+}
+.add_product_label > label {
+  margin: 0em 0em 0em 1.2em;
+  font-weight: 500;
+}
+.add_product_label > input {
+  width: 20vw;
+  height: 5vh;
+  padding-left: 0.8em;
+  border-radius: 8px;
+  border: 1px solid #ada7a7;
+  background-color: #ffffff;
+  /* font-size: 20px; */
+}
+.add_product_label > select {
+  width: 20vw;
+}
+
+/* .newProductContainer {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: rgb(221, 221, 221);
+  border-left: 1px solid rgba(0, 0, 0, 0.158);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.newProductContainer h1 {
+  color: rgba(0, 0, 0, 0.733);
+  font: 300 2rem "Roboto";
+  text-align: center;
+}
+
+.createProductForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  padding: 3vmax;
+  justify-content: space-evenly;
+  height: 80%;
+  width: 40vh;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.267);
+
+}
+
+.createProductForm > div {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+.createProductForm > div > input,
+.createProductForm > div > select,
+.createProductForm > div > textarea {
+  padding: 1vmax 4vmax;
+  padding-right: 1vmax;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.267);
+  border-radius: 4px;
+  font: 300 0.9vmax cursive;
+  outline: none;
+}
+
+.createProductForm > div > svg {
+  position: absolute;
+  transform: translateX(1vmax);
+  font-size: 1.6vmax;
+  color: rgba(0, 0, 0, 0.623);
+}
+
+#createProductFormFile > input {
+  display: flex;
+  padding: 0%;
+}
+
+#createProductFormFile > input::file-selector-button {
+  cursor: pointer;
+  width: 100%;
+  z-index: 2;
+  height: 5vh;
+  border: none;
+  margin: 0%;
+  font: 400 0.8vmax cursive;
+  transition: all 0.5s;
+  padding: 0 1vmax;
+  color: rgba(0, 0, 0, 0.623);
+  background-color: rgb(255, 255, 255);
+}
+
+#createProductFormFile > input::file-selector-button:hover {
+  background-color: rgb(235, 235, 235);
+}
+
+#createProductFormImage {
+  width: 100%;
+  overflow: auto;
+}
+
+#createProductFormImage > img {
+  width: 3vmax;
+  margin: 0 0.5vmax;
+}
+#createProductBtn {
+  border: none;
+  background-color: tomato;
+  color: white;
+  font: 300 0.9vmax "Roboto";
+  width: 100%;
+  padding: 0.8vmax;
+  cursor: pointer;
+  transition: all 0.5s;
+  border-radius: 4px;
+  outline: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
+}
+
+#createProductBtn:hover {
+  background-color: rgb(179, 66, 46);
+}
+
+#updateProfileImage > img {
+  width: 3vmax;
+  border-radius: 100%;
+  margin: 1vmax;
+}
+#updateProfileImage > input {
+  display: flex;
+  padding: 0%;
+}
+#updateProfileImage > input::file-selector-button {
+  cursor: pointer;
+  width: 100%;
+  z-index: 2;
+  height: 5vh;
+  border: none;
+  margin: 0%;
+  font: 400 0.8vmax cursive;
+  transition: all 0.5s;
+  padding: 0 1vmax;
+  color: rgba(0, 0, 0, 0.623);
+  background-color: rgb(255, 255, 255);
+}
+
+#updateProfileImage > input::file-selector-button:hover {
+  background-color: rgb(235, 235, 235);
+}
+.categoryDiv{
+  height:15vh;
+}
+
+
+@media screen and (max-width: 600px) {
+  .newProductContainer {
+    background-color: rgb(255, 255, 255);
+  }
+  .createProductForm {
+    padding: 5vmax;
+  }
+
+  .createProductForm > div > input,
+  .createProductForm > div > select,
+  .createProductForm > div > textarea {
+    padding: 2.5vmax 5vmax;
+    font: 300 1.7vmax cursive;
+  }
+
+  .createProductForm > div > svg {
+    font-size: 2.8vmax;
+  }
+
+  #createProductFormFile > img {
+    width: 8vmax;
+    border-radius: 100%;
+  }
+
+  #createProductFormFile > input::file-selector-button {
+    height: 7vh;
+    font: 400 1.8vmax cursive;
+  }
+
+  #createProductBtn {
+    font: 300 1.9vmax "Roboto";
+    padding: 1.8vmax;
+  }
+} */
