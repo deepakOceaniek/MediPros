@@ -207,7 +207,7 @@ exports.getAllProductReviews = catchAsyncErrors(async (req, res, next) => {
   res.status(200).json({
     success: true,
     reviews: product.reviews,
-  });
+  });c
 });
 
 // Delete Reviwes
@@ -588,10 +588,10 @@ exports.deleteBanner = catchAsyncErrors(async (req, res, next) => {
 // Add to cart 
 exports.addToCart = catchAsyncErrors(async (req, res, next) => {
   const { productId, quantity } = req.body;
-  console.log(req.body)
-  console.log(req.user.id)
+  // console.log(req.body)
+  // console.log(req.user.id)
   const user = req.user.id; 
-  console.log(user)
+  // console.log(user)
   // const query = [
   //   {
   //     path: "products.productId",

@@ -25,7 +25,7 @@ const NewProduct = () => {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
   const [type, setType] = useState("");
-
+  const [safetyInformation,setSafetyInformation] = useState("")
   const [salt, setSalt] = useState("");
   const [expired, setExpired] = useState("");
   const [productQuantity, setProductQuantity] = useState("");
@@ -79,6 +79,7 @@ const NewProduct = () => {
     myForm.set("price", price);
     myForm.set("type", type);
     myForm.set("salt", salt);
+    myForm.set("safetyInformation", safetyInformation);
     myForm.set("expired", expired);
     myForm.set("productQuantity", productQuantity);
     myForm.set("company", company);
@@ -205,6 +206,17 @@ const NewProduct = () => {
                         onChange={(e) => setDescription(e.target.value)}
                         cols="30"
                         rows="1"
+                      />
+                    </div>
+                    <div className="add_product_label">
+                      <label>Safety Information</label>
+
+                      <input
+                        type="text"
+                        className="productadd"
+                        placeholder="Safety Information"
+                        onChange={(e) => setSafetyInformation(e.target.value)}
+                       
                       />
                     </div>
                     <div className="add_product_label">
