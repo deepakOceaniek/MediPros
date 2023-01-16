@@ -160,6 +160,21 @@ const NewProduct = () => {
                     </div>
                     <div className="add_product_label">
                       <label>Medicine Type</label>
+                    <select
+                      className="productadd"
+                      onChange={(e) => setType(e.target.value)}
+                    >
+                      <option value="">Choose Type</option>
+                      {/* {categories && */}
+                        {/* categories.map((cate) => ( */}
+                          <option  value="Bottle">Bottle</option>
+                          <option  value="Strip">Strip</option>
+                          <option  value="Tube">Tube</option>
+                        {/* // ))} */}
+                    </select>
+                    </div>
+                    {/* <div className="add_product_label">
+                      <label>Medicine Type</label>
 
                       <input
                         type="number"
@@ -169,10 +184,11 @@ const NewProduct = () => {
                         onChange={(e) => setType(e.target.value)}
                       />
                     </div>
+                     */}
                
                 
                     <div className="add_product_label">
-                      <label>Expired</label>
+                      <label>Expiry Date</label>
 
                       <input
                         className="productadd"
@@ -270,7 +286,7 @@ const NewProduct = () => {
                       />
                     </div>
                     <div className="add_product_label">
-                      <label>Gst</label>
+                      <label>GST</label>
 
                       <input
                         type="text"
@@ -292,7 +308,7 @@ const NewProduct = () => {
                       />
                     </div>
                     <div className="add_product_label">
-                      <label>Hsn Code</label>
+                      <label>HSN Code</label>
 
                       <input
                         type="text"
@@ -310,7 +326,7 @@ const NewProduct = () => {
                         className="addImage"
                         placeholder=" Product Image Upload"
                         name="avatar"
-                        accept="image/*"
+                        accept="image/png, image/jpeg"
                         onChange={createProductImagesChange}
                         multiple
                       />

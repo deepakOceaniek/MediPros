@@ -180,7 +180,7 @@ const Register = ({ setRegisterData }) => {
                         <input
                           type="file"
                           name="profileImage"
-                          accept="image/png, image/gif, image/jpeg"
+                          accept="image/png, image/jpeg"
                           // value={""}
                           // value="image/*"
                           onChange={registerDataChange}

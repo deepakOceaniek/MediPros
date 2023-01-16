@@ -95,42 +95,60 @@ const UpdateCategory = () => {
       <div className="dashboard">
         <SideBar />
         <div className="newProductContainer">
-          <form
-            className="createProductForm"
-            encType="multipart/form-data"
-            onSubmit={updateProductSubmitHandler}
-          >
-            <h1>Update Category</h1>
-
-            <div>
-              <SpellcheckIcon />
-              <input
-                type="text"
-                placeholder="Product Name"
-                required
-                value={categoryName}
-                onChange={(e) => setCategoryName(e.target.value)}
-              />
-            </div>
-            <div id="updateProfileImage">
-              <img src={categoryPreview} alt="Category Preview" />
-              <input
-                type="file"
-                name="categoryImage"
-                accept="image/*"
-                disabled={loading ? true : false}
-                onChange={updateProductImagesChange}
-              />
-            </div>
-
-            <Button
-              id="createProductBtn"
-              type="submit"
-              disabled={loading ? true : false}
+          <div className="create_Category">
+            <form
+              className="add_Category_row"
+              encType="multipart/form-data"
+              onSubmit={updateProductSubmitHandler}
             >
-              Update
-            </Button>
-          </form>
+              <div className="content_create_Category">
+                <div className="Category_row_category">
+                  <h1>Update Category</h1>
+                  <div className="Category_row_category">
+                    <div className="input_Category">
+                      {/* <SpellcheckIcon /> */}
+                      <div className="category_label">
+                        <label>Category Name</label>
+                        <input
+                          type="text"
+                          placeholder="Product Name"
+                          required
+                          value={categoryName}
+                          onChange={(e) => setCategoryName(e.target.value)}
+                        />
+                      </div>
+                    </div>
+
+                    {/* <div id="updateProfileImage"> */}
+                    <div className="input_Category_upload">
+                      <div className="category_label">
+                        <label>Category Image</label>
+                        <input
+                          type="file"
+                          name="categoryImage"
+                          accept="image/jpg, image/jpeg"
+                          disabled={loading ? true : false}
+                          onChange={updateProductImagesChange}
+                        />
+                      </div>
+                      <div className="categoryDiv">
+                        <img src={categoryPreview} alt="" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="button_Category_create">
+                  <button
+                    id="category_Button"
+                    type="submit"
+                    disabled={loading ? true : false}
+                  >
+                    Update
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </Fragment>

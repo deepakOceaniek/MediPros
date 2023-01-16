@@ -28,6 +28,7 @@
   width: 100vw;
   margin-top: 1.5em;
 }
+
 .row-profile > div {
   display: flex;
   justify-content: space-around;
@@ -54,13 +55,13 @@
   text-align: center;
   padding: 0.5em;
   cursor: pointer;
-  margin: 2em 0em 0em 0em ;
+  margin: 2em 0em 0em 0em;
 }
 
 .edit_btn:hover {
   background-color: #359c98;
-  box-shadow: 2px 2px  gray;
-  transition:0.5s ease-in-out;
+  box-shadow: 2px 2px gray;
+  transition: 0.5s ease-in-out;
 }
 
 .productReviewsForm > button:hover {

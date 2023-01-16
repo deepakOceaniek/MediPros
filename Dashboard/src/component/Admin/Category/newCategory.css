@@ -1,99 +1,123 @@
-.Create_Category_div{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+.Create_Category_div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
 }
 
-.create_Category{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-    background-color: rgba(231, 237, 244, 0.79);
+.create_Category {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  background-color: #ffffff;
+  background-image: url("../../../../public/Images/backcoveradmin.png");
+
+  /* background-color: rgba(231, 237, 244, 0.79); */
 }
 
-.add_Category_row{
-    display: flex;
-    justify-content: space-around;
-
+.add_Category_row {
+  display: flex;
+  justify-content: space-around;
 }
-.content_create_Category{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    box-shadow: 0px 2px 12px 2px;
-    width: 35vw;
-    height: 80vh; 
-    border-radius: 10px;
-    box-sizing: border-box;
-    background-color: white;
-    background-image: url("../../../../public/Images/backcoveradmin.png");
-
+.content_create_Category {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0px 1px 8px 1px;
+  width: 35vw;
+  height: 80vh;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  /* border-radius: 10px; */
+  /* background-image: url("../../../../public/Images/backcoveradmin.png"); */
 }
 
-.Category_row{
-    justify-content: center;
-
+.category_label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  margin: 1.5em 0em 0em 2em;
+}
+.category_label > input {
+  width: 20vw;
+  height: 5vh;
+  margin-top: .3em;
+  padding-left: 0.5em;
+  border-radius: 8px;
+  border: 1px solid #ada7a7;
 }
 
-.Category_add{
-    width: 24vw;
-    height: 5vh;
-    border: 1px solid #ADA7A7;
-   border-radius: 8px;
-
-}
-/* .input_Category_upload{
-    margin-top: 0em;  
-} */
-.update_lab_category_label > label{
-    font-weight: 600;
-    margin: 0em 0em 0em 4em ;
-    font-size: 18px;
-}
-.update_lab_category_label{
-    margin: 1em 0em 0em 0em ;
-}
-.button_Category{
-    margin-bottom: 3em;
-}
-.categoryDiv{
-    margin: 1em 5em;
-    height:12vh;
-    width:12vw;
-}
-.category_input,.Category_add_image{
-    margin: 0em 0em 0em 4.5em;
+.Category_add {
+  width: 24vw;
+  height: 5vh;
+  border: 1px solid #ada7a7;
+  border-radius: 8px;
 }
 
-.Category_row > h1 {
-    color: rgba(0, 0, 0, 0.733);
-    font: 300 2rem "Roboto";
-    text-align: center;
-    margin-top: 1.5em;
-  }
+.button_Category_create {
+  height: 5vh;
+  width: 10vw;
+  border-radius: 8px;
+  padding: 0.2em;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
+  color: white;
+  background-color: #308c89;
+  font-family: "Lato";
+  font-weight: 500;
+  font-size: 16px;
+}
+.button_Category_create:hover {
+  background-color: #359c98;
+  box-shadow: 2px 2px gray;
+  transition: 0.5s ease-in-out;
+}
 
-.Category_add_image{
-    margin-bottom: 1em;
+.category_input,
+.Category_add_image {
+  margin: 0em 0em 0em 4.5em;
+}
+
+.Category_row_category > h1 {
+  color: rgba(0, 0, 0, 0.733);
+  font: 300 2rem "Roboto";
+  text-align: center;
+}
+
+.Category_add_image {
+  margin-bottom: 1em;
+}
+.categoryDiv {
+  display: flex;
+  flex-direction: row;
+  margin: 1em 1em 0em 6.2em;
+  height: 11vmax;
+  width: 10vmax;
 }
 /* -------------------------------------------- */
-.update_sample_label >label{
-    font-weight: 600;
-    margin: 0em 0em 0em  3.5em;
+.update_sample_label > label {
+  font-weight: 600;
+  margin: 0em 0em 0em 3.5em;
 }
 
-
-/* -------------------------------------------- */
-
-.sample_input{
-    margin: .2em 3em;
-    padding-left: 1em;
+.sample_input {
+  margin: 0.2em 3em;
+  padding-left: 1em;
 }
-.add_new_sample_label >label{
-    font-weight: 600;
-    margin: 0em 0em 0em 3.5em;
+.add_new_sample_label > label {
+  font-weight: 600;
+  margin: 0em 0em 0em 3.5em;
 }
-.add_new_sample_label{
-    margin: 1em 0em 0em 0em ;
+.add_new_sample_label {
+  margin: 1em 0em 0em 0em;
+}
+
+.update_lab_category_label > label {
+  font-weight: 500;
+  margin: 0em 0em 0em 4em;
+  font-size: 18px;
+}
+.update_lab_category_label {
+  margin: 1em 0em 0em 0em;
 }

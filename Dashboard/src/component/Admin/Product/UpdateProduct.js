@@ -192,7 +192,7 @@ const UpdateProduct = () => {
                   
                   </div>
                   <div className="add_product_label">
-                    <label>Expired</label>
+                    <label>Expiry Date</label>
                   <input
                     className="productadd"
                     type="date"
@@ -296,7 +296,7 @@ const UpdateProduct = () => {
                   </div>
                
                   <div className="add_product_label">
-                    <label>Gst</label>
+                    <label>GST</label>
                   <input
                     type="text"
                     className="productadd"
@@ -318,7 +318,7 @@ const UpdateProduct = () => {
                   />
                   </div>
                   <div className="add_product_label">
-                    <label>Hsn Code</label>
+                    <label>HSN Code</label>
                   <input
                     type="text"
                     className="productadd"

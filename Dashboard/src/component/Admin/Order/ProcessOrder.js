@@ -70,7 +70,7 @@ const ProcessOrder = () => {
               <div className="orderContainer">
                 <div className="confirmshippingArea">
                   <div>
-                    <h1>Order Details :</h1>
+                    <h2>Order Details :</h2>
                   </div>
                   <div className="orderDetailsContainerBox">
                     <h1>Shipping Info</h1>
@@ -152,7 +152,7 @@ const ProcessOrder = () => {
                     className="updateOrderForm"
                     onSubmit={updateOrderSubmitHandler}
                   >
-                    <h1>Update Order status</h1>
+                    <h1>Order Status</h1>
 
                     <div>
                       {/* <AccountTreeIcon /> */}
@@ -169,7 +169,7 @@ const ProcessOrder = () => {
                     </div>
 
                     <Button
-                      id="createProductBtn"
+                      id="update_order_status_Btn"
                       type="submit"
                       disabled={
                         loading ? true : false || status === "" ? true : false

@@ -144,8 +144,8 @@ const OrderList = () => {
 
         ids: `#${item._id.slice(4, 19)}`,
         itemsQty: `${item.orderItems.length} Items`,
-        amount: `₹ ${parseFloat(item.amountToBePaid).toFixed(2)}`
-        // status: item.orderStatus,
+        amount: `₹ ${parseFloat(item.amountToBePaid).toFixed(2)}`,
+        status: item.orderStatus,
       });
     });
 
