@@ -1,0 +1,106 @@
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.register_label > input {
+  width: 24vw;
+  height: 5vh;
+  border-radius: 5px;
+  margin: 0.2em 0em 0em 0.5em;
+  background-color: #ffffff;
+  border: 1px solid #ada7a7;
+  padding: 0.3em;
+}
+
+.register_label > select {
+  width: 24vw;
+  height: 5vh;
+  border-radius: 5px;
+  background-color: #ffffff;
+  border: 1px solid #ada7a7;
+  color: rgba(0, 0, 0, 0.8);
+  margin: 0.2em 0em 0em 0.5em;
+}
+.form-Time input {
+  width: 11.8vw;
+  height: 5vh;
+  border-radius: 5px;
+  background-color: #ffffff;
+  border: 1px solid #ada7a7;
+  margin: 0.2em 0em 0em 0.5em;
+}
+.form-group.form-submit-btn > input {
+  height: 6vh;
+  width: 22vw;
+  border-radius: 8px;
+  background: #308c89;
+  color: #ffffff;
+  margin: 1.5em 0em 0.5em 1.5em;
+  font-family: "Lato";
+  font-weight: 500;
+  font-size: 18px;
+}
+.form-group.form-submit-btn:hover >input{
+  background-color: #359c98;
+  box-shadow: 2px 2px gray;
+  transition: 0.5s ease-in-out;
+}
+
+/* input::-webkit-file-upload-button{
+  height: 5vh;
+} */
+.registration-form h1 {
+  margin: 0.5em 9.8em 0.5em 0;
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
+.form-Time {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.span_text > span {
+  margin: 0em 0em 0em 4em;
+  color: black;
+  font-weight: 495;
+}
+.register_label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  margin: 0em 0em 0em 0em;
+}
+.register_label >label{
+  margin: 0em 0em 0em .6em;
+}
+
+/* .form-group-status input {
+  width: 8.5vw;
+} */
+/* .form-group-profileImage > input::file-selector-button {
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  transition: all 0.5s;
+  z-index: 2;
+  font-family: "Poppins";
+  font-style: normal;
+  height: 6vh;
+  margin: 0%;
+  padding: 0 1vmax;
+  visibility: hidden;
+} */
+
+/* .bgImage > img {
+  position: absolute;
+  height: 100vh;
+  width: 34vw;
+  border-radius: 3em;
+  opacity: 0.5;
+} */

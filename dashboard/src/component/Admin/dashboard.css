@@ -1,0 +1,112 @@
+.dashboard {
+  width: 100vw;
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  position: absolute;
+}
+
+.dashboardContainer {
+  border-left: 1px solid rgba(0, 0, 0, 0.13);
+  padding: 3rem 0;
+  height: 100vh;
+  overflow-y: scroll;
+  background-image: url("../../../public/Images/backcoveradmin.png");
+}
+
+.dashboardContainer > h1 {
+  font: 300 1.6em "Roboto";
+  text-align: center;
+  width: 30%;
+  padding: 0.3em;
+  margin: auto;
+  background: #308c89;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.dashboardSummary {
+  margin: 2rem 0;
+}
+
+.dashboardSummary > div {
+  display: flex;
+  justify-content: center;
+}
+.dashboardSummary > div:first-child {
+  background-image: linear-gradient(to right, #e7e8d1, #a7beae);
+}
+
+.dashboardSummary > div > p {
+  color: white;
+  font: 300 1.3rem "Roboto";
+  text-align: center;
+  padding: 1.5rem;
+  width: 100%;
+  margin: 0 2rem;
+}
+.dashboardSummaryBox2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.dashboardSummaryBox2 > a {
+  /* color: rgb(17, 17, 17); */
+  color: #ff6347;
+  font: 700 1.8em "Roboto";
+  text-align: center;
+  text-decoration: none;
+  padding: 1.5rem;
+  width: 15vmax;
+  height: 5vmax;
+  margin: 1em;
+  /* border-radius: 100%; */
+}
+
+.dashboardSummaryBox2 > a:first-child {
+  /* background-color: rgb(255, 110, 110); */
+  color: #308c89;
+}
+
+.dashboardSummaryBox2 > a:last-child {
+  /* background-color: rgb(51, 51, 51); */
+  color: #308c89;
+}
+
+.lineChart {
+  width: 60%;
+  margin: auto;
+}
+
+.doughnutChart {
+  width: 25vmax;
+  margin: auto;
+}
+
+@media screen and (max-width: 600px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+  .dashboardContainer > h1 {
+    font: 300 1em "Roboto";
+    width: 50%;
+  }
+  .dashboardContainer {
+    border-left: none;
+  }
+
+  .dashboardSummary > div > p {
+    margin: 0;
+    font: 300 0.8em "Roboto";
+    padding: 0.4em;
+    width: 100%;
+  }
+
+  .dashboardSummaryBox2 > a {
+    padding: 0.5rem;
+    margin: 1rem;
+    font: 300 0.9rem "Roboto";
+  }
+}

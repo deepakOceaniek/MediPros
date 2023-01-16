@@ -1,0 +1,99 @@
+.Create_Category_div{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.create_Category{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    background-color: rgba(231, 237, 244, 0.79);
+}
+
+.add_Category_row{
+    display: flex;
+    justify-content: space-around;
+
+}
+.content_create_Category{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0px 2px 12px 2px;
+    width: 35vw;
+    height: 80vh; 
+    border-radius: 10px;
+    box-sizing: border-box;
+    background-color: white;
+    background-image: url("../../../../public/Images/backcoveradmin.png");
+
+}
+
+.Category_row{
+    justify-content: center;
+
+}
+
+.Category_add{
+    width: 24vw;
+    height: 5vh;
+    border: 1px solid #ADA7A7;
+   border-radius: 8px;
+
+}
+/* .input_Category_upload{
+    margin-top: 0em;  
+} */
+.update_lab_category_label > label{
+    font-weight: 600;
+    margin: 0em 0em 0em 4em ;
+    font-size: 18px;
+}
+.update_lab_category_label{
+    margin: 1em 0em 0em 0em ;
+}
+.button_Category{
+    margin-bottom: 3em;
+}
+.categoryDiv{
+    margin: 1em 5em;
+    height:12vh;
+    width:12vw;
+}
+.category_input,.Category_add_image{
+    margin: 0em 0em 0em 4.5em;
+}
+
+.Category_row > h1 {
+    color: rgba(0, 0, 0, 0.733);
+    font: 300 2rem "Roboto";
+    text-align: center;
+    margin-top: 1.5em;
+  }
+
+.Category_add_image{
+    margin-bottom: 1em;
+}
+/* -------------------------------------------- */
+.update_sample_label >label{
+    font-weight: 600;
+    margin: 0em 0em 0em  3.5em;
+}
+
+
+/* -------------------------------------------- */
+
+.sample_input{
+    margin: .2em 3em;
+    padding-left: 1em;
+}
+.add_new_sample_label >label{
+    font-weight: 600;
+    margin: 0em 0em 0em 3.5em;
+}
+.add_new_sample_label{
+    margin: 1em 0em 0em 0em ;
+}
