@@ -114,132 +114,137 @@ const ProfileUpdate = () => {
             <div className="sideBar">
               <Sidebar />
             </div>
-            <div className="updateProfileBox">
-              <h2 className="updateProfileHeading">Update Your Profile</h2>
+            <div className="update_profile_main">
+              <div className="updateProfileBox">
+                <h2 className="updateProfileHeading">Update Your Profile</h2>
 
-              <form
-                className="updateProfileForm"
-                encType="multipart/form-data"
-                onSubmit={updateProfileSubmit}
-              >
-                <div className="profile_main_Content">
-                  <div className="inner_content_div">
-                    <div className="profile_update_label">
-                      <label> Name</label>
-                      <div className="updateProfileInput">
-                        <input
-                          type="text"
-                          placeholder="Name"
-                          required
-                          name="name"
-                          value={name}
-                          onChange={(e) => setName(e.target.value)}
-                        />
-                      </div>
-                    </div>
-                    <div className="profile_update_label">
-                      <label>Contact</label>
-                      <div className="updateProfileInput">
-                        <input
-                          type="number"
-                          placeholder="Contact"
-                          required
-                          name="contact"
-                          value={contact}
-                          onChange={(e) => setContact(e.target.value)}
-                        />
-                      </div>
-                    </div>
-                    <div className="profile_update_label">
-                      <label>Address</label>
-                      <div className="updateProfileInput">
-                        <input
-                          type="text"
-                          placeholder="Address"
-                          required
-                          name="address"
-                          value={address}
-                          onChange={(e) => setAddress(e.target.value)}
-                        />
-                      </div>
-                    </div>
-                    <div className="profile_update_label">
-                      <label>Profile Image</label>
-                      <div id="updateProfileImageAdmin">
-                        <div className="updateProfileInput">
-                          <input
-                            id="updateProfileImageAdmin"
-                            type="file"
-                            name="profileImagePreview"
-                            accept="image/*"
-                            onChange={updateProfileDataChange}
-                          />
-                        </div>
-                        <img src={profileImagePreview} alt="Profile Preview" />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="inner_content_div">
-                    <div id="updateCertificateImageAdmin">
-                      <img
-                        src={certificateImagePreview}
-                        alt="Certificate Preview"
-                      />
+                <form
+                  className="updateProfileForm"
+                  encType="multipart/form-data"
+                  onSubmit={updateProfileSubmit}
+                >
+                  <div className="profile_main_Content">
+                    <div className="inner_content_div">
                       <div className="profile_update_label">
-                        <label>Certificate Image</label>
+                        <label> Name</label>
                         <div className="updateProfileInput">
                           <input
-                            type="file"
-                            name="certificateImagePreview"
-                            accept="image/*"
-                            onChange={updateCertificateDataChange}
+                            type="text"
+                            placeholder="Name"
+                            required
+                            name="name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
                           />
                         </div>
                       </div>
-                    </div>
-                    <div className="profile_update_label">
-                      <label>Status</label>
-                      <div className="updateProfileInput">
-                        <input
-                          type="text"
-                          placeholder="Status"
-                          required
-                          name="status"
-                          value={status}
-                          onChange={(e) => setStatus(e.target.value)}
-                        />
+                      <div className="profile_update_label">
+                        <label>Contact</label>
+                        <div className="updateProfileInput">
+                          <input
+                            type="number"
+                            placeholder="Contact"
+                            required
+                            name="contact"
+                            value={contact}
+                            onChange={(e) => setContact(e.target.value)}
+                          />
+                        </div>
                       </div>
-                    </div>
-                    <div className="profile_update_label">
-                      <label>From Time</label>
-                      <div className="updateProfileInput">
-                        <input
-                          type="time"
-                          placeholder="fromTime"
-                          required
-                          name="fromTime"
-                          value={fromTime}
-                          onChange={(e) => setFromTime(e.target.value)}
-                        />
-                        <div className="profile_update_label">
-                          <label>To Time</label>
+                      <div className="profile_update_label">
+                        <label>Address</label>
+                        <div className="updateProfileInput">
+                          <input
+                            type="text"
+                            placeholder="Address"
+                            required
+                            name="address"
+                            value={address}
+                            onChange={(e) => setAddress(e.target.value)}
+                          />
+                        </div>
+                      </div>
+                      <div className="profile_update_label">
+                        <label>Profile Image</label>
+                        <div id="updateProfileImageAdmin">
                           <div className="updateProfileInput">
                             <input
-                              type="time"
-                              placeholder="toTime"
-                              required
-                              name="toTime"
-                              value={toTime}
-                              onChange={(e) => setToTime(e.target.value)}
+                              id="updateProfileImageAdmin"
+                              type="file"
+                              name="profileImagePreview"
+                              accept="image/*"
+                              onChange={updateProfileDataChange}
                             />
+                          </div>
+                          <img
+                            src={profileImagePreview}
+                            alt="Profile Preview"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="inner_content_div">
+                      <div id="updateCertificateImageAdmin">
+                        <img
+                          src={certificateImagePreview}
+                          alt="Certificate Preview"
+                        />
+                        <div className="profile_update_label">
+                          <label>Certificate Image</label>
+                          <div className="updateProfileInput">
+                            <input
+                              type="file"
+                              name="certificateImagePreview"
+                              accept="image/*"
+                              onChange={updateCertificateDataChange}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="profile_update_label">
+                        <label>Status</label>
+                        <div className="updateProfileInput">
+                          <input
+                            type="text"
+                            placeholder="Status"
+                            required
+                            name="status"
+                            value={status}
+                            onChange={(e) => setStatus(e.target.value)}
+                          />
+                        </div>
+                      </div>
+                      <div className="profile_update_label">
+                        <label>From Time</label>
+                        <div className="updateProfileInput">
+                          <input
+                            type="time"
+                            placeholder="fromTime"
+                            required
+                            name="fromTime"
+                            value={fromTime}
+                            onChange={(e) => setFromTime(e.target.value)}
+                          />
+                          <div className="profile_update_label">
+                            <label>To Time</label>
+                            <div className="updateProfileInput">
+                              <input
+                                type="time"
+                                placeholder="toTime"
+                                required
+                                name="toTime"
+                                value={toTime}
+                                onChange={(e) => setToTime(e.target.value)}
+                              />
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <button className="updateProfileBtn"> Save</button>
-              </form>
+                  <button className="updateProfileBtn">Save</button>
+                </form>
+              </div>
             </div>
           </div>
         </>

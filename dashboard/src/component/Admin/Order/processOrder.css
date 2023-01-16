@@ -16,7 +16,7 @@
 .orderDetailsContainerBox {
   height: 20vh;
   width: 30vw;
-  margin: 1.5em 0em 0em 0em;
+  /* margin: 1em 0em 0em 0em; */
   border: 1px solid black;
   border-radius: 10px;
 }
@@ -40,10 +40,12 @@
   text-align: center;
 }
 .updateOrderForm {
-  margin: 5vmax 0;
+  height: 50vh;
+  margin: 4vmax 0;
   padding: 3vmax;
   background-color: white;
   display: block;
+  border: 1px solid #ada7a7;
  
 }
 
@@ -63,7 +65,27 @@
   outline: none;
 }
 
+#update_order_status_Btn{
+  height: 4vh;
+  width: 8vw;
+  margin: 4em 0em 0em 3.5em;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
+  color: white;
+  background-color: #308c89;
+  font-family: "Lato";
+  font-weight: 500;
+  font-size: 16px;
+}
+.confirmshippingArea > div >h2{
+  font-weight: 500;
+  margin: 1em 0em ;
+}
 
+.updateOrderForm > h1{
+  margin: 0em 0em 0em 3.5em;
+  font-weight: 500;
+}
 
 .updateOrderForm > div > svg {
   position: absolute;
@@ -74,11 +96,10 @@
 .confirmCartItems {
   display: flex;
   flex-direction: column;
-  /* flex-direction: row; */
-  width: 80%;
+  width: 95%;
   border: 1px solid black;
   border-radius: 10px;
-  margin: 1em 0 0 7.5em;
+  margin: .5em 0em  0em 2em;
 }
 .confirmCartItems > h1 {
   background-color: #8e9092;
