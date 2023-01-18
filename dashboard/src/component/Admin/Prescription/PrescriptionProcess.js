@@ -82,17 +82,17 @@ const PrescriptionProcess = () => {
               //       ? "block"
               //       : "grid",
               // }}
-            >
+             >
               <div className="prescriptionOrderDetails">
                 <div className="confirmPrescriptionShippingArea">
-                  <h1>Prescription Info</h1>
+                  <h1>Prescription</h1>
                   <div className="prescriptionOrderDetailsContainerBox">
                     <h1>User Details</h1>
-                    <div>
+                    <div className="label_parameter">
                       <p>Name:</p>
                       <p>{prescription.user && prescription.user.name}</p>
                     </div>
-                    <div>
+                    <div className="label_parameter">
                       <p>Contact:</p>
                       <p>
                         {prescription.user && prescription.user.contact}
@@ -100,34 +100,16 @@ const PrescriptionProcess = () => {
                     </div>
                   </div>
                 </div>
-                <div className="prescriptionConfirmCartItems">
-                  <h1>Prescription Images </h1>
-                  <div className="prescriptionConfirmCartItemsContainer">
-                    {prescription.images &&
-                      prescription.images.map((item) => (
-                        <div key={item._id}>
-                          <img src={item.url} alt="prescription" />
-                        </div>
-                      ))}
-                  </div>
-                </div>
-              </div>
-
-              <div
-                // style={{
-                //   display:
-                //     prescription.status === "Your Medicine Get Ready Pay Now"
-                //       ? "none"
-                //       : "block",
-                // }}
-              >
                 <form
                   className="updatePrescriptionForm"
                   onSubmit={updateOrderSubmitHandler}
-                >
+                 >
                   <h1>Update Prescription status </h1>
 
-                  <div>
+                  <div className="prescription_label">
+                    <label>Update status</label>
+                   <div className="prescription_input">
+
                     <select onChange={(e) => setStatus(e.target.value)}>
                       <option value="">Update Status</option>
                       {prescription && prescription.status === "Processing" && (
@@ -149,6 +131,7 @@ const PrescriptionProcess = () => {
                           </option>
                         )}
                     </select>
+                    </div>
                   </div>
 
                   <div
@@ -160,45 +143,53 @@ const PrescriptionProcess = () => {
                           : "none",
                     }}
                   >
-                    <div>
+                    <div className="prescription_label">
                       <label>Total Price </label>
+                      <div className="prescription_input">
                       <input
                         type="number"
                         onChange={(e) => setTotalPrice(e.target.value)}
-                        placeholder="totalPrice"
+                        placeholder="Total Price"
                       />
+                      </div>
                     </div>
 
-                    <div>
+                    <div className="prescription_label">
                       <label>Total Saving</label>
+                      <div className="prescription_input">
                       <input
                         type="number"
                         onChange={(e) => setTotalSaving(e.target.value)}
-                        placeholder="totalSaving"
+                        placeholder="Total Saving"
                       />
+                      </div>
                     </div>
 
-                    <div>
+                    <div className="prescription_label">
                       <label>Shipping Fee</label>
+                      <div className="prescription_input">
                       <input
                         type="number"
                         onChange={(e) => setShippingFee(e.target.value)}
-                        placeholder="shippingFee"
+                        placeholder="Shipping Fee"
                       />
+                      </div>
                     </div>
 
-                    <div>
+                    <div className="prescription_label">
                       <label>Amount To Be Paid</label>
+                      <div className="prescription_input">
                       <input
                         type="number"
                         onChange={(e) => setAmountToBePaid(e.target.value)}
-                        placeholder="amountToBePaid"
+                        placeholder="Amount To Be Paid"
                       />
+                      </div>
                     </div>
                   </div>
 
                   <button
-                    id="createProductBtn"
+                    id="prescriptionBtn"
                     type="submit"
                     disabled={
                       loading ? true : false || status === "" ? true : false
@@ -207,6 +198,21 @@ const PrescriptionProcess = () => {
                     Process
                   </button>
                 </form>
+                
+              </div>
+
+              <div>
+                <div className="prescriptionConfirmCartItems">
+                  <h1>Prescription Images </h1>
+                  <div className="prescriptionConfirmCartItemsContainer">
+                    {prescription.images &&
+                      prescription.images.map((item) => (
+                        <div key={item._id}>
+                          <img src={item.url} alt="prescription" />
+                        </div>
+                      ))}
+                  </div>
+                </div>
               </div>
             </div>
           )}

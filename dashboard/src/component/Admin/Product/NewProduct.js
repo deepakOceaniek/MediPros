@@ -174,17 +174,7 @@ const NewProduct = () => {
                         {/* // ))} */}
                       </select>
                     </div>
-                    <div className="add_product_label">
-                      <label>Medicine Type</label>
-
-                      <input
-                        type="number"
-                        className="productadd"
-                        placeholder="Type"
-                        required
-                        onChange={(e) => setType(e.target.value)}
-                      />
-                    </div>
+                    
                     <div className="add_product_label">
                       <label>Expiry Date</label>
 
