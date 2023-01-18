@@ -3,35 +3,29 @@
   flex-direction: row;
   justify-content: flex-start;
 }
-
 .create_banner {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  background-color: rgba(231, 237, 244, 0.79);
+  background-image: url("../../../../public/Images/backcoveradmin.png");
 }
-
 .add_banner_row {
   display: flex;
   justify-content: space-around;
 }
-
-.content_banner_Category {
+.content_banner {
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: space-around;
   box-shadow: 0px 2px 12px 2px;
+  /* margin-top: 3em; */
   width: 35vw;
   height: 80vh;
-  border-radius: 30px;
   box-sizing: border-box;
   background-color: white;
-  background-image: url("../../../../public/Images/backcoveradmin.png");
 }
-
 .banner_add {
   width: 24vw;
   height: 5vh;
@@ -39,9 +33,8 @@
   border: 1px solid #ada7a7;
   border-radius: 8px;
 }
-
 #createBannerBtn {
-  height: 6vh;
+  height: 5vh;
   width: 10vw;
   background: #308c89;
   border-radius: 5px;
@@ -49,12 +42,10 @@
   text-align: center;
   font-family: "Lato";
   font-weight: 500;
-  font-size: 18px;
+  font-size: 16px;
 }
 #createBannerBtn:hover {
   background-color: #359c98;
-  box-shadow: 2px 2px gray;
-  transition: 0.5s ease-in-out;
 }
 .input_banner_upload > input {
   height: 5vh;
@@ -64,7 +55,6 @@
   border: 1px solid #ada7a7;
   background-color: #ffffff;
 }
-
 .banner_row > h1 {
   height: 6vh;
   width: 22vw;
@@ -73,39 +63,19 @@
   color: #ffffff;
   background: #308c89;
   text-align: center;
+  font: 300 1.3em "Roboto";
 }
 .banner_row_label > label {
-  font-weight: 500;
+  font-weight: 600;
   margin: 0em 0em 0em 0.2em;
 }
-
 #createBannerFormImage {
   width: 100%;
   overflow: auto;
   display: flex;
   justify-content: center;
 }
-
 #createBannerFormImage > img {
-  width: 10vw;
+  width: 14vw;
   height: 12vh;
-  margin: 1vmax 1vmax;
 }
-
-/* -------Update Banner------- */
-.content_update_banner {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-around;
-  box-shadow: 0px 2px 12px 2px;
-  width: 35vw;
-  height: 80vh;
-  margin: 4em 0em 0em 0em ;
-  border-radius: 30px;
-  box-sizing: border-box;
-  background-color: white;
-  background-image: url("../../../../public/Images/backcoveradmin.png");
-}
-
-

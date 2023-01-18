@@ -240,7 +240,6 @@ const UpdateProduct = () => {
                       placeholder="Safety Information"
                       value={safetyInformation}
                       onChange={(e) => setSafetyInformation(e.target.value)}
-                     
                     />
                   </div>
 
@@ -309,7 +308,7 @@ const UpdateProduct = () => {
                   </div>
 
                   <div className="add_product_label">
-                    <label>Gst</label>
+                    <label>GST</label>
                     <input
                       type="text"
                       className="productadd"
@@ -331,7 +330,7 @@ const UpdateProduct = () => {
                     />
                   </div>
                   <div className="add_product_label">
-                    <label>Hsn Code</label>
+                    <label>HSN Code</label>
                     <input
                       type="text"
                       className="productadd"

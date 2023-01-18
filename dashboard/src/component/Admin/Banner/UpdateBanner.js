@@ -12,7 +12,6 @@ import { UPDATE_BANNER_RESET } from "../../../constants/productConstants";
 import { useParams, useNavigate } from "react-router-dom";
 import Loader from "../../layout/Loader/Loader";
 
-
 const UpdateBanner = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
@@ -102,57 +101,63 @@ const UpdateBanner = () => {
       <div className="dashboard">
         <SideBar />
         <div className="newProductContainer">
-          {loading ? <Loader /> :(<form
-            className="createProductForm"
-            encType="multipart/form-data"
-            onSubmit={updateProductSubmitHandler}
-          >
-            <div className="content_update_banner">
-              <div className="banner_row">
-                <h1>Update Banner</h1>
-              </div>
+          {loading ? (
+            <Loader />
+          ) : (
+            <div className="create_banner">
+              <form
+                className="add_banner_row"
+                encType="multipart/form-data"
+                onSubmit={updateProductSubmitHandler}
+              >
+                <div className="content_banner">
+                  <div className="banner_row">
+                    <h1>Update Banner</h1>
+                  </div>
 
-              <div className="banner_row_label">
-                <label>Banner Image</label>
-                <div className="input_banner_upload">
-                  <input
-                    type="file"
-                    name="avatar"
-                    accept="image/*"
-                    onChange={updateProductImagesChange}
-                    multiple
-                  />
+                  <div className="banner_row_label">
+                    <label>Banner Image</label>
+                    <div className="input_banner_upload">
+                      <input
+                        type="file"
+                        name="avatar"
+                        accept="image/*"
+                        onChange={updateProductImagesChange}
+                        multiple
+                      />
+                    </div>
+                  </div>
+
+                  <div id="createBannerFormImage">
+                    {oldImages &&
+                      oldImages.map((image, index) => (
+                        <img
+                          key={index}
+                          src={image.url}
+                          alt="Old Product Preview"
+                        />
+                      ))}
+                  </div>
+
+                  <div id="createBannerFormImage">
+                    {imagesPreview.map((image, index) => (
+                      <img key={index} src={image} alt="Product Preview" />
+                    ))}
+                  </div>
+
+                  <div className="button_banner">
+                    <button
+                      id="createBannerBtn"
+                      type="submit"
+                      disabled={loading ? true : false}
+                    >
+                      Update Banner
+                    </button>
+                  </div>
                 </div>
-              </div>
-
-              <div id="createBannerFormImage">
-                {oldImages &&
-                  oldImages.map((image, index) => (
-                    <img
-                      key={index}
-                      src={image.url}
-                      alt="Old Product Preview"
-                    />
-                  ))}
-              </div>
-
-              <div id="createBannerFormImage">
-                {imagesPreview.map((image, index) => (
-                  <img key={index} src={image} alt="Product Preview" />
-                ))}
-              </div>
-
-              <div className="button_banner">
-                <button
-                  id="createBannerBtn"
-                  type="submit"
-                  disabled={loading ? true : false}
-                >
-                  Update Banner
-                </button>
-              </div>
+              </form>
             </div>
-          </form>)}
+          )}
         </div>
       </div>
     </Fragment>

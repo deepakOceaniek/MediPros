@@ -181,7 +181,7 @@ function App() {
           <Route path="/admin/tests" element={<TestList />} />
           <Route path="/admin/test/:id" element={<UpdateTest />} />
 
-          <Route path="/admin/package " element={<NewPackage />} />
+          <Route path="/admin/package" element={<NewPackage />} />
           <Route path="/admin/packages" element={<PackageList />} />
           <Route path="/admin/package/:id" element={<UpdatePackage />} />
 

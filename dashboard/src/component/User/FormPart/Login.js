@@ -53,8 +53,8 @@ const Login = ({ setContactData }) => {
             type="number"
             placeholder="Enter Mobile Number"
             required
-            value={loginContact}
-            onChange={(e) => setLoginPassword(e.target.value)}
+            // value={loginContact}
+            onChange={(e) => setLoginPassword(`91${e.target.value}`)}
           />
         </div>
         <div className="login_submit_btn">
@@ -62,7 +62,13 @@ const Login = ({ setContactData }) => {
         </div>
         <div className="span_text_login">
           <span>
-            Don’t have an account? <Link  style={{ color:"rgba(0, 144, 153, 1)"}} to="/admin/register">Register here</Link>
+            Don’t have an account?{" "}
+            <Link
+              style={{ color: "rgba(0, 144, 153, 1)" }}
+              to="/admin/register"
+            >
+              Register here
+            </Link>
           </span>
         </div>
       </form>

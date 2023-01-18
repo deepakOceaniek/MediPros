@@ -1,12 +1,9 @@
 .newProductContainer {
   display: flex;
   justify-content: center;
+  background-image: url("../../../../public/Images/backcoveradmin.png");
 }
-/* .product_row > h3 {
-  color: rgba(0, 0, 0, 0.733);
-  font: 300 2rem "Roboto";
-  text-align: center;
-} */
+
 .content_addproduct,
 .inputdiv {
   display: flex;
@@ -20,11 +17,11 @@
   height: 95vh;
   justify-content: space-around;
   margin-top: 0.1em;
-  box-shadow: 0px 2px 12px 2px;
+  box-shadow: 0px 1px 10px 0px;
   width: 75vw;
-  border-radius: 30px;
   background-color: #fff;
-  background-image: url("../../../../public/Images/backcoveradmin.png");
+  /* background-image: url("../../../../public/Images/backcoveradmin.png"); */
+  /* border-radius: 30px; */
   /* padding: 2em 0em; */
 }
 .addproductrow {
@@ -72,6 +69,8 @@
 
 #createUpdateProductBtn:hover {
   background-color: #359c98;
+  box-shadow: 2px 2px gray;
+  transition: 0.5s ease-in-out;
 }
 
 #createProductFormImage {
