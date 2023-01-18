@@ -6,9 +6,7 @@ import {
   getCategoryDetails,
 } from "../../../actions/productAction";
 import { useAlert } from "react-alert";
-import { Button } from "@material-ui/core";
 import MetaData from "../../layout/MetaData";
-import SpellcheckIcon from "@material-ui/icons/Spellcheck";
 import SideBar from "../Sidebar";
 import { UPDATE_PRODUCT_RESET } from "../../../constants/productConstants";
 import { useParams, useNavigate } from "react-router-dom";
@@ -106,12 +104,11 @@ const UpdateCategory = () => {
                   <h1>Update Category</h1>
                   <div className="Category_row_category">
                     <div className="input_Category">
-                      {/* <SpellcheckIcon /> */}
                       <div className="category_label">
                         <label>Category Name</label>
                         <input
                           type="text"
-                          placeholder="Product Name"
+                          placeholder="Category Name"
                           required
                           value={categoryName}
                           onChange={(e) => setCategoryName(e.target.value)}
@@ -119,7 +116,6 @@ const UpdateCategory = () => {
                       </div>
                     </div>
 
-                    {/* <div id="updateProfileImage"> */}
                     <div className="input_Category_upload">
                       <div className="category_label">
                         <label>Category Image</label>

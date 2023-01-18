@@ -62,35 +62,33 @@ const NewProduct = () => {
                   </div>
                   <div className="Category_row">
                     <div className="add_new_sample_label">
-                      <label>Sample Name :</label>
-                    <input
-                      type="text"
-                      placeholder="Sample Name"
-                      className="sample_input"
-                      required
-                      onChange={(e) => setName(e.target.value)}
-                    />
+                      <label>Sample Name </label>
+                      <input
+                        type="text"
+                        placeholder="Sample Name"
+                        className="sample_input"
+                        required
+                        onChange={(e) => setName(e.target.value)}
+                      />
                     </div>
                     <div className="add_new_sample_label">
-                      <label>Sample Code :</label>
-                    <input
-                      type="text"
-                      placeholder="Sample Code"
-                      required
-                      className="sample_input"
-                      onChange={(e) => setSampleCode(e.target.value)}
-                    />
+                      <label>Sample Code </label>
+                      <input
+                        type="text"
+                        placeholder="Sample Code"
+                        required
+                        className="sample_input"
+                        onChange={(e) => setSampleCode(e.target.value)}
+                      />
                     </div>
-
                   </div>
 
                   <div className="button_Category">
                     <button
-                      id="createProductBtn"
+                      id="createSampleBtn"
                       type="submit"
                       disabled={loading ? true : false}
                     >
-                    
                       Add Sample
                     </button>
                   </div>

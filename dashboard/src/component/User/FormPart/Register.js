@@ -79,7 +79,7 @@ const Register = ({ setRegisterData }) => {
 
     myForm.append("category", category);
     myForm.append("name", name);
-    myForm.append("contact", contact);
+    myForm.append("contact", `91${contact}`);
     myForm.append("address", address);
     myForm.append("fromTime", fromTime);
     myForm.append("toTime", toTime);
@@ -122,7 +122,6 @@ const Register = ({ setRegisterData }) => {
                             selected
                             disabled
                             hidden
-
                           >
                             Select Category
                           </option>
@@ -195,7 +194,6 @@ const Register = ({ setRegisterData }) => {
                           type="file"
                           name="certificateImage"
                           accept="image/png, image/gif, image/jpeg"
-
                           // value={""}
                           // value="image/*"
                           onChange={registerDataChange}
@@ -256,7 +254,10 @@ const Register = ({ setRegisterData }) => {
                     </div>
                     <div className="span_text">
                       <span>
-                        Already have an account? <Link style={{ color:"rgba(0, 144, 153, 1)"}} to="/">Login</Link>
+                        Already have an account?{" "}
+                        <Link style={{ color: "rgba(0, 144, 153, 1)" }} to="/">
+                          Login
+                        </Link>
                       </span>
                     </div>
                   </form>

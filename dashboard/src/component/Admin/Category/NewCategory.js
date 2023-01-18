@@ -75,42 +75,39 @@ const NewCategory = () => {
                 <div className="content_create_Category">
                   <div className="Category_row_category">
                     <h1>Create Category</h1>
-                    <div className="Category_row_category">
-                      <div className="input_Category">
-                        <div className="category_label">
-                          <label>Category Name</label>
-                          <input
-                            type="text"
-                            placeholder="Category Name"
-                            required
-                            onChange={(e) => setCategoryName(e.target.value)}
-                          />
-                        </div>
+                  </div>
+                  <div className="Category_row_category">
+                    <div className="input_Category">
+                      <div className="category_label">
+                        <label>Category Name</label>
+                        <input
+                          type="text"
+                          placeholder="Category Name"
+                          required
+                          onChange={(e) => setCategoryName(e.target.value)}
+                        />
                       </div>
-                      <div className="input_Category_upload">
-                        <div className="category_label">
-                          <label>Category Image</label>
-                          <input
-                            accept="image/png, image/jpeg"
-                            className="Category_add"
-                            type="file"
-                            name="categoryImage"
-                            onChange={createProductImagesChange}
-                            placeholder=" Product Image Upload"
-                          />
-                        </div>
-                        <div className="categoryDiv">
-                          {categoryPreview.map((image, index) => (
-                            <img
-                              key={index}
-                              src={image}
-                              alt="Product Preview"
-                            />
-                          ))}
-                        </div>
+                    </div>
+                    <div className="input_Category_upload">
+                      <div className="category_label">
+                        <label>Category Image</label>
+                        <input
+                          accept="image/png, image/jpeg"
+                          className="Category_add"
+                          type="file"
+                          name="categoryImage"
+                          onChange={createProductImagesChange}
+                          placeholder=" Product Image Upload"
+                        />
+                      </div>
+                      <div className="categoryDiv">
+                        {categoryPreview.map((image, index) => (
+                          <img key={index} src={image} alt="Product Preview" />
+                        ))}
                       </div>
                     </div>
                   </div>
+
                   <div className="button_Category_create">
                     <button
                       id="category_Button"

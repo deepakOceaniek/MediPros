@@ -1,18 +1,31 @@
-.Create_Category_div {
+/* -------------------Product Category CSS For add And Update------------------------- */
+
+/* .Create_Category_div {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-}
+} */
 
 .create_Category {
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
-  width: 100%;
-  background-color: #ffffff;
   background-image: url("../../../../public/Images/backcoveradmin.png");
-
   /* background-color: rgba(231, 237, 244, 0.79); */
+}
+
+.Category_row_category > h1 {
+  /* color: rgba(0, 0, 0, 0.733);
+  /* text-align: center;  */
+  /* font: 300 1.3em "Roboto"; */
+  height: 6vh;
+  width: 22vw;
+  padding: 0.5em;
+  border-radius: 5px;
+  color: #ffffff;
+  background: #308c89;
+  text-align: center;
 }
 
 .add_Category_row {
@@ -29,20 +42,18 @@
   height: 80vh;
   box-sizing: border-box;
   background-color: #ffffff;
-  /* border-radius: 10px; */
-  /* background-image: url("../../../../public/Images/backcoveradmin.png"); */
 }
 
 .category_label {
   display: flex;
   flex-direction: column;
   font-weight: 600;
-  margin: 1.5em 0em 0em 2em;
+  margin: 1.5em 0em 0em 0em;
 }
 .category_label > input {
-  width: 20vw;
+  width: 22vw;
   height: 5vh;
-  margin-top: .3em;
+  margin-top: 0.3em;
   padding-left: 0.5em;
   border-radius: 8px;
   border: 1px solid #ada7a7;
@@ -55,69 +66,80 @@
   border-radius: 8px;
 }
 
-.button_Category_create {
+#category_Button {
   height: 5vh;
   width: 10vw;
   border-radius: 8px;
   padding: 0.2em;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
   color: white;
   background-color: #308c89;
   font-family: "Lato";
   font-weight: 500;
   font-size: 16px;
+  box-shadow: 1px 1px gray;
 }
-.button_Category_create:hover {
+#category_Button:hover {
   background-color: #359c98;
-  box-shadow: 2px 2px gray;
-  transition: 0.5s ease-in-out;
 }
 
-.category_input,
+/* .category_input,
 .Category_add_image {
   margin: 0em 0em 0em 4.5em;
+} */
+
+/* .Category_add_image {
+  margin-bottom: 1em;
+} */
+.categoryDiv {
+  margin: 1em 0em 0em 4.5em;
+  height: 11vmax;
+  width: 14vmax;
+}
+/* -------------------Sample CSS For add And Update------------------------- */
+
+.Category_row {
+  width: 70%;
 }
 
-.Category_row_category > h1 {
+.Category_row > h1 {
   color: rgba(0, 0, 0, 0.733);
   font: 300 2rem "Roboto";
   text-align: center;
 }
 
-.Category_add_image {
-  margin-bottom: 1em;
-}
-.categoryDiv {
+.add_new_sample_label {
+  margin: 1em 0em 0em 0em;
   display: flex;
-  flex-direction: row;
-  margin: 1em 1em 0em 6.2em;
-  height: 11vmax;
-  width: 10vmax;
-}
-/* -------------------------------------------- */
-.update_sample_label > label {
-  font-weight: 600;
-  margin: 0em 0em 0em 3.5em;
-}
-
-.sample_input {
-  margin: 0.2em 3em;
-  padding-left: 1em;
+  flex-direction: column;
+  width: 90%;
 }
 .add_new_sample_label > label {
   font-weight: 600;
-  margin: 0em 0em 0em 3.5em;
+  font-size: 1.2em;
 }
-.add_new_sample_label {
-  margin: 1em 0em 0em 0em;
+.add_new_sample_label > input {
+  width: 20vw;
+  height: 5vh;
+  margin-top: 0.3em;
+  padding-left: 0.5em;
+  border-radius: 8px;
+  border: 1px solid #ada7a7;
 }
 
-.update_lab_category_label > label {
+#createSampleBtn {
+  height: 5vh;
+  width: 10vw;
+  border-radius: 8px;
+  padding: 0.2em;
+  text-align: center;
+  color: white;
+  background-color: #308c89;
+  font-family: "Lato";
   font-weight: 500;
-  margin: 0em 0em 0em 4em;
-  font-size: 18px;
+  font-size: 16px;
+  box-shadow: 2px 2px gray;
 }
-.update_lab_category_label {
-  margin: 1em 0em 0em 0em;
+#createSampleBtn:hover {
+  background-color: #359c98;
 }

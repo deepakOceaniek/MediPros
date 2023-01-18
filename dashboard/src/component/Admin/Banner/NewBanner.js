@@ -79,13 +79,13 @@ const NewBanner = () => {
                 encType="multipart/form-data"
                 onSubmit={createBannerSubmitHandler}
               >
-                <div className="content_banner_Category">
+                <div className="content_banner">
                   <div className="banner_row">
                     <h1>Create Banner</h1>
                   </div>
 
                   <div className="banner_row_label">
-                      <label>Banner Image</label>
+                    <label>Banner Image</label>
                     <div className="input_banner_upload">
                       <input
                         type="file"

@@ -91,8 +91,8 @@ const UpdateSample = () => {
                     <h1>Update Sample</h1>
                   </div>
                   <div className="Category_row">
-                    <div className="update_sample_label">
-                      <label>Sample Name :</label>
+                    <div className="add_new_sample_label">
+                      <label>Sample Name </label>
                       <input
                         type="text"
                         placeholder="Sample Name"
@@ -103,8 +103,8 @@ const UpdateSample = () => {
                       />
                     </div>
 
-                    <div className="update_sample_label">
-                      <label>Sample Code :</label>
+                    <div className="add_new_sample_label">
+                      <label>Sample Code </label>
                       <input
                         type="text"
                         placeholder="Sample Code"
@@ -118,7 +118,7 @@ const UpdateSample = () => {
 
                   <div className="button_Category">
                     <button
-                      id="createProductBtn"
+                      id="createSampleBtn"
                       type="submit"
                       disabled={loading ? true : false}
                     >
