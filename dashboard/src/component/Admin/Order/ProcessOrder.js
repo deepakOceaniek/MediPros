@@ -75,19 +75,17 @@ const ProcessOrder = () => {
                   <div className="orderDetailsContainerBox">
                     <h1>Shipping Info</h1>
                     <div>
-                      <p>Name : </p>
+                      <p>Name :</p>
                       <p>
                         &nbsp;&nbsp;&nbsp;
-                        {order.user &&
-                          order.user.defaultAddress[0].name}
+                        {order.user && order.user.defaultAddress[0].name}
                       </p>
                     </div>
                     <div>
                       <p>Phone :</p>
                       <p>
                         &nbsp;&nbsp;&nbsp;
-                        {order.user &&
-                          order.user.defaultAddress[0].contact}
+                        {order.user && order.user.defaultAddress[0].contact}
                       </p>
                     </div>
                     <div>
@@ -121,7 +119,14 @@ const ProcessOrder = () => {
 
                     <div>
                       <p>Total Amount :</p>
-                      <p><b>₹{parseFloat(order.amountToBePaid && order.amountToBePaid).toFixed(2)}</b></p>
+                      <p>
+                        <b>
+                          ₹
+                          {parseFloat(
+                            order.amountToBePaid && order.amountToBePaid
+                          ).toFixed(2)}
+                        </b>
+                      </p>
                     </div>
                   </div>
 
@@ -142,43 +147,42 @@ const ProcessOrder = () => {
                   </div>
                 </div>
 
-                <div
-                  style={{
-                    display:
-                      order.orderStatus === "Delivered" ? "none" : "block",
-                  }}
-                >
-                  <form
-                    className="updateOrderForm"
-                    onSubmit={updateOrderSubmitHandler}
+                  <div
+                    style={{
+                      display:
+                        order.orderStatus === "Delivered" ? "none" : "block",
+                    }}
                   >
-                    <h1>Order Status</h1>
-
-                    <div>
-                      {/* <AccountTreeIcon /> */}
-                      <select onChange={(e) => setStatus(e.target.value)}>
-                        <option value="">Update Status</option>
-                        {order.orderStatus === "Processing" && (
-                          <option value="Shipped">Shipped</option>
-                        )}
-
-                        {order.orderStatus === "Shipped" && (
-                          <option value="Delivered">Delivered</option>
-                        )}
-                      </select>
-                    </div>
-
-                    <Button
-                      id="update_order_status_Btn"
-                      type="submit"
-                      disabled={
-                        loading ? true : false || status === "" ? true : false
-                      }
+                    <form
+                      className="updateOrderForm"
+                      onSubmit={updateOrderSubmitHandler}
                     >
-                      Process
-                    </Button>
-                  </form>
-                </div>
+                      <h1>Order Status</h1>
+                      <div>
+                        {/* <AccountTreeIcon /> */}
+                        <select onChange={(e) => setStatus(e.target.value)}>
+                          <option value="">Update Status</option>
+                          {order.orderStatus === "Processing" && (
+                            <option value="Shipped">Shipped</option>
+                          )}
+
+                          {order.orderStatus === "Shipped" && (
+                            <option value="Delivered">Delivered</option>
+                          )}
+                        </select>
+                      </div>
+
+                      <Button
+                        id="update_order_status_Btn"
+                        type="submit"
+                        disabled={
+                          loading ? true : false || status === "" ? true : false
+                        }
+                      >
+                        Process
+                      </Button>
+                    </form>
+                  </div>
               </div>
               <div>
                 <div className="confirmCartItems">
@@ -196,14 +200,26 @@ const ProcessOrder = () => {
                     {order.orderItems &&
                       order.orderItems.map((item) => (
                         <div key={item._id}>
-                          <p><img src={item.images[0].url} alt="Product" /></p>
-                         
-                           <p> <Link to={`/product/${item.productId}`}>{item.name} </Link></p> 
-                         
+                          <p>
+                            <img src={item.images[0].url} alt="Product" />
+                          </p>
+
+                          <p>
+                            {" "}
+                            <Link to={`/product/${item.productId}`}>
+                              {item.name}{" "}
+                            </Link>
+                          </p>
+
                           <p>{item.quantity}</p>
                           <p>₹{parseFloat(item.price).toFixed(2)}</p>
                           <p>
-                            <b>₹{parseFloat(item.price * item.quantity).toFixed(2)}</b>
+                            <b>
+                              ₹
+                              {parseFloat(item.price * item.quantity).toFixed(
+                                2
+                              )}
+                            </b>
                           </p>
                         </div>
                       ))}
