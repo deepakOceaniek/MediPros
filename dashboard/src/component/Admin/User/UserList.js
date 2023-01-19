@@ -138,15 +138,14 @@ const UsersList = () => {
 
   return (
     <Fragment>
-      <MetaData title={`ALL USERS - Admin`} />
-
-      <div className="dashboard">
-        <SideBar />
-        <div className="productListContainer">
-          {loading ? (
-            <Loader />
-          ) : (
-            <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <div className="dashboard">
+            <MetaData title={`ALL USERS - Admin`} />
+            <SideBar />
+            <div className="productListContainer">
               <h1 id="productListHeading">ALL USERS</h1>
 
               {users && users.length > 0 ? (
@@ -161,10 +160,10 @@ const UsersList = () => {
               ) : (
                 <NotFoundProduct />
               )}
-            </>
-          )}
-        </div>
-      </div>
+            </div>
+          </div>
+        </>
+      )}
     </Fragment>
   );
 };

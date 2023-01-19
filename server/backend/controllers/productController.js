@@ -1,9 +1,9 @@
 const Product = require("../models/productModel");
-const Category =require("../models/categoryModel")
-const Prescription = require("../models/prescriptionModel")
-const  Banner = require("../models/bannerModel")
+const Category = require("../models/categoryModel");
+const Prescription = require("../models/prescriptionModel");
+const Banner = require("../models/bannerModel");
 const sendToken = require("../utils/jwtToken");
-const Cart = require("../models/cartModel") 
+const Cart = require("../models/cartModel");
 
 const ErrorHandler = require("../utils/errorHandler");
 const catchAsyncErrors = require("../middleware/catchAsyncError");
@@ -52,7 +52,10 @@ exports.getAllProduct = catchAsyncErrors(async (req, res, next) => {
   const productsCount = await Product.countDocuments();
   // console.log(req.query);
 
-  const apiFeatures = new ApiFeatures(Product.find().populate("category" , "categoryName"), req.query)
+  const apiFeatures = new ApiFeatures(
+    Product.find().populate("category", "categoryName"),
+    req.query
+  )
     .search()
     .filter();
 
@@ -60,15 +63,11 @@ exports.getAllProduct = catchAsyncErrors(async (req, res, next) => {
   let filteredProductsCount = products.length;
 
   apiFeatures.pagination(resultPerPage);
-  // console.log(products)
-  // console.log(products.length)
-  if(products.length >0){
-  products = await apiFeatures.query.clone();
-  }else{
-    return next(new ErrorHandler("Product not found",400));
+  if (products.length > 0) {
+    products = await apiFeatures.query.clone();
+  } else {
+    return next(new ErrorHandler("Product not found", 400));
   }
-  // console.log(products);
-  // console.log(filteredProductsCount);
 
   res.status(200).json({
     success: true,
@@ -105,37 +104,32 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("Product not found", 404));
   }
 
-// Images Start Here
-let images = [];
-
-if (typeof req.body.images === "string") {
-  images.push(req.body.images);
-} else {
-  images = req.body.images;
-}
-
-if (images !== undefined) {
-  // Deleting Images From Cloudinary
-  for (let i = 0; i < product.images.length; i++) {
-    await cloudinary.v2.uploader.destroy(product.images[i].public_id);
+  // Images Start Here
+  let images = [];
+  if (typeof req.body.images === "string") {
+    images.push(req.body.images);
+  } else {
+    images = req.body.images;
   }
 
-  const imagesLinks = [];
+  if (images !== undefined) {
+    // Deleting Images From Cloudinary
+    for (let i = 0; i < product.images.length; i++) {
+      await cloudinary.v2.uploader.destroy(product.images[i].public_id);
+    }
+    const imagesLinks = [];
+    for (let i = 0; i < images.length; i++) {
+      const result = await cloudinary.v2.uploader.upload(images[i], {
+        folder: "products",
+      });
 
-  for (let i = 0; i < images.length; i++) {
-    const result = await cloudinary.v2.uploader.upload(images[i], {
-      folder: "products",
-    });
-
-    imagesLinks.push({
-      public_id: result.public_id,
-      url: result.secure_url,
-    });
+      imagesLinks.push({
+        public_id: result.public_id,
+        url: result.secure_url,
+      });
+    }
+    req.body.images = imagesLinks;
   }
-
-  req.body.images = imagesLinks;
-}
-
   product = await Product.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true,
@@ -150,10 +144,9 @@ exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
   if (!product) {
     return next(new ErrorHandler("Product not found", 404));
   }
-
   //Deleting Images from Cloudinary
-  for(let i=0 ;i< product.images.length;i++){
-     await cloudinary.v2.uploader.destroy(product.images[i].public_id)
+  for (let i = 0; i < product.images.length; i++) {
+    await cloudinary.v2.uploader.destroy(product.images[i].public_id);
   }
 
   await product.remove();
@@ -190,7 +183,7 @@ exports.createProductReview = catchAsyncErrors(async (req, res, next) => {
   product.reviews.forEach((review) => {
     avg += review.rating;
   });
-  product.ratings = parseFloat(avg / product.reviews.length).toFixed(1)    ;
+  product.ratings = parseFloat(avg / product.reviews.length).toFixed(1);
 
   await product.save({ validateBeforeSave: false });
   res.status(200).json({
@@ -207,7 +200,8 @@ exports.getAllProductReviews = catchAsyncErrors(async (req, res, next) => {
   res.status(200).json({
     success: true,
     reviews: product.reviews,
-  });c
+  });
+  c;
 });
 
 // Delete Reviwes
@@ -225,12 +219,12 @@ exports.deleteReview = catchAsyncErrors(async (req, res, next) => {
     avg += review.rating;
   });
 
-  let ratings = 0
-  
-  if(reviews.length===0){
-    ratings = 0
-  }else{
-    ratings = (product.ratings = avg / reviews.length);
+  let ratings = 0;
+
+  if (reviews.length === 0) {
+    ratings = 0;
+  } else {
+    ratings = product.ratings = avg / reviews.length;
   }
   const numOfReviews = reviews.length;
   const up = await Product.findByIdAndUpdate(
@@ -243,13 +237,9 @@ exports.deleteReview = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-
-// All Category 
+// All Category
 exports.getAllCategory = catchAsyncErrors(async (req, res, next) => {
   const category = await Category.find();
-
-    // sendToken(category, 200, res);
-
   res.status(200).json({
     success: true,
     category,
@@ -259,23 +249,20 @@ exports.getAllCategory = catchAsyncErrors(async (req, res, next) => {
 // All Category  -- admin
 exports.getAllAdminCategory = catchAsyncErrors(async (req, res, next) => {
   const categories = await Category.find();
-
-    // sendToken(category, 200, res);
-
   res.status(200).json({
     success: true,
     categories,
   });
 });
 
-// Add Category ---admin 
+// Add Category ---admin
 exports.addCategory = catchAsyncErrors(async (req, res, next) => {
   const myCloud = await cloudinary.v2.uploader.upload(req.body.categoryImage, {
     folder: "category",
     width: 150,
     crop: "scale",
   });
-  const { categoryName} = req.body;
+  const { categoryName } = req.body;
   console.log(categoryName);
   const category = await Category.create({
     categoryName,
@@ -298,11 +285,10 @@ exports.getCategoryDetails = catchAsyncErrors(async (req, res, next) => {
   res.status(200).json({ success: true, category });
 });
 
-//Update Category 
+//Update Category
 exports.updateCategory = catchAsyncErrors(async (req, res, next) => {
   const newCategoryData = {
     categoryName: req.body.categoryName,
-   
   };
   // Cloudinary
   if (req.body.categoryImage !== "") {
@@ -311,47 +297,56 @@ exports.updateCategory = catchAsyncErrors(async (req, res, next) => {
 
     await cloudinary.v2.uploader.destroy(imageId);
 
-    const myCloud = await cloudinary.v2.uploader.upload(req.body.categoryImage, {
-      folder: "categoryImage",
-      width: 150,
-      crop: "scale",
-    });
+    const myCloud = await cloudinary.v2.uploader.upload(
+      req.body.categoryImage,
+      {
+        folder: "categoryImage",
+        width: 150,
+        crop: "scale",
+      }
+    );
 
     newCategoryData.categoryImage = {
       public_id: myCloud.public_id,
       url: myCloud.secure_url,
     };
   }
-  const category = await Category.findByIdAndUpdate(req.params.id, newCategoryData, {
-    new: true,
-    runValidators: true,
-    useFindAndModify: false,
-  });
-  res.status(200).json({ success: true, category});
+  const category = await Category.findByIdAndUpdate(
+    req.params.id,
+    newCategoryData,
+    {
+      new: true,
+      runValidators: true,
+      useFindAndModify: false,
+    }
+  );
+  res.status(200).json({ success: true, category });
 });
 
 //Delete category --admin
 exports.deleteCategory = catchAsyncErrors(async (req, res, next) => {
   // We will remove cloudinary later
-
   const category = await Category.findById(req.params.id);
   if (!category) {
     return next(
       new ErrorHandler(`Category Does Not Exist with Id: ${req.params.id}`, 400)
     );
   }
-
   const imageId = category.categoryImage.public_id;
   await cloudinary.v2.uploader.destroy(imageId);
 
   await category.remove();
-  res.status(200).json({ success: true, message: "Category deleted successfully" });
+  res
+    .status(200)
+    .json({ success: true, message: "Category deleted successfully" });
 });
 
-
-// All Prescription 
+// All Prescription
 exports.getAllPrescription = catchAsyncErrors(async (req, res, next) => {
-  const prescription = await Prescription.find().populate("user","name contact");
+  const prescription = await Prescription.find().populate(
+    "user",
+    "name contact"
+  );
 
   res.status(200).json({
     success: true,
@@ -359,7 +354,7 @@ exports.getAllPrescription = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-// Add Prescription ---user 
+// Add Prescription ---user
 exports.addPrescription = catchAsyncErrors(async (req, res, next) => {
   // const myCloud = await cloudinary.v2.uploader.upload(req.body.prescriptionImage, {
   //   folder: "category",
@@ -376,7 +371,6 @@ exports.addPrescription = catchAsyncErrors(async (req, res, next) => {
   //   success: true,
   // });
 
-
   let images = [];
 
   if (typeof req.body.images === "string") {
@@ -384,9 +378,7 @@ exports.addPrescription = catchAsyncErrors(async (req, res, next) => {
   } else {
     images = req.body.images;
   }
-
   const imagesLinks = [];
-
   for (let i = 0; i < images.length; i++) {
     const result = await cloudinary.v2.uploader.upload(images[i], {
       folder: "prescriptionImage",
@@ -411,7 +403,8 @@ exports.addPrescription = catchAsyncErrors(async (req, res, next) => {
 
 // update prescription Status -- Admin
 exports.updatePrescription = catchAsyncErrors(async (req, res, next) => {
-const {status , totalPrice,totalSaving,shippingFee,amountToBePaid}= req.body
+  const { status, totalPrice, totalSaving, shippingFee, amountToBePaid } =
+    req.body;
   const prescription = await Prescription.findById(req.params.id);
 
   if (!prescription) {
@@ -423,10 +416,10 @@ const {status , totalPrice,totalSaving,shippingFee,amountToBePaid}= req.body
   }
 
   prescription.status = status;
-  prescription.totalPrice =  totalPrice;
-  prescription.totalSaving =  totalSaving;
-  prescription.shippingFee =  shippingFee;
-  prescription.amountToBePaid =  amountToBePaid;
+  prescription.totalPrice = totalPrice;
+  prescription.totalSaving = totalSaving;
+  prescription.shippingFee = shippingFee;
+  prescription.amountToBePaid = amountToBePaid;
 
   await prescription.save({ validateBeforeSave: false });
   res.status(200).json({
@@ -436,7 +429,10 @@ const {status , totalPrice,totalSaving,shippingFee,amountToBePaid}= req.body
 
 // Get Prescription details
 exports.getPrescriptionDetails = catchAsyncErrors(async (req, res, next) => {
-  const prescription = await Prescription.findById(req.params.id).populate("user","name contact");
+  const prescription = await Prescription.findById(req.params.id).populate(
+    "user",
+    "name contact"
+  );
   if (!prescription) {
     return next(new ErrorHandler("No Prescription found ", 404));
   }
@@ -445,24 +441,24 @@ exports.getPrescriptionDetails = catchAsyncErrors(async (req, res, next) => {
 
 //Delete Prescription --admin
 exports.deletePrescription = catchAsyncErrors(async (req, res, next) => {
-
   const prescription = await Prescription.findById(req.params.id);
   if (!prescription) {
     return next(
       new ErrorHandler(`Category Does Not Exist with Id: ${req.params.id}`, 400)
     );
   }
-
   //Deleting Images from Cloudinary
-  for(let i=0 ;i< prescription.images.length;i++){
-    await cloudinary.v2.uploader.destroy(prescription.images[i].public_id)
- }
+  for (let i = 0; i < prescription.images.length; i++) {
+    await cloudinary.v2.uploader.destroy(prescription.images[i].public_id);
+  }
 
   await prescription.remove();
-  res.status(200).json({ success: true, message: "Prescription deleted successfully" });
+  res
+    .status(200)
+    .json({ success: true, message: "Prescription deleted successfully" });
 });
 
-// All banner 
+// All banner
 exports.getAllBanner = catchAsyncErrors(async (req, res, next) => {
   const banners = await Banner.find();
 
@@ -474,18 +470,13 @@ exports.getAllBanner = catchAsyncErrors(async (req, res, next) => {
 
 // Add banner --admin
 exports.addBanner = catchAsyncErrors(async (req, res, next) => {
-
-
   let images = [];
-
   if (typeof req.body.images === "string") {
     images.push(req.body.images);
   } else {
     images = req.body.images;
   }
-
   const imagesLinks = [];
-
   for (let i = 0; i < images.length; i++) {
     const result = await cloudinary.v2.uploader.upload(images[i], {
       folder: "bannerImage",
@@ -505,9 +496,7 @@ exports.addBanner = catchAsyncErrors(async (req, res, next) => {
     success: true,
     banner,
   });
-
 });
-
 
 // Get single banner image
 exports.getBannerDetails = catchAsyncErrors(async (req, res, next) => {
@@ -520,41 +509,41 @@ exports.getBannerDetails = catchAsyncErrors(async (req, res, next) => {
 
 //Update Banner --Admin
 exports.updateBanner = catchAsyncErrors(async (req, res, next) => {
-  let banner = await Banner.findById( req.params.id);
+  let banner = await Banner.findById(req.params.id);
   if (!banner) {
     return next(new ErrorHandler("Banner not found", 404));
   }
 
-// Images Start Here
-let images = [];
+  // Images Start Here
+  let images = [];
 
-if (typeof req.body.images === "string") {
-  images.push(req.body.images);
-} else {
-  images = req.body.images;
-}
-
-if (images !== undefined) {
-  // Deleting Images From Cloudinary
-  for (let i = 0; i < banner.images.length; i++) {
-    await cloudinary.v2.uploader.destroy(banner.images[i].public_id);
+  if (typeof req.body.images === "string") {
+    images.push(req.body.images);
+  } else {
+    images = req.body.images;
   }
 
-  const imagesLinks = [];
+  if (images !== undefined) {
+    // Deleting Images From Cloudinary
+    for (let i = 0; i < banner.images.length; i++) {
+      await cloudinary.v2.uploader.destroy(banner.images[i].public_id);
+    }
 
-  for (let i = 0; i < images.length; i++) {
-    const result = await cloudinary.v2.uploader.upload(images[i], {
-      folder: "bannerImage",
-    });
+    const imagesLinks = [];
 
-    imagesLinks.push({
-      public_id: result.public_id,
-      url: result.secure_url,
-    });
+    for (let i = 0; i < images.length; i++) {
+      const result = await cloudinary.v2.uploader.upload(images[i], {
+        folder: "bannerImage",
+      });
+
+      imagesLinks.push({
+        public_id: result.public_id,
+        url: result.secure_url,
+      });
+    }
+
+    req.body.images = imagesLinks;
   }
-
-  req.body.images = imagesLinks;
-}
 
   banner = await Banner.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
@@ -564,18 +553,16 @@ if (images !== undefined) {
   res.status(200).json({ success: true, banner });
 });
 
-
 //Delete banner --admin
 exports.deleteBanner = catchAsyncErrors(async (req, res, next) => {
-
   const banner = await Banner.findById(req.params.id);
   if (!banner) {
     return next(new ErrorHandler("Banner not found", 404));
   }
 
   //Deleting Images from Cloudinary
-  for(let i=0 ;i< banner.images.length;i++){
-     await cloudinary.v2.uploader.destroy(banner.images[i].public_id)
+  for (let i = 0; i < banner.images.length; i++) {
+    await cloudinary.v2.uploader.destroy(banner.images[i].public_id);
   }
 
   await banner.remove();
@@ -584,41 +571,29 @@ exports.deleteBanner = catchAsyncErrors(async (req, res, next) => {
     .json({ success: true, message: "Banner deleted Successfully" });
 });
 
-
-// Add to cart 
+// Add to cart
 exports.addToCart = catchAsyncErrors(async (req, res, next) => {
   const { productId, quantity } = req.body;
-  // console.log(req.body)
-  // console.log(req.user.id)
-  const user = req.user.id; 
-  // console.log(user)
-  // const query = [
-  //   {
-  //     path: "products.productId",
-  //     select: "images name price discount",
-  //   },
- 
-  // ];
-
+  const user = req.user.id;
   try {
-    let cart = await Cart.findOne({ user })
+    let cart = await Cart.findOne({ user });
     if (cart) {
       //cart exists for user
-      let itemIndex = cart.products.findIndex(p =>(p.productId) == productId);
+      let itemIndex = cart.products.findIndex((p) => p.productId == productId);
       if (itemIndex > -1) {
-       cart.products[itemIndex].quantity = quantity       
+        cart.products[itemIndex].quantity = quantity;
       } else {
         //product does not exists in cart, add new item
-        cart.products.push({ productId, quantity});
+        cart.products.push({ productId, quantity });
       }
       cart = await cart.save();
       // return res.status(201).send(cart);
     } else {
       //no cart for user, create new cart
-       cart = await Cart.create({
+      cart = await Cart.create({
         user,
-        products: [{ productId, quantity}]
-      }); 
+        products: [{ productId, quantity }],
+      });
     }
     return res.status(201).send(cart);
   } catch (err) {
@@ -629,10 +604,7 @@ exports.addToCart = catchAsyncErrors(async (req, res, next) => {
 
 // Get card Details
 exports.getCartItems = catchAsyncErrors(async (req, res, next) => {
-  
-  const userId = req.user.id; 
-
-
+  const userId = req.user.id;
   const query = [
     {
       path: "user",
@@ -642,79 +614,72 @@ exports.getCartItems = catchAsyncErrors(async (req, res, next) => {
       path: "products.productId",
       select: "images name price discount",
     },
- 
   ];
-   let cart = await Cart.findOne({user:userId }).populate(query);
-   if(cart){
-     
-     // const prices = cart.products.map(product=>product.price * product.quantity)
-     // const totalPrice = prices.reduce((acc,curr)=>acc + curr) 
-     //  console.log(cart)   
-     
-     let totalPrice = 0
-     let afterDiscountPrice = 0
-     let totalSaving = 0
-     let newProducts = []
+  let cart = await Cart.findOne({ user: userId }).populate(query);
+  if (cart) {
+    let totalPrice = 0;
+    let afterDiscountPrice = 0;
+    let totalSaving = 0;
+    let newProducts = [];
+    console.log(cart);
 
+    for (let product of cart.products) {
+      console.log(product);
 
-     for(let product of cart.products ){
-         product = {
-        productId : product.productId._id,
-        name  : product.productId.name,
-        price  : product.productId.price,
-        images  : product.productId.images,
+      product = {
+        productId: product.productId._id,
+        name: product.productId.name,
+        price: product.productId.price,
+        images: product.productId.images,
         quantity: product.quantity,
-        discount:product.productId.discount
+        discount: product.productId.discount,
       };
-      newProducts.push(product)
-       
-      
-      totalPrice += product.price * product.quantity
-      afterDiscountPrice  +=  (product.price - ((product.discount /100)* product.price))*product.quantity
-      totalSaving = totalPrice - afterDiscountPrice   
+      newProducts.push(product);
+
+      totalPrice += product.price * product.quantity;
+      afterDiscountPrice +=
+        (product.price - (product.discount / 100) * product.price) *
+        product.quantity;
+      totalSaving = totalPrice - afterDiscountPrice;
     }
-    cart.products = newProducts
+    cart.products = newProducts;
 
-    cart.totalPrice = totalPrice 
-    cart.totalSaving = totalSaving
+    cart.totalPrice = totalPrice;
+    cart.totalSaving = totalSaving;
 
-    if(afterDiscountPrice < 500 && cart.products.length > 0){
-     cart.shippingFee = 99 
-
-    }else{
-      cart.shippingFee = 0 
+    if (afterDiscountPrice < 500 && cart.products.length > 0) {
+      cart.shippingFee = 99;
+    } else {
+      cart.shippingFee = 0;
     }
-    cart.amountToBePaid = afterDiscountPrice + cart.shippingFee 
-    cart.save()
-    console.log(cart)
-     res.status(200).send(cart);
-   }else{
-     res.status(200).json({message:"Your Cart is Empty Add Some Product"});      
-   }
+    cart.amountToBePaid = afterDiscountPrice + cart.shippingFee;
+    cart.save();
+    console.log(cart);
+    res.status(200).send(cart);
+  } else {
+    res.status(200).json({ message: "Your Cart is Empty Add Some Product" });
+  }
 });
 
-//Delete item from cart 
+//Delete item from cart
 exports.deleteFromCart = catchAsyncErrors(async (req, res, next) => {
-  const  productId  = req.query.productId; 
-  const userId = req.user.id; 
+  const productId = req.query.productId;
+  const userId = req.user.id;
   try {
-
-    let cart = await Cart.findOne({ user :userId });
+    let cart = await Cart.findOne({ user: userId });
 
     if (cart) {
       //cart exists for user
-      let itemIndex = cart.products.findIndex(p =>(p.productId) == productId);
-      console.log(itemIndex)
+      let itemIndex = cart.products.findIndex((p) => p.productId == productId);
+      console.log(itemIndex);
       if (itemIndex > -1) {
-          cart.products.splice(itemIndex,1)
-      } 
+        cart.products.splice(itemIndex, 1);
+      }
       cart = await cart.save();
-      return res.status(200).json({success:true,message:"Product remove"});
+      return res.status(200).json({ success: true, message: "Product remove" });
     }
   } catch (err) {
     console.log(err);
     res.status(500).send("Something went wrong");
   }
 });
-
-

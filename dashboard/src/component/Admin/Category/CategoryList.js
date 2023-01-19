@@ -138,16 +138,14 @@ const CategoryList = () => {
 
   return (
     <Fragment>
-      <MetaData title={`ALL CATEGORY - Admin`} />
-
-      <div className="dashboard">
-        <SideBar />
-        <div className="productListContainer">
-          {loading ? (
-            <Loader />
-          ) : (
-            <>
-              {" "}
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <div className="dashboard">
+            <MetaData title={`ALL CATEGORY - Admin`} />
+            <SideBar />
+            <div className="productListContainer ">
               <h1 id="productListHeading">ALL CATEGORY</h1>
               {categories && categories.length > 0 ? (
                 <DataGrid
@@ -161,10 +159,10 @@ const CategoryList = () => {
               ) : (
                 <NotFoundProduct />
               )}
-            </>
-          )}
-        </div>
-      </div>
+            </div>
+          </div>
+        </>
+      )}
     </Fragment>
   );
 };

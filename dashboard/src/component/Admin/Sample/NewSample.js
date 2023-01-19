@@ -43,61 +43,63 @@ const NewProduct = () => {
 
   return (
     <Fragment>
-      <MetaData title="Create Sample" />
-      <div className="dashboard">
-        <SideBar />
-        <div className="newProductContainer">
-          {loading ? (
-            <Loader />
-          ) : (
-            <div className="create_Category">
-              <form
-                className="add_Category_row"
-                encType="multipart/form-data"
-                onSubmit={createProductSubmitHandler}
-              >
-                <div className="content_create_Category">
-                  <div className="Category_row">
-                    <h1>Add New Sample</h1>
-                  </div>
-                  <div className="Category_row">
-                    <div className="add_new_sample_label">
-                      <label>Sample Name </label>
-                      <input
-                        type="text"
-                        placeholder="Sample Name"
-                        className="sample_input"
-                        required
-                        onChange={(e) => setName(e.target.value)}
-                      />
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <MetaData title="Create Sample" />
+          <div className="dashboard">
+            <SideBar />
+            <div className="newProductContainer">
+              <div className="create_Category">
+                <form
+                  className="add_Category_row"
+                  encType="multipart/form-data"
+                  onSubmit={createProductSubmitHandler}
+                >
+                  <div className="content_create_Category">
+                    <div className="Category_row">
+                      <h1>Add New Sample</h1>
                     </div>
-                    <div className="add_new_sample_label">
-                      <label>Sample Code </label>
-                      <input
-                        type="text"
-                        placeholder="Sample Code"
-                        required
-                        className="sample_input"
-                        onChange={(e) => setSampleCode(e.target.value)}
-                      />
+                    <div className="Category_row">
+                      <div className="add_new_sample_label">
+                        <label>Sample Name </label>
+                        <input
+                          type="text"
+                          placeholder="Sample Name"
+                          className="sample_input"
+                          required
+                          onChange={(e) => setName(e.target.value)}
+                        />
+                      </div>
+                      <div className="add_new_sample_label">
+                        <label>Sample Code </label>
+                        <input
+                          type="text"
+                          placeholder="Sample Code"
+                          required
+                          className="sample_input"
+                          onChange={(e) => setSampleCode(e.target.value)}
+                        />
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="button_Category">
-                    <button
-                      id="createSampleBtn"
-                      type="submit"
-                      disabled={loading ? true : false}
-                    >
-                      Add Sample
-                    </button>
+                    <div className="button_Category">
+                      <button
+                        id="createSampleBtn"
+                        type="submit"
+                        disabled={loading ? true : false}
+                      >
+                        Add Sample
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
-          )}
-        </div>
-      </div>
+          </div>
+        </>
+      )}
     </Fragment>
   );
 };

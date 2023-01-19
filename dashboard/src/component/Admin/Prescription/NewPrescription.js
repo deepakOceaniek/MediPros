@@ -1,7 +1,10 @@
 import React, { Fragment, useEffect, useState } from "react";
 import "../Product/newProduct.css";
 import { useSelector, useDispatch } from "react-redux";
-import { clearErrors, createPrescription} from "../../../actions/productAction";
+import {
+  clearErrors,
+  createPrescription,
+} from "../../../actions/productAction";
 import { useAlert } from "react-alert";
 import MetaData from "../../layout/MetaData";
 import SideBar from "../Sidebar";
@@ -14,12 +17,12 @@ const NewPrescription = () => {
   const alert = useAlert();
   const Navigate = useNavigate();
 
-  const { loading, error, success } = useSelector((state) => state.newPrescription);
-
+  const { loading, error, success } = useSelector(
+    (state) => state.newPrescription
+  );
 
   const [images, setImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
-
 
   useEffect(() => {
     if (error) {
@@ -65,47 +68,51 @@ const NewPrescription = () => {
     });
   };
 
-
-
   return (
     <Fragment>
-      <MetaData title="ADD  Prescription" />
-      <div className="dashboard">
-        <SideBar />
-        <div className="newProductContainer">
-         {loading ? <Loader /> :  <form
-            className="createProductForm"
-            encType="multipart/form-data"
-            onSubmit={createProductSubmitHandler}
-          >
-            <h1>ADD  Prescription</h1>
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <div className="dashboard">
+            <MetaData title="ADD  Prescription" />
+            <SideBar />
+            <div className="newProductContainer">
+              <form
+                className="createProductForm"
+                encType="multipart/form-data"
+                onSubmit={createProductSubmitHandler}
+              >
+                <h1>ADD Prescription</h1>
 
-            <div id="createProductFormFile">
-              <input
-                type="file"
-                name="prescription"
-                accept="image/*"
-                onChange={createProductImagesChange}
-                multiple
-              />
+                <div id="createProductFormFile">
+                  <input
+                    type="file"
+                    name="prescription"
+                    accept="image/*"
+                    onChange={createProductImagesChange}
+                    multiple
+                  />
+                </div>
+
+                <div id="createProductFormImage">
+                  {imagesPreview.map((image, index) => (
+                    <img key={index} src={image} alt="Product Preview" />
+                  ))}
+                </div>
+
+                <button
+                  id="createProductBtn"
+                  type="submit"
+                  disabled={loading ? true : false}
+                >
+                  Create
+                </button>
+              </form>
             </div>
-
-            <div id="createProductFormImage">
-              {imagesPreview.map((image, index) => (
-                <img key={index} src={image} alt="Product Preview" />
-              ))}
-            </div>
-
-            <button 
-              id="createProductBtn"
-              type="submit"
-              disabled={loading ? true : false}
-            >
-              Create
-            </button>
-          </form>}
-        </div>
-      </div>
+          </div>
+        </>
+      )}
     </Fragment>
   );
 };

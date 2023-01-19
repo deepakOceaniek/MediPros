@@ -40,16 +40,17 @@ const testSchema = mongoose.Schema({
     ref: "Package",
     required: true,
   },
-  // samples: {
-  //   type: mongoose.Schema.ObjectId,
-  //   ref: "Sample",
-  //   required: true,
-  // },
-
   sample: {
-    type: String,
-    required: [true, "please Enter Sample description"],
+    type: mongoose.Schema.ObjectId,
+    ref: "Sample",
+    required: true,
   },
+
+  // sample: {
+  //   type: String,
+  //   required: [true, "please Enter Sample description"],
+  // },
+  discount: { type: Number, default: 0 },
 
   user: {
     type: mongoose.Schema.ObjectId,

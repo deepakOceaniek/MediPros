@@ -103,136 +103,145 @@ const NewTest = () => {
 
   return (
     <Fragment>
-      <MetaData title="Create Test" />
-      <div className="dashboard">
-        <SideBar />
-        <div className="newProductContainer">
-          {loading ? (
-            <Loader />
-          ) : (
-            <div className="test">
-              <form
-                className="add_test_row"
-                encType="multipart/form-data"
-                onSubmit={createProductSubmitHandler}
-              >
-                <div className="content_add_test">
-                  <div className="test_row">
-                    <h1>Add Test</h1>
-                  </div>
-                  <div className="test_row">
-                    <div className="input-inside">
-                      <div>
-                        <label>Test Name</label>
-                        <input
-                          type="text"
-                          placeholder="Test Name"
-                          required
-                          className="test_add"
-                          onChange={(e) => setName(e.target.value)}
-                        />
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <div className="dashboard">
+            <MetaData title="Create Test" />
+            <SideBar />
+            <div className="newProductContainer">
+              <div className="test">
+                <form
+                  className="add_test_row"
+                  encType="multipart/form-data"
+                  onSubmit={createProductSubmitHandler}
+                >
+                  <div className="content_add_test">
+                    <div className="test_row">
+                      <h1>Add Test</h1>
+                    </div>
+                    <div className="test_row">
+                      <div className="input-inside">
+                        <div>
+                          <label>Test Name</label>
+                          <input
+                            type="text"
+                            placeholder="Test Name"
+                            required
+                            className="test_add"
+                            onChange={(e) => setName(e.target.value)}
+                          />
+                        </div>
+                        <div>
+                          <label>Test Description</label>
+                          <input
+                            placeholder="Test Description"
+                            className="test_add"
+                            onChange={(e) => setDescription(e.target.value)}
+                          />
+                        </div>
+                        <div>
+                          <label>Price</label>
+                          <input
+                            type="number"
+                            placeholder="Price"
+                            required
+                            className="test_add"
+                            onChange={(e) => setPrice(e.target.value)}
+                          />
+                        </div>
+                        <div>
+                          <label>Choose Sample</label>
+                          <select
+                            className="test_add"
+                            onChange={(e) => setSample(e.target.value)}
+                          >
+                            <option value="">Choose Sample</option>
+                            {samples &&
+                              samples.map((sam) => (
+                                <option key={sam.name} value={sam._id}>
+                                  {sam.name}
+                                </option>
+                              ))}
+                          </select>
+                        </div>
                       </div>
-                      <div>
-                        <label>Test Description</label>
-                        <input
-                          placeholder="Test Description"
-                          className="test_add"
-                          onChange={(e) => setDescription(e.target.value)}
-                        />
-                      </div>
-                      <div>
-                        <label>Price</label>
-                        <input
-                          type="number"
-                          placeholder="Price"
-                          required
-                          className="test_add"
-                          onChange={(e) => setPrice(e.target.value)}
-                        />
-                      </div>
-                      <div>
-                        <label>Choose Sample</label>
-                        <select
-                          className="test_add"
-                          onChange={(e) => setSample(e.target.value)}
-                        >
-                          <option value="">Choose Sample</option>
-                          {samples &&
-                            samples.map((sam) => (
-                              <option key={sam.name} value={sam._id}>
-                                {sam.name}
-                              </option>
-                            ))}
-                        </select>
+                      <div className="input-inside">
+                        <div>
+                          <label>Choose Package</label>
+                          <select
+                            className="test_add"
+                            onChange={(e) => setPackageTest(e.target.value)}
+                          >
+                            <option value="">Choose Package</option>
+                            {packages &&
+                              packages.map((pack) => (
+                                <option key={pack.name} value={pack._id}>
+                                  {pack.name}
+                                </option>
+                              ))}
+                          </select>
+                        </div>
+
+                        <div>
+                          <label>Choose Category</label>
+                          <select
+                            className="test_add"
+                            onChange={(e) => setCategory(e.target.value)}
+                          >
+                            <option value="">Choose Category</option>
+                            {labCategories &&
+                              labCategories.map((cate) => (
+                                <option
+                                  key={cate.categoryName}
+                                  value={cate._id}
+                                >
+                                  {cate.categoryName}
+                                </option>
+                              ))}
+                          </select>
+                        </div>
+
+                        <div className="test_labels_name_image">
+                          <label>Test Image</label>
+                          <input
+                            type="file"
+                            name="avatar"
+                            className="test_add"
+                            accept="image/*"
+                            onChange={createProductImagesChange}
+                            multiple
+                          />
+                        </div>
+                        <div id="createTestFormImage">
+                          {imagesPreview.map((image, index) => (
+                            <img
+                              key={index}
+                              src={image}
+                              alt="Product Preview"
+                            />
+                          ))}
+                        </div>
                       </div>
                     </div>
-                    <div className="input-inside">
-                      <div>
-                        <label>Choose Package</label>
-                        <select
-                          className="test_add"
-                          onChange={(e) => setPackageTest(e.target.value)}
-                        >
-                          <option value="">Choose Package</option>
-                          {packages &&
-                            packages.map((pack) => (
-                              <option key={pack.name} value={pack._id}>
-                                {pack.name}
-                              </option>
-                            ))}
-                        </select>
-                      </div>
-
-                      <div>
-                        <label>Choose Category</label>
-                        <select
-                          className="test_add"
-                          onChange={(e) => setCategory(e.target.value)}
-                        >
-                          <option value="">Choose Category</option>
-                          {labCategories &&
-                            labCategories.map((cate) => (
-                              <option key={cate.categoryName} value={cate._id}>
-                                {cate.categoryName}
-                              </option>
-                            ))}
-                        </select>
-                      </div>
-
-                      <div className="test_labels_name_image">
-                        <label>Test Image</label>
-                        <input
-                          type="file"
-                          name="avatar"
-                          className="test_add"
-                          accept="image/*"
-                          onChange={createProductImagesChange}
-                          multiple
-                        />
-                      </div>
-                      <div id="createTestFormImage">
-                        {imagesPreview.map((image, index) => (
-                          <img key={index} src={image} alt="Product Preview" />
-                        ))}
-                      </div>
-                    </div>
                   </div>
-                </div>
 
-                <div className="test_row">
-                  <button
-                    id="createTestButton"
-                    type="submit"
-                    disabled={loading ? true : false}
-                  >
-                    Add Test
-                  </button>
-                </div>
-              </form>
+                  <div className="test_row">
+                    <button
+                      id="createTestButton"
+                      type="submit"
+                      disabled={loading ? true : false}
+                    >
+                      Add Test
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
-          )}
-        </div>
-      </div>
+          </div>
+        </>
+      )}
     </Fragment>
   );
 };

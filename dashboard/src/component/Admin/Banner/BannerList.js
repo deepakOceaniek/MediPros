@@ -128,15 +128,14 @@ const BannerList = () => {
 
   return (
     <Fragment>
-      <MetaData title={`Banners - Admin`} />
-
-      <div className="dashboard">
-        <SideBar />
-        <div className="productListContainer">
-          {loading ? (
-            <Loader />
-          ) : (
-            <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <div className="dashboard">
+            <SideBar />
+            <MetaData title={`Banners - Admin`} />
+            <div className="productListContainer">
               <h1 id="productListHeading">ALL Banners</h1>
               {banners && banners.length > 0 ? (
                 <DataGrid
@@ -151,10 +150,10 @@ const BannerList = () => {
               ) : (
                 <NotFoundProduct />
               )}
-            </>
-          )}
-        </div>
-      </div>
+            </div>
+          </div>
+        </>
+      )}
     </Fragment>
   );
 };

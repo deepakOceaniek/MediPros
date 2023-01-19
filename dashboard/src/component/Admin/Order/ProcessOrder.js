@@ -53,99 +53,95 @@ const ProcessOrder = () => {
 
   return (
     <Fragment>
-      <MetaData title="Process Order" />
-      <div className="dashboard">
-        <SideBar />
-        <div className="newOrderContainer">
-          {loading ? (
-            <Loader />
-          ) : (
-            // <div
-            //   className="confirmOrderPage"
-            //   style={{
-            //     display: order.orderStatus === "Delivered" ? "block" : "grid",
-            //   }}
-            // >
-            <div className="orderProcess">
-              <div className="orderContainer">
-                <div className="confirmshippingArea">
-                  <div>
-                    <h2>Order Details :</h2>
-                  </div>
-                  <div className="orderDetailsContainerBox">
-                    <h1>Shipping Info</h1>
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <div className="dashboard">
+            <MetaData title="Process Order" />
+            <SideBar />
+            <div className="newOrderContainer">
+              <div className="orderProcess">
+                <div className="orderContainer">
+                  <div className="confirmshippingArea">
                     <div>
-                      <p>Name :</p>
-                      <p>
-                        &nbsp;&nbsp;&nbsp;
-                        {order.user && order.user.defaultAddress[0].name}
-                      </p>
+                      <h2>Order Details :</h2>
                     </div>
-                    <div>
-                      <p>Phone :</p>
-                      <p>
-                        &nbsp;&nbsp;&nbsp;
-                        {order.user && order.user.defaultAddress[0].contact}
-                      </p>
+                    <div className="orderDetailsContainerBox">
+                      <h1>Shipping Info</h1>
+                      <div>
+                        <p>Name :</p>
+                        <p>
+                          &nbsp;&nbsp;&nbsp;
+                          {order.user && order.user.defaultAddress[0].name}
+                        </p>
+                      </div>
+                      <div>
+                        <p>Phone :</p>
+                        <p>
+                          &nbsp;&nbsp;&nbsp;
+                          {order.user && order.user.defaultAddress[0].contact}
+                        </p>
+                      </div>
+                      <div>
+                        <p>Address:</p>
+                        <p>
+                          {order.user &&
+                            `${order.user.defaultAddress[0].address}, ${order.user.defaultAddress[0].area}, ${order.user.defaultAddress[0].city}, ${order.user.defaultAddress[0].pinCode}, ${order.user.defaultAddress[0].state}`}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <p>Address:</p>
-                      <p>
-                        {order.user &&
-                          `${order.user.defaultAddress[0].address}, ${order.user.defaultAddress[0].area}, ${order.user.defaultAddress[0].city}, ${order.user.defaultAddress[0].pinCode}, ${order.user.defaultAddress[0].state}`}
-                      </p>
-                    </div>
-                  </div>
 
-                  <div className="orderDetailsContainerBox">
-                    <h1>Payment</h1>
-                    <div>
-                      <p>Paid : </p>
-                      <p
-                        className={
-                          order.paymentInfo &&
+                    <div className="orderDetailsContainerBox">
+                      <h1>Payment</h1>
+                      <div>
+                        <p>Paid : </p>
+                        <p
+                          className={
+                            order.paymentInfo &&
+                            order.paymentInfo.status === "succeeded"
+                              ? "greenColor"
+                              : "redColor"
+                          }
+                        >
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          {order.paymentInfo &&
                           order.paymentInfo.status === "succeeded"
-                            ? "greenColor"
-                            : "redColor"
-                        }
-                      >
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        {order.paymentInfo &&
-                        order.paymentInfo.status === "succeeded"
-                          ? "PAID"
-                          : "NOT PAID"}
-                      </p>
+                            ? "PAID"
+                            : "NOT PAID"}
+                        </p>
+                      </div>
+
+                      <div>
+                        <p>Total Amount :</p>
+                        <p>
+                          <b>
+                            ₹
+                            {parseFloat(
+                              order.amountToBePaid && order.amountToBePaid
+                            ).toFixed(2)}
+                          </b>
+                        </p>
+                      </div>
                     </div>
 
-                    <div>
-                      <p>Total Amount :</p>
-                      <p>
-                        <b>
-                          ₹
-                          {parseFloat(
-                            order.amountToBePaid && order.amountToBePaid
-                          ).toFixed(2)}
-                        </b>
-                      </p>
+                    <div className="orderDetailsContainerBox">
+                      <h1>Order Status</h1>
+                      <div>
+                        <p>Order Status :</p>
+                        <p
+                          className={
+                            order.orderStatus &&
+                            order.orderStatus === "Delivered"
+                              ? "greenColor"
+                              : "redColor"
+                          }
+                        >
+                          {order.orderStatus && order.orderStatus}
+                        </p>
+                      </div>
                     </div>
                   </div>
-
-                  <div className="orderDetailsContainerBox">
-                    <h1>Order Status</h1>
-                    <div>
-                      <p>Order Status :</p>
-                      <p
-                        className={
-                          order.orderStatus && order.orderStatus === "Delivered"
-                            ? "greenColor"
-                            : "redColor"
-                        }
-                      >
-                        {order.orderStatus && order.orderStatus}
-                      </p>
-                    </div>
-                  </div>
-                </div>
 
                   <div
                     style={{
@@ -183,53 +179,53 @@ const ProcessOrder = () => {
                       </Button>
                     </form>
                   </div>
-              </div>
-              <div>
-                <div className="confirmCartItems">
-                  <h1>Order Items </h1>
-                  <div className="confirmCartItemsContainer">
-                    <div>
-                      <p>Product Image</p>
-                      <p>Name</p>
-                      <p>quantity</p>
-                      <p>Product price</p>
-                      <p>Product Total Price</p>
+                </div>
+                <div>
+                  <div className="confirmCartItems">
+                    <h1>Order Items </h1>
+                    <div className="confirmCartItemsContainer">
+                      <div>
+                        <p>Product Image</p>
+                        <p>Name</p>
+                        <p>quantity</p>
+                        <p>Product price</p>
+                        <p>Product Total Price</p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="confirmCartItemsContainer">
-                    {order.orderItems &&
-                      order.orderItems.map((item) => (
-                        <div key={item._id}>
-                          <p>
-                            <img src={item.images[0].url} alt="Product" />
-                          </p>
+                    <div className="confirmCartItemsContainer">
+                      {order.orderItems &&
+                        order.orderItems.map((item) => (
+                          <div key={item._id}>
+                            <p>
+                              <img src={item.images[0].url} alt="Product" />
+                            </p>
 
-                          <p>
-                            {" "}
-                            <Link to={`/product/${item.productId}`}>
-                              {item.name}{" "}
-                            </Link>
-                          </p>
+                            <p>
+                              <Link to={`/product/${item.productId}`}>
+                                {item.name}
+                              </Link>
+                            </p>
 
-                          <p>{item.quantity}</p>
-                          <p>₹{parseFloat(item.price).toFixed(2)}</p>
-                          <p>
-                            <b>
-                              ₹
-                              {parseFloat(item.price * item.quantity).toFixed(
-                                2
-                              )}
-                            </b>
-                          </p>
-                        </div>
-                      ))}
+                            <p>{item.quantity}</p>
+                            <p>₹{parseFloat(item.price).toFixed(2)}</p>
+                            <p>
+                              <b>
+                                ₹
+                                {parseFloat(item.price * item.quantity).toFixed(
+                                  2
+                                )}
+                              </b>
+                            </p>
+                          </div>
+                        ))}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          )}
-        </div>
-      </div>
+          </div>
+        </>
+      )}
     </Fragment>
   );
 };

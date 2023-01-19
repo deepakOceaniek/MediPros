@@ -140,15 +140,14 @@ const LabCategoryList = () => {
 
   return (
     <Fragment>
-      <MetaData title={`ALL Lab Categories - Admin`} />
-
-      <div className="dashboard">
-        <SideBar />
-        <div className="productListContainer">
-          {loading ? (
-            <Loader />
-          ) : (
-            <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <div className="dashboard">
+            <MetaData title={`ALL Lab Categories - Admin`} />
+            <SideBar />
+            <div className="productListContainer">
               <h1 id="productListHeading">All Lab Categories</h1>
               {labCategories && labCategories.length > 0 ? (
                 <DataGrid
@@ -163,10 +162,10 @@ const LabCategoryList = () => {
               ) : (
                 <NotFoundProduct />
               )}
-            </>
-          )}
-        </div>
-      </div>
+            </div>
+          </div>
+        </>
+      )}
     </Fragment>
   );
 };

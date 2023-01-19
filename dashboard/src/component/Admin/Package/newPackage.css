@@ -44,11 +44,7 @@
   background-color: #fff;
   /* background-image: url("../../../../public/Images/backcoveradmin.png"); */
 }
-.package_row > h1 {
-  color: rgba(0, 0, 0, 0.733);
-  font: 300 2rem "Roboto";
-  text-align: center;
-}
+
 .package_row {
   display: flex;
   flex-direction: row;
