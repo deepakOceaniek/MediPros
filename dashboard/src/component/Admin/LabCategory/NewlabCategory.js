@@ -98,6 +98,7 @@ const NewlabCategory = () => {
                     </div>
                     <div className="Category_row">
                       <div className="input_Category">
+                        <label>Category Name</label>
                         <input
                           type="text"
                           placeholder="Category Name"
@@ -105,10 +106,11 @@ const NewlabCategory = () => {
                           onChange={(e) => setCategoryName(e.target.value)}
                         />
                       </div>
-                      <div className="input_Category_upload">
+                      <div className="input_Category">
+                        <label>Category Image</label>
                         <input
-                          accept="image/png image/jpeg"
-                          className="Category_add"
+                          accept="image/png, image/jpeg"
+                          className="Category_add package_add imageUpload"
                           type="file"
                           name="categoryImage"
                           onChange={createProductImagesChange}
@@ -127,7 +129,7 @@ const NewlabCategory = () => {
                     </div>
                     <div className="button_Category">
                       <button
-                        id="createProductBtn"
+                        id="create_lab_test_Btn"
                         type="submit"
                         disabled={loading ? true : false}
                       >

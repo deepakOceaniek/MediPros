@@ -31,6 +31,7 @@
 .productReviewsForm > div > input {
   padding: 1vmax 4vmax;
   padding-right: 1vmax;
+  height: 5vh;
   width: 100%;
   box-sizing: border-box;
   border: 1px solid rgba(0, 0, 0, 0.267);

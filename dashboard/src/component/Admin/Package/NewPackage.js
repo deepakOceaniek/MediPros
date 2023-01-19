@@ -33,6 +33,7 @@ const NewPackage = () => {
   const [category, setCategory] = useState("");
   const [sample, setSample] = useState("");
   const [report, setReport] = useState("");
+  const [discount, setDiscount] = useState("");
   const [images, setImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
 
@@ -69,6 +70,7 @@ const NewPackage = () => {
     myForm.set("category", category);
     myForm.set("sample", sample);
     myForm.set("report", report);
+    myForm.set("discount", discount);
 
     images.forEach((image) => {
       myForm.append("images", image);
@@ -117,7 +119,7 @@ const NewPackage = () => {
                   </div>
                   <div className="package_row">
                     <div className="inside-input">
-                      <div>
+                      <div className="lap_package_label">
                         <label>Package Name</label>
                         <input
                           type="text"
@@ -127,7 +129,7 @@ const NewPackage = () => {
                           onChange={(e) => setName(e.target.value)}
                         />
                       </div>
-                      <div>
+                      <div className="lap_package_label">
                         <label>Package Description</label>
                         <input
                           placeholder="Package Description"
@@ -135,7 +137,7 @@ const NewPackage = () => {
                           onChange={(e) => setDescription(e.target.value)}
                         />
                       </div>
-                      <div>
+                      <div className="lap_package_label">
                         <label>Package Price</label>
                         <input
                           type="number"
@@ -145,7 +147,7 @@ const NewPackage = () => {
                           onChange={(e) => setPrice(e.target.value)}
                         />
                       </div>
-                      <div>
+                      <div className="lap_package_label">
                         <label>Package Verify</label>
                         <input
                           type="text"
@@ -157,38 +159,38 @@ const NewPackage = () => {
                       </div>
                     </div>
                     <div className="inside-input">
-                      <div>
+                      <div className="lap_package_label">
                         <label>Package Tests</label>
                         <input
                           type="text"
-                          placeholder="tests"
+                          placeholder="Test"
                           className="package_add"
                           required
                           onChange={(e) => setTests(e.target.value)}
                         />
                       </div>
-                      <div>
+                      <div className="lap_package_label">
                         <label>Number Of Test</label>
                         <input
                           type="Number"
-                          placeholder="numOfTest"
+                          placeholder="Number Of Test"
                           className="package_add"
                           required
                           onChange={(e) => setNumOfTest(e.target.value)}
                         />
                       </div>
-                      <div>
+                      <div className="lap_package_label">
                         <label>Test Timing</label>
 
                         <input
                           type="text"
-                          placeholder="testTiming"
+                          placeholder="Test Timing"
                           className="package_add"
                           required
                           onChange={(e) => setTestTiming(e.target.value)}
                         />
                       </div>
-                      <div>
+                      <div className="lap_package_label">
                         <label>Choose Lab Category</label>
 
                         <select
@@ -207,7 +209,7 @@ const NewPackage = () => {
                     </div>
 
                     <div className="inside-input">
-                      <div>
+                      <div className="lap_package_label">
                         <label>Choose Sample</label>
 
                         <select
@@ -224,35 +226,48 @@ const NewPackage = () => {
                         </select>
                       </div>
 
-                      <div>
+                      <div className="lap_package_label">
+                        <label>Discount</label>
+
+                        <input
+                          type="text"
+                          placeholder="Discount %"
+                          className="package_add"
+                          required
+                          onChange={(e) => setDiscount(e.target.value)}
+                        />
+                      </div>
+                      <div className="lap_package_label">
                         <label>Report</label>
 
                         <input
                           type="text"
-                          placeholder="report"
+                          placeholder="Report"
                           className="package_add"
                           required
                           onChange={(e) => setReport(e.target.value)}
                         />
                       </div>
-                      <div>
+                      <div className="lap_package_label">
                         <label> Upload Package Image</label>
                         <input
                           type="file"
                           name="avatar"
-                          className="package_add"
+                          className="package_add imageUpload"
                           accept="image/*"
                           onChange={createProductImagesChange}
                           multiple
                         />
                       </div>
-                      <div id="createPackageFormImage">
+                    
+                    </div>
+                    
+                  </div>
+                  <div id="createPackageFormImage">
                         {imagesPreview.map((image, index) => (
                           <img key={index} src={image} alt="Product Preview" />
                         ))}
                       </div>
-                    </div>
-                  </div>
                   <div className="package_row">
                     <button
                       id="createPackageBtn"

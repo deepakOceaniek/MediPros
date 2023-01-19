@@ -123,7 +123,7 @@ const UpdateLabCategory = () => {
                   <div className="Category_row">
                     <div className="input_Category">
                       <div className="update_lab_category_label">
-                        <label>Category Name :</label>
+                        <label>Category Name</label>
                         <input
                           type="text"
                           placeholder="Category Name"
@@ -137,10 +137,10 @@ const UpdateLabCategory = () => {
                     <div className="input_Category_upload">
                       <div className="input_Category">
                         <div className="update_lab_category_label">
-                          <label>Category Image :</label>
+                          <label>Category Image</label>
                           <input
                             accept="image/png image/jpeg"
-                            className="Category_add_image"
+                            className="Category_add_image package_add imageUpload "
                             type="file"
                             name="categoryImage"
                             onChange={updateProductImagesChange}
@@ -173,11 +173,11 @@ const UpdateLabCategory = () => {
                   </div>
                   <div className="button_Category">
                     <button
-                      id="createProductBtn"
+                      id="create_lab_test_Btn"
                       type="submit"
                       disabled={loading ? true : false}
                     >
-                      Update Lab Category
+                      Update
                     </button>
                   </div>
                 </div>

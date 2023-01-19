@@ -155,7 +155,7 @@ const UpdateProduct = () => {
               onSubmit={updateProductSubmitHandler}
             >
               <div className="product_row">
-                <h3>Updated Product</h3>
+                <h1>Updated Product</h1>
               </div>
               <div className="product_row">
                 <div className="inputdiv">

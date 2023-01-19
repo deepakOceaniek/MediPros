@@ -39,6 +39,7 @@ const UpdatePackage = () => {
   const [category, setCategory] = useState("");
   const [sample, setSample] = useState(0);
   const [report, setReport] = useState("");
+  const [discount, setDiscount] = useState("");
 
   const [images, setImages] = useState([]);
   const [oldImages, setOldImages] = useState([]);
@@ -66,6 +67,7 @@ const UpdatePackage = () => {
       setCategory(testPackage.category);
       setSample(testPackage.sample);
       setReport(testPackage.report);
+      setDiscount(testPackage.discount);
       setOldImages(testPackage.images);
     }
     if (error) {
@@ -109,6 +111,7 @@ const UpdatePackage = () => {
     myForm.set("category", category);
     myForm.set("sample", sample);
     myForm.set("report", report);
+    myForm.set("discount", discount);
 
     images.forEach((image) => {
       myForm.append("images", image);
@@ -158,7 +161,7 @@ const UpdatePackage = () => {
                   </div>
                   <div className="package_row">
                     <div className="inside-input">
-                      <div>
+                      <div className="lap_package_label">
                         <label>Package Name </label>
                         <input
                           type="text"
@@ -169,7 +172,7 @@ const UpdatePackage = () => {
                           onChange={(e) => setName(e.target.value)}
                         />
                       </div>
-                      <div>
+                      <div className="lap_package_label">
                         <label>Package Description</label>
                         <input
                           placeholder="Package Description"
@@ -178,7 +181,7 @@ const UpdatePackage = () => {
                           onChange={(e) => setDescription(e.target.value)}
                         />
                       </div>
-                      <div>
+                      <div className="lap_package_label">
                         <label>Package Price</label>
                         <input
                           type="number"
@@ -189,7 +192,7 @@ const UpdatePackage = () => {
                           onChange={(e) => setPrice(e.target.value)}
                         />
                       </div>
-                      <div>
+                      <div className="lap_package_label">
                         <label>Package Verify </label>
                         <input
                           type="text"
@@ -203,7 +206,7 @@ const UpdatePackage = () => {
                     </div>
 
                     <div className="inside-input">
-                      <div>
+                      <div className="lap_package_label">
                         <label>Choose Category </label>
                         <select
                           className="package_add"
@@ -219,7 +222,7 @@ const UpdatePackage = () => {
                         </select>
                       </div>
 
-                      <div>
+                      <div className="lap_package_label">
                         <label>Package Tests </label>
                         <input
                           type="text"
@@ -230,7 +233,7 @@ const UpdatePackage = () => {
                           onChange={(e) => setTest(e.target.value)}
                         />
                       </div>
-                      <div>
+                      <div className="lap_package_label">
                         <label>Nummber Of Test </label>
                         <input
                           type="Number"
@@ -242,7 +245,7 @@ const UpdatePackage = () => {
                         />
                       </div>
 
-                      <div>
+                      <div className="lap_package_label">
                         <label>Test Timing </label>
                         <input
                           type="text"
@@ -256,7 +259,7 @@ const UpdatePackage = () => {
                     </div>
 
                     <div className="inside-input">
-                      <div>
+                      <div className="lap_package_label">
                         <label>Choose Sample </label>
                         <select
                           className="package_add"
@@ -272,7 +275,7 @@ const UpdatePackage = () => {
                         </select>
                       </div>
 
-                      <div>
+                      <div className="lap_package_label">
                         <label>Report </label>
                         <input
                           type="text"
@@ -283,19 +286,36 @@ const UpdatePackage = () => {
                           onChange={(e) => setReport(e.target.value)}
                         />
                       </div>
-                      <div>
+
+                      <div className="lap_package_label">
+                        <label>Discount % </label>
+                        <input
+                          type="text"
+                          placeholder="Discount %"
+                          className="package_add"
+                          required
+                          value={discount}
+                          onChange={(e) => setReport(e.target.value)}
+                        />
+                      </div>
+                      <div className="lap_package_label">
                         <label>Choose Package Image </label>
                         <input
                           type="file"
                           name="avatar"
-                          className="package_add"
+                          className="package_add imageUpload"
+
+                          // className="package_add"
                           accept="image/*"
                           onChange={updateProductImagesChange}
                           multiple
                         />
                       </div>
 
-                      <div id="createPackageFormImage">
+                     
+                    </div>
+                  </div>
+                  <div id="createPackageFormImage">
                         {oldImages &&
                           oldImages.map((image, index) => (
                             <img
@@ -310,8 +330,6 @@ const UpdatePackage = () => {
                           <img key={index} src={image} alt="Product Preview" />
                         ))}
                       </div>
-                    </div>
-                  </div>
 
                   <div className="package_row">
                     <button

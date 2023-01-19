@@ -98,8 +98,6 @@ color: black;
 
 #prescriptionBtn:hover {
   background-color: #359c98;
-  box-shadow: 2px 2px gray;
-  transition: 0.5s ease-in-out;
 }
 .prescription_input > input,
 select {

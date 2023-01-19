@@ -132,7 +132,7 @@ const NewProduct = () => {
                 onSubmit={createProductSubmitHandler}
               >
                 <div className="product_row">
-                  <h3>Add Product</h3>
+                  <h1>Add Product</h1>
                 </div>
                 <div className="product_row">
                   <div className="inputdiv">
