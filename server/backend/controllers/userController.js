@@ -56,6 +56,7 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
   const contact = req.query.contact;
   const user = await User.findOne({ contact });
   const admin = await Admin.findOne({ contact });
+  console.log(admin);
 
   if (user || admin) {
     const optreq = await client.verify
