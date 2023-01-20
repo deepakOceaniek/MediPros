@@ -12,16 +12,8 @@ const client = require("twilio")(process.env.ACCOUNTSID, process.env.AUTHTOKEN);
 
 //Register Admin
 exports.registerAdmin = catchAsyncErrors(async (req, res, next) => {
-  // console.log(req.body);
-  // console.log(contact);
-  // console.log(req.query.sms);
-  // console.log(req.files);
   const contact = req.query.contact;
-  // const { category, name, contact, address, fromTime, toTime, status } =
-  // req.body;
-
   const adminExist = await Admin.findOne({ contact: contact });
-
   if (adminExist) {
     return next(new ErrorHandler("Already registered", 409));
   } else {
@@ -36,59 +28,12 @@ exports.registerAdmin = catchAsyncErrors(async (req, res, next) => {
         .status(200)
         .json({ status: optreq.status, statusCode: 200, message: "success" });
     }
-
-    // const profileMyCloud = await cloudinary.v2.uploader.upload(
-    //   req.body.profileImage,
-    //   {
-    //     folder: "profileImage",
-    //     width: 150,
-    //     crop: "scale",
-    //   }
-    // );
-    // const certificateMyCloud = await cloudinary.v2.uploader.upload(
-    //   req.body.certificateImage,
-    //   {
-    //     folder: "certificateImage",
-    //     width: 150,
-    //     crop: "scale",
-    //   }
-    // );
-
-    // const admin = await Admin.create({
-    //   category,
-    //   name,
-    //   contact,
-    //   address,
-    //   profileImage: {
-    //     public_id: profileMyCloud.public_id,
-    //     url: profileMyCloud.secure_url,
-    //   },
-    //   certificateImage: {
-    //     public_id: certificateMyCloud.public_id,
-    //     url: certificateMyCloud.secure_url,
-    //   },
-    //   fromTime,
-    //   toTime,
-    //   status,
-    // });
-    // // sendToken(admin, 201, res);
-    // res.status(201).json({ success: true, message: "Register Successful" });
   }
 });
 
 //Register User
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
-  // const contact = req.params.phonenumber;
-  // const name = req.params.name
-  // if (!name || !contact || contact.toString().length !== 12) {
-  //   return next(new ErrorHandler("Please fill the all Entries Properly", 400));
-  // }
-  // console.log(req.body);
-  // console.log(req.query.contact);
-  // console.log(req.query.channel);
-
   const userExist = await User.findOne({ contact: req.query.contact });
-  // console.log(userExist);
   if (userExist) {
     return next(new ErrorHandler("Already registered", 409));
   } else {
@@ -99,25 +44,16 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
         channel: req.query.channel,
       });
     if (optreq) {
-      // console.log(optreq)
       res
         .status(200)
         .json({ status: optreq.status, statusCode: 200, message: "success" });
     }
-    // const user = await User.create({
-    //   name,
-    //   contact,
-    // });
-    // // sendToken(user, 201, res);
-    // res.status(201).json({ success: true, message: "Register Successful" });
   }
 });
 
 //**  login phoneNumber and channel(sms/call) **
 exports.loginUser = catchAsyncErrors(async (req, res, next) => {
   const contact = req.query.contact;
-  // console.log(req.query.contact);
-  // console.log(req.query.channel);
   const user = await User.findOne({ contact });
   const admin = await Admin.findOne({ contact });
 
@@ -140,19 +76,12 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
 
 //**  verify phonenumber and code**
 exports.optVerify = catchAsyncErrors(async (req, res, next) => {
-  // req.body.map((item) => {
-  //   console.log(item);
-  // });
-  // console.log(`body ${req.body}`);
-  // console.log(req.files);
-
   const { contact, code } = req.body;
 
-  // let contact = req.query.phonenumber;
-  const user = await User.findOne({ contact }).select("user._id")
+  const user = await User.findOne({ contact }).select("user._id");
   const admin = await Admin.findOne({ contact });
-  // console.log(`User-----${user}`);
-  // console.log(`Admin-----${admin}`);
+  console.log(`user ${user}`);
+  console.log(`admin ${admin}`);
   if (user || admin) {
     const verified = await client.verify
       .services(process.env.SERVICEID)
@@ -174,7 +103,9 @@ exports.optVerify = catchAsyncErrors(async (req, res, next) => {
       });
     if (verified.status === "approved") {
       const { name, category, address, fromTime, toTime, status } = req.body;
-
+      console.log(name, contact);
+      console.log(name, contact, category);
+      console.log(req.body);
       if (name && contact && category) {
         const profileMyCloud = await cloudinary.v2.uploader.upload(
           req.body.profileImage,
@@ -216,6 +147,7 @@ exports.optVerify = catchAsyncErrors(async (req, res, next) => {
           name,
           contact,
         });
+        console.log(user);
         sendToken(user, 201, res);
       } else {
         return next(new ErrorHandler("Unprocessable Entity", 406));
@@ -255,10 +187,10 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
   const newUserData = {
     name: req.body.name,
     contact: req.body.contact,
-    email:  req.body.email,
+    email: req.body.email,
     gender: req.body.gender,
-    age:req.body.age,
-    bloodGroup:req.body.bloodGroup
+    age: req.body.age,
+    bloodGroup: req.body.bloodGroup,
   };
 
   const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
@@ -266,7 +198,6 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
     runValidators: true,
     useFindAndModify: false,
   });
-  // console.log(user);
   res.status(200).json({ success: true });
 });
 
@@ -325,7 +256,6 @@ exports.updateAdminProfile = catchAsyncErrors(async (req, res, next) => {
         crop: "scale",
       }
     );
-
     newUserData.certificateImage = {
       public_id: certificateMyCloud.public_id,
       url: certificateMyCloud.secure_url,
@@ -389,8 +319,6 @@ exports.updateUserRole = catchAsyncErrors(async (req, res, next) => {
 
 //Delete User --admin
 exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
-  // We will remove cloudinary later
-
   const user = await User.findById(req.params.id);
   if (!user) {
     return next(
@@ -398,6 +326,7 @@ exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
     );
   }
 
+  // We will remove cloudinary later
   const imageId = user.avatar.public_id;
   await cloudinary.v2.uploader.destroy(imageId);
 
@@ -459,7 +388,6 @@ exports.getAddressDetails = catchAsyncErrors(async (req, res, next) => {
     });
   }
 });
-// status   code message
 
 // Update user Address
 exports.updateUserAddress = catchAsyncErrors(async (req, res, next) => {

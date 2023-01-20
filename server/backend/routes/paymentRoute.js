@@ -27,12 +27,10 @@ const {
 } = require("../middleware/auth");
 
 const router = express.Router();
-router.route("/getkey").get(isAuthenticatedAdmin,  getKey);
+router.route("/getkey").get(isAuthenticatedAdmin, getKey);
 router.route("/checkout").post(isAuthenticated, checkout);
 
 // router.route("/paymentverification").post(paymentVerification);
 router.route("/webhook").post(webhookCapture);
-router.route("/invoice").post(genrateInvoice);
-router.route("/getinvoice").get(getInvoice);
 
 module.exports = router;

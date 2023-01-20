@@ -97,69 +97,71 @@ const UpdateBanner = () => {
 
   return (
     <Fragment>
-      <MetaData title="Update Banner" />
-      <div className="dashboard">
-        <SideBar />
-        <div className="newProductContainer">
-          {loading ? (
-            <Loader />
-          ) : (
-            <div className="create_banner">
-              <form
-                className="add_banner_row"
-                encType="multipart/form-data"
-                onSubmit={updateProductSubmitHandler}
-              >
-                <div className="content_banner">
-                  <div className="banner_row">
-                    <h1>Update Banner</h1>
-                  </div>
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <div className="dashboard">
+            <MetaData title="Update Banner" />
+            <SideBar />
+            <div className="newProductContainer">
+              <div className="create_banner">
+                <form
+                  className="add_banner_row"
+                  encType="multipart/form-data"
+                  onSubmit={updateProductSubmitHandler}
+                >
+                  <div className="content_banner">
+                    <div className="banner_row">
+                      <h1>Update Banner</h1>
+                    </div>
 
-                  <div className="banner_row_label">
-                    <label>Banner Image</label>
-                    <div className="input_banner_upload">
-                      <input
-                        type="file"
-                        name="avatar"
-                        accept="image/*"
-                        onChange={updateProductImagesChange}
-                        multiple
-                      />
+                    <div className="banner_row_label">
+                      <label>Banner Image</label>
+                      <div className="input_banner_upload">
+                        <input
+                          type="file"
+                          name="avatar"
+                          accept="image/*"
+                          onChange={updateProductImagesChange}
+                          multiple
+                        />
+                      </div>
+                    </div>
+
+                    <div id="createBannerFormImage">
+                      {oldImages &&
+                        oldImages.map((image, index) => (
+                          <img
+                            key={index}
+                            src={image.url}
+                            alt="Old Product Preview"
+                          />
+                        ))}
+                    </div>
+
+                    <div id="createBannerFormImage">
+                      {imagesPreview.map((image, index) => (
+                        <img key={index} src={image} alt="Product Preview" />
+                      ))}
+                    </div>
+
+                    <div className="button_banner">
+                      <button
+                        id="createBannerBtn"
+                        type="submit"
+                        disabled={loading ? true : false}
+                      >
+                        Update Banner
+                      </button>
                     </div>
                   </div>
-
-                  <div id="createBannerFormImage">
-                    {oldImages &&
-                      oldImages.map((image, index) => (
-                        <img
-                          key={index}
-                          src={image.url}
-                          alt="Old Product Preview"
-                        />
-                      ))}
-                  </div>
-
-                  <div id="createBannerFormImage">
-                    {imagesPreview.map((image, index) => (
-                      <img key={index} src={image} alt="Product Preview" />
-                    ))}
-                  </div>
-
-                  <div className="button_banner">
-                    <button
-                      id="createBannerBtn"
-                      type="submit"
-                      disabled={loading ? true : false}
-                    >
-                      Update Banner
-                    </button>
-                  </div>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
-          )}
-        </div>
-      </div>
+          </div>
+        </>
+      )}
     </Fragment>
   );
 };

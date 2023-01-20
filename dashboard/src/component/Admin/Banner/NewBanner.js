@@ -66,57 +66,59 @@ const NewBanner = () => {
 
   return (
     <Fragment>
-      <MetaData title="Create Banner" />
-      <div className="dashboard">
-        <SideBar />
-        <div className="newProductContainer">
-          {loading ? (
-            <Loader />
-          ) : (
-            <div className="create_banner">
-              <form
-                className="add_banner_row"
-                encType="multipart/form-data"
-                onSubmit={createBannerSubmitHandler}
-              >
-                <div className="content_banner">
-                  <div className="banner_row">
-                    <h1>Create Banner</h1>
-                  </div>
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <div className="dashboard">
+            <MetaData title="Create Banner" />
+            <SideBar />
+            <div className="newProductContainer">
+              <div className="create_banner">
+                <form
+                  className="add_banner_row"
+                  encType="multipart/form-data"
+                  onSubmit={createBannerSubmitHandler}
+                >
+                  <div className="content_banner">
+                    <div className="banner_row">
+                      <h1>Create Banner</h1>
+                    </div>
 
-                  <div className="banner_row_label">
-                    <label>Banner Image</label>
-                    <div className="input_banner_upload">
-                      <input
-                        type="file"
-                        name="avatar"
-                        accept="image/*"
-                        onChange={createProductImagesChange}
-                        multiple
-                      />
+                    <div className="banner_row_label">
+                      <label>Banner Image</label>
+                      <div className="input_banner_upload">
+                        <input
+                          type="file"
+                          name="avatar"
+                          accept="image/*"
+                          onChange={createProductImagesChange}
+                          multiple
+                        />
+                      </div>
+                    </div>
+                    <div id="createBannerFormImage">
+                      {imagesPreview.map((image, index) => (
+                        <img key={index} src={image} alt="Product Preview" />
+                      ))}
+                    </div>
+
+                    <div className="button_banner">
+                      <button
+                        id="createBannerBtn"
+                        type="submit"
+                        disabled={loading ? true : false}
+                      >
+                        Add Banner
+                      </button>
                     </div>
                   </div>
-                  <div id="createBannerFormImage">
-                    {imagesPreview.map((image, index) => (
-                      <img key={index} src={image} alt="Product Preview" />
-                    ))}
-                  </div>
-
-                  <div className="button_banner">
-                    <button
-                      id="createBannerBtn"
-                      type="submit"
-                      disabled={loading ? true : false}
-                    >
-                      Add Banner
-                    </button>
-                  </div>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
-          )}
-        </div>
-      </div>
+          </div>
+        </>
+      )}
     </Fragment>
   );
 };

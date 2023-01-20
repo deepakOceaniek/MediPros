@@ -13,7 +13,7 @@ import MetaData from "../../layout/MetaData";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Star from "@material-ui/icons/Star";
 import { useNavigate } from "react-router-dom";
-
+import Loader from "../../layout/Loader/Loader";
 import SideBar from "../Sidebar";
 import { DELETE_REVIEW_RESET } from "../../../constants/productConstants";
 
@@ -131,53 +131,60 @@ const ProductReviews = () => {
 
   return (
     <Fragment>
-      <MetaData title={`ALL REVIEWS - Admin`} />
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <div className="dashboard">
+            <MetaData title={`ALL REVIEWS - Admin`} />
+            <SideBar />
+            <div className="productReviewsContainer">
+              <form
+                className="productReviewsForm"
+                onSubmit={productReviewsSubmitHandler}
+              >
+                <h1 className="productReviewsFormHeading">ALL REVIEWS</h1>
 
-      <div className="dashboard">
-        <SideBar />
-        <div className="productReviewsContainer">
-          <form
-            className="productReviewsForm"
-            onSubmit={productReviewsSubmitHandler}
-          >
-            <h1 className="productReviewsFormHeading">ALL REVIEWS</h1>
+                <div>
+                  <Star />
+                  <input
+                    type="text"
+                    placeholder="Product Id"
+                    required
+                    value={productId}
+                    onChange={(e) => setProductId(e.target.value)}
+                  />
+                </div>
 
-            <div>
-              <Star />
-              <input
-                type="text"
-                placeholder="Product Id"
-                required
-                value={productId}
-                onChange={(e) => setProductId(e.target.value)}
-              />
+                <button
+                  id="createUpdateProductBtn"
+                  type="submit"
+                  disabled={
+                    loading ? true : false || productId === "" ? true : false
+                  }
+                >
+                  Search
+                </button>
+              </form>
+
+              {reviews && reviews.length > 0 ? (
+                <DataGrid
+                  rows={rows}
+                  columns={columns}
+                  pageSize={10}
+                  disableSelectionOnClick
+                  className="productListTable"
+                  autoHeight
+                />
+              ) : (
+                <h1 className="productReviewsFormHeading">
+                  Search For Reviews
+                </h1>
+              )}
             </div>
-
-            <button
-              id="createUpdateProductBtn"
-              type="submit"
-              disabled={
-                loading ? true : false || productId === "" ? true : false
-              }
-            >
-              Search
-            </button>
-          </form>
-
-          {reviews && reviews.length > 0 ? (
-            <DataGrid
-              rows={rows}
-              columns={columns}
-              pageSize={10}
-              disableSelectionOnClick
-              className="productListTable"
-              autoHeight
-            />
-          ) : (
-            <h1 className="productReviewsFormHeading">Search For Reviews</h1>
-          )}
-        </div>
-      </div>
+          </div>
+        </>
+      )}
     </Fragment>
   );
 };

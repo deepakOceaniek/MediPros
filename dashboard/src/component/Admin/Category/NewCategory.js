@@ -59,70 +59,76 @@ const NewCategory = () => {
 
   return (
     <Fragment>
-      <MetaData title="Create Category" />
-      <div className="dashboard">
-        <SideBar />
-        <div className="newProductContainer">
-          {loading ? (
-            <Loader />
-          ) : (
-            <div className="create_Category">
-              <form
-                className="add_Category_row"
-                encType="multipart/form-data"
-                onSubmit={createProductSubmitHandler}
-              >
-                <div className="content_create_Category">
-                  <div className="Category_row_category">
-                    <h1>Create Category</h1>
-                  </div>
-                  <div className="Category_row_category">
-                    <div className="input_Category">
-                      <div className="category_label">
-                        <label>Category Name</label>
-                        <input
-                          type="text"
-                          placeholder="Category Name"
-                          required
-                          onChange={(e) => setCategoryName(e.target.value)}
-                        />
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <div className="dashboard">
+            <MetaData title="Create Category" />
+            <SideBar />
+            <div className="newProductContainer">
+              <div className="create_Category">
+                <form
+                  className="add_Category_row"
+                  encType="multipart/form-data"
+                  onSubmit={createProductSubmitHandler}
+                >
+                  <div className="content_create_Category">
+                    <div className="Category_row_category">
+                      <h1>Create Category</h1>
+                    </div>
+                    <div className="Category_row_category">
+                      <div className="input_Category">
+                        <div className="category_label">
+                          <label>Category Name</label>
+                          <input
+                            type="text"
+                            placeholder="Category Name"
+                            required
+                            onChange={(e) => setCategoryName(e.target.value)}
+                          />
+                        </div>
+                      </div>
+                      <div className="input_Category_upload">
+                        <div className="category_label">
+                          <label>Category Image</label>
+                          <input
+                            accept="image/png, image/jpeg"
+                            className="Category_add"
+                            type="file"
+                            name="categoryImage"
+                            onChange={createProductImagesChange}
+                            placeholder=" Product Image Upload"
+                          />
+                        </div>
+                        <div className="categoryDiv">
+                          {categoryPreview.map((image, index) => (
+                            <img
+                              key={index}
+                              src={image}
+                              alt="Product Preview"
+                            />
+                          ))}
+                        </div>
                       </div>
                     </div>
-                    <div className="input_Category_upload">
-                      <div className="category_label">
-                        <label>Category Image</label>
-                        <input
-                          accept="image/png, image/jpeg"
-                          className="Category_add"
-                          type="file"
-                          name="categoryImage"
-                          onChange={createProductImagesChange}
-                          placeholder=" Product Image Upload"
-                        />
-                      </div>
-                      <div className="categoryDiv">
-                        {categoryPreview.map((image, index) => (
-                          <img key={index} src={image} alt="Product Preview" />
-                        ))}
-                      </div>
-                    </div>
-                  </div>
 
-                  <div className="button_Category_create">
-                    <button
-                      id="category_Button"
-                      type="submit"
-                      disabled={loading ? true : false}
-                    >
-                      Add Category
-                    </button>
+                    <div className="button_Category_create">
+                      <button
+                        id="category_Button"
+                        type="submit"
+                        disabled={loading ? true : false}
+                      >
+                        Add Category
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
-          )}
-        </div>
-      </div>
+          </div>
+        </>
+      )}
     </Fragment>
   );
 };

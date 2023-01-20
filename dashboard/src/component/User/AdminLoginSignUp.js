@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./LoginSignUp.css";
 import { useRef, useState } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import FaceIcon from "@material-ui/icons/Face";
@@ -14,7 +14,6 @@ const AdminLoginSignUp = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
   const Navigate = useNavigate();
-  const location = useLocation();
 
   const { error, loading, isAuthenticated } = useSelector(
     (state) => state.user
@@ -27,15 +26,15 @@ const AdminLoginSignUp = () => {
   // const [loginName, setLoginEmail] = useState("");
   const [loginContact, setLoginPassword] = useState("");
   const [user, setUser] = useState({
-    category:"",
+    category: "",
     name: "",
     contact: "",
-    address:"",
-    fromTime :"",
-    toTime:"",
-    status:""
+    address: "",
+    fromTime: "",
+    toTime: "",
+    status: "",
   });
-  const {category, name, contact, address, fromTime,toTime,status} = user;
+  const { category, name, contact, address, fromTime, toTime, status } = user;
   const [profileImage, setProfileImage] = useState("/Profile.png");
   const [profilePreview, setProfilePreview] = useState("/Profile.png");
   const [certificateImage, setCertificateImage] = useState("/Profile.png");
@@ -66,7 +65,7 @@ const AdminLoginSignUp = () => {
       setUser({ ...user, [e.target.name]: e.target.value });
     }
   };
-  
+
   // const redirect = location.search ? location.search.split("=")[1] : "/account";
   useEffect(() => {
     if (error) {
@@ -76,7 +75,12 @@ const AdminLoginSignUp = () => {
     if (isAuthenticated) {
       Navigate("/admin/dashboard");
     }
-  }, [dispatch, alert, error, isAuthenticated, Navigate, 
+  }, [
+    dispatch,
+    alert,
+    error,
+    isAuthenticated,
+    Navigate,
     // redirect
   ]);
 
@@ -100,7 +104,7 @@ const AdminLoginSignUp = () => {
   const loginSubmit = (e) => {
     e.preventDefault();
     dispatch(login(loginContact));
-    Navigate("/otpverify")
+    Navigate("/otpverify");
   };
   const registerSubmit = (e) => {
     e.preventDefault();
@@ -134,17 +138,6 @@ const AdminLoginSignUp = () => {
               <button ref={switcherTab}></button>
             </div>
             <form className="loginForm" ref={loginTab} onSubmit={loginSubmit}>
-              {/* <div className="loginName">
-                <MailOutlineIcon />
-                <input
-                  type="text"
-                  placeholder="name"
-                  required
-                  value={loginName}
-                  onChange={(e) => setLoginEmail(e.target.value)}
-                />
-              </div> */}
-
               <div className="loginContact">
                 <LockOpenIcon />
                 <input
@@ -164,7 +157,7 @@ const AdminLoginSignUp = () => {
               encType="multipart/form-data"
               onSubmit={registerSubmit}
             >
-                <div className="signUpCategory">
+              <div className="signUpCategory">
                 <FaceIcon />
                 <input
                   type="text"
@@ -241,7 +234,7 @@ const AdminLoginSignUp = () => {
                   onChange={registerDataChange}
                 />
               </div>
-         
+
               <div id="registerImage">
                 <img src={profilePreview} alt="Profile Preview" />
                 <input

@@ -43,12 +43,8 @@ exports.createTest = catchAsyncErrors(async (req, res, next) => {
 
 //Get all test
 exports.getAllTest = catchAsyncErrors(async (req, res, next) => {
-  // return next(new ErrorHandler("This Is My Temp Error", 500));
-
   const resultPerPage = 8;
   const TestCount = await Test.countDocuments();
-  // console.log(req.query);
-
   const apiFeatures = new ApiFeatures(Test.find(), req.query).search().filter();
 
   let tests = await apiFeatures.query;
@@ -62,9 +58,6 @@ exports.getAllTest = catchAsyncErrors(async (req, res, next) => {
   } else {
     return next(new ErrorHandler("Product not found", 400));
   }
-  // console.log(tests);
-  // console.log(filteredTestCount);
-
   res.status(200).json({
     success: true,
     tests,
@@ -92,6 +85,7 @@ exports.getTestDetails = catchAsyncErrors(async (req, res, next) => {
   }
   res.status(200).json({ success: true, test });
 });
+
 // Get Test details --admin
 exports.getAdminTestDetails = catchAsyncErrors(async (req, res, next) => {
   const test = await Test.findById(req.params.id);
@@ -201,11 +195,8 @@ exports.createPackage = catchAsyncErrors(async (req, res, next) => {
 
 // Get all package
 exports.getAllPackage = catchAsyncErrors(async (req, res, next) => {
-  // return next(new ErrorHandler("This Is My Temp Error", 500));
-
   const resultPerPage = 8;
   const packageCount = await Package.countDocuments();
-  // console.log(req.query);
 
   const apiFeatures = new ApiFeatures(Package.find(), req.query)
     .search()
@@ -222,8 +213,6 @@ exports.getAllPackage = catchAsyncErrors(async (req, res, next) => {
   } else {
     return next(new ErrorHandler("Product not found", 400));
   }
-  // console.log(packages);
-  // console.log(filteredPackageCount);
 
   res.status(200).json({
     success: true,
@@ -246,11 +235,11 @@ exports.getAdminPackage = catchAsyncErrors(async (req, res, next) => {
 
 // Get package details
 exports.getPackageDetails = catchAsyncErrors(async (req, res, next) => {
-  const package = await Package.findById(req.params.id);
-  if (!package) {
+  const packages = await Package.findById(req.params.id);
+  if (!packages) {
     return next(new ErrorHandler("Product not found", 404));
   }
-  res.status(200).json({ success: true, package });
+  res.status(200).json({ success: true, packages });
 });
 
 // Get package details
@@ -453,7 +442,6 @@ exports.addLabCategory = catchAsyncErrors(async (req, res, next) => {
   }
 
   req.body.images = imagesLinks;
-  // req.body.user = req.user.id;
 
   const labCategory = await LabCategory.create(req.body);
 
