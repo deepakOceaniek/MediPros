@@ -33,6 +33,7 @@ const NewPackage = () => {
   const [category, setCategory] = useState("");
   const [sample, setSample] = useState("");
   const [report, setReport] = useState("");
+  const [discount, setDiscount] = useState("");
   const [images, setImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
 
@@ -69,6 +70,7 @@ const NewPackage = () => {
     myForm.set("category", category);
     myForm.set("sample", sample);
     myForm.set("report", report);
+    myForm.set("discount", discount);
 
     images.forEach((image) => {
       myForm.append("images", image);
@@ -98,6 +100,7 @@ const NewPackage = () => {
 
   return (
     <Fragment>
+
       {loading ? (
         <Loader />
       ) : (
@@ -192,6 +195,7 @@ const NewPackage = () => {
                         <div>
                           <label>Choose Lab Category</label>
 
+
                           <select
                             className="package_add"
                             onChange={(e) => setCategory(e.target.value)}
@@ -210,9 +214,11 @@ const NewPackage = () => {
                         </div>
                       </div>
 
+
                       <div className="inside-input">
                         <div>
                           <label>Choose Sample</label>
+
 
                           <select
                             className="package_add"
@@ -227,6 +233,7 @@ const NewPackage = () => {
                               ))}
                           </select>
                         </div>
+
 
                         <div>
                           <label>Report</label>
@@ -273,6 +280,7 @@ const NewPackage = () => {
                   </div>
                 </form>
               </div>
+
             </div>
           </div>
         </>

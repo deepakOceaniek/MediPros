@@ -33,14 +33,15 @@
   justify-content: center;
   align-items: center;
 }
-.product_row > h3 {
+.product_row > h1 {
+  height: 6vh;
+  width: 22vw;
+  padding: 0.35em;
   border-radius: 5px;
-  background-color: #308c89;
-  color: #fff;
-  width: 20vw;
+  color: #ffffff;
+  background: #308c89;
   text-align: center;
-  height: 5vh;
-  font-size: 20px;
+  font: 300 1.3em "Roboto";
 }
 
 .productadd {
@@ -69,8 +70,8 @@
 
 #createUpdateProductBtn:hover {
   background-color: #359c98;
-  box-shadow: 2px 2px gray;
-  transition: 0.5s ease-in-out;
+  /* box-shadow: 2px 2px gray; */
+  /* transition: 0.5s ease-in-out; */
 }
 
 #createProductFormImage {

@@ -103,6 +103,7 @@ const UpdateLabCategory = () => {
 
   return (
     <Fragment>
+
       {loading ? (
         <Loader />
       ) : (
@@ -120,10 +121,12 @@ const UpdateLabCategory = () => {
                   <div className="content_create_Category">
                     <div className="Category_row">
                       <h1>Update Lab Category</h1>
+
                     </div>
                     <div className="Category_row">
                       <div className="input_Category">
                         <div className="update_lab_category_label">
+
                           <label>Category Name :</label>
                           <input
                             type="text"
@@ -132,6 +135,7 @@ const UpdateLabCategory = () => {
                             className="category_input"
                             value={categoryName}
                             onChange={(e) => setCategoryName(e.target.value)}
+
                           />
                         </div>
                       </div>
@@ -178,8 +182,10 @@ const UpdateLabCategory = () => {
                       </button>
                     </div>
                   </div>
+
                 </form>
               </div>
+
             </div>
           </div>
         </>

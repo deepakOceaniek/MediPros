@@ -1,10 +1,5 @@
 /* -------------------Product Category CSS For add And Update------------------------- */
 
-/* .Create_Category_div {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-} */
 
 .create_Category {
   display: flex;
@@ -12,20 +7,17 @@
   align-items: center;
   justify-content: center;
   background-image: url("../../../../public/Images/backcoveradmin.png");
-  /* background-color: rgba(231, 237, 244, 0.79); */
 }
 
 .Category_row_category > h1 {
-  /* color: rgba(0, 0, 0, 0.733);
-  /* text-align: center;  */
-  /* font: 300 1.3em "Roboto"; */
   height: 6vh;
   width: 22vw;
-  padding: 0.5em;
+  padding: 0.35em;
   border-radius: 5px;
   color: #ffffff;
   background: #308c89;
   text-align: center;
+  font: 300 1.3em "Roboto";
 }
 
 .add_Category_row {
@@ -37,12 +29,27 @@
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
-  box-shadow: 0px 1px 8px 1px;
+  box-shadow: 0px 0px 5px 1px;
   width: 35vw;
   height: 80vh;
   box-sizing: border-box;
   background-color: #ffffff;
 }
+.update_lab_category_label > label{
+  font-weight: 500;
+  margin-left: 1.5em;
+  display: flex;
+  flex-direction: column;
+}
+.update_lab_category_label > input{
+  width: 22vw;
+  height: 5vh;
+  margin: .1em 0em 1em 1.3em ;
+  padding-left: 0.5em;
+  border-radius: 8px;
+  border: 1px solid #ada7a7;
+}
+
 
 .category_label {
   display: flex;
@@ -59,12 +66,12 @@
   border: 1px solid #ada7a7;
 }
 
-.Category_add {
+/* .Category_add {
   width: 24vw;
   height: 5vh;
   border: 1px solid #ada7a7;
   border-radius: 8px;
-}
+} */
 
 #category_Button {
   height: 5vh;
@@ -77,20 +84,11 @@
   font-family: "Lato";
   font-weight: 500;
   font-size: 16px;
-  box-shadow: 1px 1px gray;
 }
 #category_Button:hover {
   background-color: #359c98;
 }
 
-/* .category_input,
-.Category_add_image {
-  margin: 0em 0em 0em 4.5em;
-} */
-
-/* .Category_add_image {
-  margin-bottom: 1em;
-} */
 .categoryDiv {
   margin: 1em 0em 0em 4.5em;
   height: 11vmax;
@@ -98,25 +96,29 @@
 }
 /* -------------------Sample CSS For add And Update------------------------- */
 
-.Category_row {
-  width: 70%;
-}
 
 .Category_row > h1 {
-  color: rgba(0, 0, 0, 0.733);
-  font: 300 2rem "Roboto";
+  height: 6vh;
+  width: 22vw;
+  margin-left: .8em;
+  padding: 0.35em;
+  border-radius: 5px;
+  color: #ffffff;
+  background: #308c89;
   text-align: center;
+  font: 300 1.3em "Roboto";
 }
 
 .add_new_sample_label {
-  margin: 1em 0em 0em 0em;
+  margin:0em 0em 0em 2em;
   display: flex;
   flex-direction: column;
   width: 90%;
 }
 .add_new_sample_label > label {
   font-weight: 600;
-  font-size: 1.2em;
+  /* font-size: 1.2em; */
+  margin-left: .3em;
 }
 .add_new_sample_label > input {
   width: 20vw;
@@ -126,6 +128,21 @@
   border-radius: 8px;
   border: 1px solid #ada7a7;
 }
+.input_Category > label{
+  font-weight: 500;
+  margin-left: 2em;
+  display: flex;
+  flex-direction: column;
+}
+.input_Category >input{
+  width: 20vw;
+  height: 5vh;
+  margin: 0.1em 0em 1em 2em;
+  padding-left: 0.5em;
+  border-radius: 8px;
+  border: 1px solid #ada7a7;
+}
+
 
 #createSampleBtn {
   height: 5vh;
@@ -138,8 +155,23 @@
   font-family: "Lato";
   font-weight: 500;
   font-size: 16px;
-  box-shadow: 2px 2px gray;
 }
 #createSampleBtn:hover {
   background-color: #359c98;
+}
+#create_lab_test_Btn {
+  height: 5vh;
+  width: 10vw;
+  border-radius: 8px;
+  padding: 0.2em;
+  text-align: center;
+  color: white;
+  background-color: #308c89;
+  font-family: "Lato";
+  font-weight: 500;
+  font-size: 16px;
+}
+#create_lab_test_Btn:hover{
+  background-color: #359c98;
+
 }

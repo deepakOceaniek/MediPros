@@ -39,6 +39,7 @@ const UpdatePackage = () => {
   const [category, setCategory] = useState("");
   const [sample, setSample] = useState(0);
   const [report, setReport] = useState("");
+  const [discount, setDiscount] = useState("");
 
   const [images, setImages] = useState([]);
   const [oldImages, setOldImages] = useState([]);
@@ -66,6 +67,7 @@ const UpdatePackage = () => {
       setCategory(testPackage.category);
       setSample(testPackage.sample);
       setReport(testPackage.report);
+      setDiscount(testPackage.discount);
       setOldImages(testPackage.images);
     }
     if (error) {
@@ -109,6 +111,7 @@ const UpdatePackage = () => {
     myForm.set("category", category);
     myForm.set("sample", sample);
     myForm.set("report", report);
+    myForm.set("discount", discount);
 
     images.forEach((image) => {
       myForm.append("images", image);
@@ -139,6 +142,7 @@ const UpdatePackage = () => {
 
   return (
     <Fragment>
+
       {loading ? (
         <Loader />
       ) : (
@@ -308,6 +312,7 @@ const UpdatePackage = () => {
                         </div>
                         <div id="createPackageFormImage">
                           {imagesPreview.map((image, index) => (
+
                             <img
                               key={index}
                               src={image}
@@ -316,7 +321,9 @@ const UpdatePackage = () => {
                           ))}
                         </div>
                       </div>
+
                     </div>
+
 
                     <div className="package_row">
                       <button

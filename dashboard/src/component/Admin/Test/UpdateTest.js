@@ -218,6 +218,7 @@ const UpdateTest = () => {
                           </select>
                         </div>
 
+
                         <div className="test_labels_name_image">
                           <label>Choose Image </label>
                           <input
@@ -243,6 +244,7 @@ const UpdateTest = () => {
 
                           <div id="createTestFormImage">
                             {imagesPreview.map((image, index) => (
+
                               <img
                                 key={index}
                                 src={image}

@@ -145,6 +145,7 @@ const UpdateProduct = () => {
 
   return (
     <Fragment>
+
       {loading ? (
         <Loader />
       ) : (
@@ -161,6 +162,7 @@ const UpdateProduct = () => {
                 >
                   <div className="product_row">
                     <h3>Updated Product</h3>
+
                   </div>
                   <div className="product_row">
                     <div className="inputdiv">

@@ -104,6 +104,7 @@ const NewProduct = () => {
 
   return (
     <Fragment>
+
       {loading ? (
         <Loader />
       ) : (
@@ -184,6 +185,7 @@ const NewProduct = () => {
                           onChange={(e) => setProductQuantity(e.target.value)}
                         />
                       </div>
+
                     </div>
 
                     <div className="inputdiv">

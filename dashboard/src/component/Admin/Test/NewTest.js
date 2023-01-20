@@ -167,6 +167,7 @@ const NewTest = () => {
                           </select>
                         </div>
                       </div>
+
                       <div className="input-inside">
                         <div>
                           <label>Choose Package</label>
@@ -223,6 +224,7 @@ const NewTest = () => {
                             />
                           ))}
                         </div>
+
                       </div>
                     </div>
                   </div>

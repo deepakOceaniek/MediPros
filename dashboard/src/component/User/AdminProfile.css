@@ -60,8 +60,6 @@
 
 .edit_btn:hover {
   background-color: #359c98;
-  box-shadow: 2px 2px gray;
-  transition: 0.5s ease-in-out;
 }
 
 .productReviewsForm > button:hover {
@@ -69,13 +67,14 @@
 }
 
 .row-profile > div > p {
-  height: 7vh;
-  width: 25vw;
-  background: #308c89;
+  height: 6vh;
+  width: 22vw;
   border-radius: 5px;
   color: #ffffff;
+  background: #308c89;
   text-align: center;
-  padding: 0.5em;
+  font: 300 1.3em "Roboto";
+  padding: 0.35em;
 }
 
 .content .profileUpload {

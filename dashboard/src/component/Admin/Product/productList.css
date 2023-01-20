@@ -7,27 +7,7 @@
   flex-direction: column;
   height: 100%;
   background-image: url("../../../../public/Images/backcoveradmin.png");
-  /* margin: 1em 1em;
-  box-shadow: 0px 1px 8px 1px;
-  width: 100%;
-  height: 100vh;
-  padding: 2em 0em;
-  border-radius: 30px;
-  background-color: #fff;
-  */
 }
-
-/* #productListHeading {
-  font: 400 4rem "Roboto";
-  padding: 0.7vmax;
-  box-sizing: border-box;
-  color: rgba(0, 0, 0, 0.637);
-  transition: all 0.5s;
-  margin: 1rem;
-  margin-left: 25em;
-  text-align: center;
-} */
-
 
 .heading {
   display: flex;
@@ -35,15 +15,15 @@
   margin-bottom: 0.8em;
 }
 #productListHeading {
-  background: #308c89;
-  color: white;
+  height: 6vh;
+  width: 22vw;
+  padding: 0.35em;
   border-radius: 5px;
-  height: 5vh;
-  width: 20vw;
+  color: #ffffff;
+  background: #308c89;
   text-align: center;
-  padding-top: 0.3em;
-  margin: 1em 25em;
-  font: 100 1.2rem "Roboto";
+  font: 300 1.3em "Roboto";
+  margin: 1em 20em;
 }
 
 .productListTable {
@@ -55,7 +35,6 @@
   color: rgba(36, 4, 4, 0.678);
   border: none !important;
 }
-
 .productListTable a,
 .productListTable button {
   color: rgba(0, 0, 0, 0.527);

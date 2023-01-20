@@ -37,7 +37,7 @@
   height: 5vh;
   width: 10vw;
   background: #308c89;
-  border-radius: 5px;
+  border-radius: 8px;
   color: #ffffff;
   text-align: center;
   font-family: "Lato";
@@ -58,7 +58,7 @@
 .banner_row > h1 {
   height: 6vh;
   width: 22vw;
-  padding: 0.5em;
+  padding: 0.35em;
   border-radius: 5px;
   color: #ffffff;
   background: #308c89;
