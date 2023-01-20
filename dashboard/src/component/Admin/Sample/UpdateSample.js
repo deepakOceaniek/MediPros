@@ -73,104 +73,66 @@ const UpdateSample = () => {
   };
   return (
     <Fragment>
-      <MetaData title="Update Sample" />
-      <div className="dashboard">
-        <SideBar />
-        <div className="newProductContainer">
-          {loading ? (
-            <Loader />
-          ) : (
-            <div className="create_Category">
-              <form
-                className="add_Category_row"
-                encType="multipart/form-data"
-                onSubmit={updateProductSubmitHandler}
-              >
-                <div className="content_create_Category">
-                  <div className="Category_row">
-                    <h1>Update Sample</h1>
-                  </div>
-                  <div className="Category_row">
-                    <div className="add_new_sample_label">
-                      <label>Sample Name </label>
-                      <input
-                        type="text"
-                        placeholder="Sample Name"
-                        className="sample_input"
-                        required
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                      />
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <div className="dashboard">
+            <MetaData title="Update Sample" />
+            <SideBar />
+            <div className="newProductContainer">
+              <div className="create_Category">
+                <form
+                  className="add_Category_row"
+                  encType="multipart/form-data"
+                  onSubmit={updateProductSubmitHandler}
+                >
+                  <div className="content_create_Category">
+                    <div className="Category_row">
+                      <h1>Update Sample</h1>
+                    </div>
+                    <div className="Category_row">
+                      <div className="add_new_sample_label">
+                        <label>Sample Name </label>
+                        <input
+                          type="text"
+                          placeholder="Sample Name"
+                          className="sample_input"
+                          required
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                        />
+                      </div>
+
+                      <div className="add_new_sample_label">
+                        <label>Sample Code </label>
+                        <input
+                          type="text"
+                          placeholder="Sample Code"
+                          required
+                          className="sample_input"
+                          value={sampleCode}
+                          onChange={(e) => setSampleCode(e.target.value)}
+                        />
+                      </div>
                     </div>
 
-                    <div className="add_new_sample_label">
-                      <label>Sample Code </label>
-                      <input
-                        type="text"
-                        placeholder="Sample Code"
-                        required
-                        className="sample_input"
-                        value={sampleCode}
-                        onChange={(e) => setSampleCode(e.target.value)}
-                      />
+                    <div className="button_Category">
+                      <button
+                        id="createSampleBtn"
+                        type="submit"
+                        disabled={loading ? true : false}
+                      >
+                        Update Sample
+                      </button>
                     </div>
                   </div>
-
-                  <div className="button_Category">
-                    <button
-                      id="createSampleBtn"
-                      type="submit"
-                      disabled={loading ? true : false}
-                    >
-                      Update Sample
-                    </button>
-                  </div>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
-          )}
-
-          {/* {loading ? <Loader /> : <form
-            className="createProductForm"
-            encType="multipart/form-data"
-            onSubmit={updateProductSubmitHandler}
-          >
-            <h1>Update Sample</h1>
-
-            <div>
-              <SpellcheckIcon />
-              <input
-                type="text"
-                placeholder="Sample Name"
-                required
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </div>
-       
-
-            <div>
-              <DescriptionIcon />
-
-              <input
-                placeholder="Sample Code"
-                value={sampleCode}
-                onChange={(e) => setSampleCode(e.target.value)}
-                required
-
-              ></input>
-            </div>
-           
-            <Button
-              id="createProductBtn"
-              type="submit"
-              disabled={loading ? true : false}
-            >
-              Update
-            </Button>
-          </form>} */}
-        </div>
-      </div>
+          </div>
+        </>
+      )}
     </Fragment>
   );
 };

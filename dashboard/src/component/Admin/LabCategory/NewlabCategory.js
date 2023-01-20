@@ -2,10 +2,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import "../Category/newCategory.css";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  clearErrors,
-  createLabCategory,
-} from "../../../actions/testAction";
+import { clearErrors, createLabCategory } from "../../../actions/testAction";
 import { useAlert } from "react-alert";
 import MetaData from "../../layout/MetaData";
 import SideBar from "../Sidebar";
@@ -78,14 +75,14 @@ const NewlabCategory = () => {
 
   return (
     <Fragment>
-      <MetaData title="Create Lab Category" />
-      <div className="dashboard">
-        <SideBar />
-        <div className="newProductContainer">
-          {
-            loading ? (
-              <Loader />
-            ) : (
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <div className="dashboard">
+            <MetaData title="Create Lab Category" />
+            <SideBar />
+            <div className="newProductContainer">
               <div className="create_Category">
                 <form
                   className="add_Category_row"
@@ -98,6 +95,7 @@ const NewlabCategory = () => {
                     </div>
                     <div className="Category_row">
                       <div className="input_Category">
+                        <label>Category Name</label>
                         <input
                           type="text"
                           placeholder="Category Name"
@@ -105,10 +103,11 @@ const NewlabCategory = () => {
                           onChange={(e) => setCategoryName(e.target.value)}
                         />
                       </div>
-                      <div className="input_Category_upload">
+                      <div className="input_Category">
+                        <label>Category Image</label>
                         <input
-                          accept="image/png image/jpeg"
-                          className="Category_add"
+                          accept="image/png, image/jpeg"
+                          className="Category_add package_add imageUpload"
                           type="file"
                           name="categoryImage"
                           onChange={createProductImagesChange}
@@ -127,7 +126,7 @@ const NewlabCategory = () => {
                     </div>
                     <div className="button_Category">
                       <button
-                        id="createProductBtn"
+                        id="create_lab_test_Btn"
                         type="submit"
                         disabled={loading ? true : false}
                       >
@@ -137,53 +136,10 @@ const NewlabCategory = () => {
                   </div>
                 </form>
               </div>
-            )
-
-            // <form
-            //   className="createProductForm"
-            //   encType="multipart/form-data"
-            //   onSubmit={createProductSubmitHandler}
-            // >
-            //   <h1>Create Lab Category</h1>
-
-            //   <div>
-            //     <SpellcheckIcon />
-            //     <input
-            //       type="text"
-            //       placeholder="Category Name"
-            //       required
-            //       value={categoryName}
-            //       onChange={(e) => setCategoryName(e.target.value)}
-            //     />
-            //   </div>
-
-            //   <div id="createProductFormFile">
-            //     <input
-            //       type="file"
-            //       name="avatar"
-            //       accept="image/*"
-            //       onChange={createProductImagesChange}
-            //       multiple
-            //     />
-            //   </div>
-
-            //   <div id="createProductFormImage">
-            //     {imagesPreview.map((image, index) => (
-            //       <img key={index} src={image} alt="Product Preview" />
-            //     ))}
-            //   </div>
-
-            //   <Button
-            //     id="createProductBtn"
-            //     type="submit"
-            //     disabled={loading ? true : false}
-            //   >
-            //     Create
-            //   </Button>
-            // </form>
-          }
-        </div>
-      </div>
+            </div>
+          </div>
+        </>
+      )}
     </Fragment>
   );
 };

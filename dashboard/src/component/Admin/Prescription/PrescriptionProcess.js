@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import MetaData from "../../layout/MetaData";
 import { useParams } from "react-router-dom";
-import { Typography } from "@material-ui/core";
 import SideBar from "../Sidebar";
 import {
   getPrescriptionDetails,
@@ -11,7 +10,6 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../../layout/Loader/Loader";
 import { useAlert } from "react-alert";
-import AccountTreeIcon from "@material-ui/icons/AccountTree";
 import { UPDATE_PRESCRIPTION_RESET } from "../../../constants/productConstants";
 import "./prescriptionProcess.css";
 
@@ -66,158 +64,149 @@ const PrescriptionProcess = () => {
   console.log(prescription.status);
   return (
     <Fragment>
-      <MetaData title="Process Order" />
-      <div className="dashboard">
-        <SideBar />
-        <div className="newPrescriptionContainer">
-          {loading ? (
-            <Loader />
-          ) : (
-            <div
-              className="confirmPrescriptionOrderPage"
-              // style={{
-              //   display:
-              //     prescription &&
-              //     prescription.status === "Your Medicine Get Ready Pay Now"
-              //       ? "block"
-              //       : "grid",
-              // }}
-             >
-              <div className="prescriptionOrderDetails">
-                <div className="confirmPrescriptionShippingArea">
-                  <h1>Prescription</h1>
-                  <div className="prescriptionOrderDetailsContainerBox">
-                    <h1>User Details</h1>
-                    <div className="label_parameter">
-                      <p>Name:</p>
-                      <p>{prescription.user && prescription.user.name}</p>
-                    </div>
-                    <div className="label_parameter">
-                      <p>Contact:</p>
-                      <p>
-                        {prescription.user && prescription.user.contact}
-                      </p>
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <div className="dashboard">
+            <MetaData title="Process Order" />
+            <SideBar />
+            <div className="newPrescriptionContainer">
+              <div className="confirmPrescriptionOrderPage">
+                <div className="prescriptionOrderDetails">
+                  <div className="confirmPrescriptionShippingArea">
+                    <h1>Prescription</h1>
+                    <div className="prescriptionOrderDetailsContainerBox">
+                      <h1>User Details</h1>
+                      <div className="label_parameter">
+                        <p>Name:</p>
+                        <p>{prescription.user && prescription.user.name}</p>
+                      </div>
+                      <div className="label_parameter">
+                        <p>Contact:</p>
+                        <p>{prescription.user && prescription.user.contact}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <form
-                  className="updatePrescriptionForm"
-                  onSubmit={updateOrderSubmitHandler}
-                 >
-                  <h1>Update Prescription status </h1>
-
-                  <div className="prescription_label">
-                    <label>Update status</label>
-                   <div className="prescription_input">
-
-                    <select onChange={(e) => setStatus(e.target.value)}>
-                      <option value="">Update Status</option>
-                      {prescription && prescription.status === "Processing" && (
-                        <>
-                          <option value="Your Medicine Getting Ready">
-                            Your Medicine Getting Ready
-                          </option>
-                          <option value="Due to old date we can not accept this precription">
-                            Due to old date we can not accept this precription.
-                          </option>
-                        </>
-                      )}
-
-                      {prescription &&
-                        prescription.status ===
-                          "Your Medicine Getting Ready" && (
-                          <option value="Your Medicine Get Ready Pay Now">
-                            Your Medicine Get Ready Pay Now
-                          </option>
-                        )}
-                    </select>
-                    </div>
-                  </div>
-
-                  <div
-                    className="billForm"
-                    style={{
-                      display:
-                        prescription.status === "Your Medicine Getting Ready"
-                          ? "block"
-                          : "none",
-                    }}
+                  <form
+                    className="updatePrescriptionForm"
+                    onSubmit={updateOrderSubmitHandler}
                   >
+                    <h1>Update Prescription status </h1>
+
                     <div className="prescription_label">
-                      <label>Total Price </label>
+                      <label>Update status</label>
                       <div className="prescription_input">
-                      <input
-                        type="number"
-                        onChange={(e) => setTotalPrice(e.target.value)}
-                        placeholder="Total Price"
-                      />
+                        <select onChange={(e) => setStatus(e.target.value)}>
+                          <option value="">Update Status</option>
+                          {prescription &&
+                            prescription.status === "Processing" && (
+                              <>
+                                <option value="Your Medicine Getting Ready">
+                                  Your Medicine Getting Ready
+                                </option>
+                                <option value="Due to old date we can not accept this precription">
+                                  Due to old date we can not accept this
+                                  precription.
+                                </option>
+                              </>
+                            )}
+
+                          {prescription &&
+                            prescription.status ===
+                              "Your Medicine Getting Ready" && (
+                              <option value="Your Medicine Get Ready Pay Now">
+                                Your Medicine Get Ready Pay Now
+                              </option>
+                            )}
+                        </select>
                       </div>
                     </div>
 
-                    <div className="prescription_label">
-                      <label>Total Saving</label>
-                      <div className="prescription_input">
-                      <input
-                        type="number"
-                        onChange={(e) => setTotalSaving(e.target.value)}
-                        placeholder="Total Saving"
-                      />
-                      </div>
-                    </div>
-
-                    <div className="prescription_label">
-                      <label>Shipping Fee</label>
-                      <div className="prescription_input">
-                      <input
-                        type="number"
-                        onChange={(e) => setShippingFee(e.target.value)}
-                        placeholder="Shipping Fee"
-                      />
-                      </div>
-                    </div>
-
-                    <div className="prescription_label">
-                      <label>Amount To Be Paid</label>
-                      <div className="prescription_input">
-                      <input
-                        type="number"
-                        onChange={(e) => setAmountToBePaid(e.target.value)}
-                        placeholder="Amount To Be Paid"
-                      />
-                      </div>
-                    </div>
-                  </div>
-
-                  <button
-                    id="prescriptionBtn"
-                    type="submit"
-                    disabled={
-                      loading ? true : false || status === "" ? true : false
-                    }
-                  >
-                    Process
-                  </button>
-                </form>
-                
-              </div>
-
-              <div>
-                <div className="prescriptionConfirmCartItems">
-                  <h1>Prescription Images </h1>
-                  <div className="prescriptionConfirmCartItemsContainer">
-                    {prescription.images &&
-                      prescription.images.map((item) => (
-                        <div key={item._id}>
-                          <img src={item.url} alt="prescription" />
+                    <div
+                      className="billForm"
+                      style={{
+                        display:
+                          prescription.status === "Your Medicine Getting Ready"
+                            ? "block"
+                            : "none",
+                      }}
+                    >
+                      <div className="prescription_label">
+                        <label>Total Price </label>
+                        <div className="prescription_input">
+                          <input
+                            type="number"
+                            onChange={(e) => setTotalPrice(e.target.value)}
+                            placeholder="Total Price"
+                          />
                         </div>
-                      ))}
+                      </div>
+
+                      <div className="prescription_label">
+                        <label>Total Saving</label>
+                        <div className="prescription_input">
+                          <input
+                            type="number"
+                            onChange={(e) => setTotalSaving(e.target.value)}
+                            placeholder="Total Saving"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="prescription_label">
+                        <label>Shipping Fee</label>
+                        <div className="prescription_input">
+                          <input
+                            type="number"
+                            onChange={(e) => setShippingFee(e.target.value)}
+                            placeholder="Shipping Fee"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="prescription_label">
+                        <label>Amount To Be Paid</label>
+                        <div className="prescription_input">
+                          <input
+                            type="number"
+                            onChange={(e) => setAmountToBePaid(e.target.value)}
+                            placeholder="Amount To Be Paid"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <button
+                      id="prescriptionBtn"
+                      type="submit"
+                      disabled={
+                        loading ? true : false || status === "" ? true : false
+                      }
+                    >
+                      Process
+                    </button>
+                  </form>
+                </div>
+
+                <div>
+                  <div className="prescriptionConfirmCartItems">
+                    <h1>Prescription Images </h1>
+                    <div className="prescriptionConfirmCartItemsContainer">
+                      {prescription.images &&
+                        prescription.images.map((item) => (
+                          <div key={item._id}>
+                            <img src={item.url} alt="prescription" />
+                          </div>
+                        ))}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          )}
-        </div>
-      </div>
+          </div>
+        </>
+      )}
     </Fragment>
   );
 };

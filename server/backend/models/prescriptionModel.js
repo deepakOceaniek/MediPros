@@ -11,6 +11,10 @@ const prescriptionSchema = mongoose.Schema(
       ref: "User",
       required: true,
     },
+    prescriptionFor: {
+      type: String,
+      required: true,
+    },
 
     images: [
       {

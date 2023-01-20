@@ -165,15 +165,14 @@ const PrescriptionList = () => {
 
   return (
     <Fragment>
-      <MetaData title={`ALL PRESCRIPTION - Admin`} />
-
-      <div className="dashboard">
-        <SideBar />
-        <div className="productListContainer">
-          {loading ? (
-            <Loader />
-          ) : (
-            <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <div className="dashboard">
+            <MetaData title={`ALL PRESCRIPTION - Admin`} />
+            <SideBar />
+            <div className="productListContainer">
               <h1 id="productListHeading">ALL PRESCRIPTION</h1>
               {prescriptions && prescriptions.length > 0 ? (
                 <DataGrid
@@ -188,10 +187,10 @@ const PrescriptionList = () => {
               ) : (
                 <NotFoundProduct />
               )}
-            </>
-          )}
-        </div>
-      </div>
+            </div>
+          </div>
+        </>
+      )}
     </Fragment>
   );
 };

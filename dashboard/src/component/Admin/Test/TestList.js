@@ -168,15 +168,14 @@ const TestList = () => {
 
   return (
     <Fragment>
-      <MetaData title={`ALL TEST - Admin`} />
-
-      <div className="dashboard">
-        <SideBar />
-        <div className="productListContainer">
-          {loading ? (
-            <Loader />
-          ) : (
-            <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <div className="dashboard">
+            <MetaData title={`ALL TEST - Admin`} />
+            <SideBar />
+            <div className="productListContainer">
               <h1 id="productListHeading">ALL Test</h1>
               {tests && tests.length > 0 ? (
                 <DataGrid
@@ -191,10 +190,10 @@ const TestList = () => {
               ) : (
                 <NotFoundProduct />
               )}
-            </>
-          )}
-        </div>
-      </div>
+            </div>
+          </div>
+        </>
+      )}
     </Fragment>
   );
 };

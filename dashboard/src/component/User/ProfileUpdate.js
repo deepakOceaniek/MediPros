@@ -171,6 +171,7 @@ const ProfileUpdate = () => {
                             <input
                               id="updateProfileImageAdmin"
                               type="file"
+                              className="package_add imageUpload"
                               name="profileImagePreview"
                               accept="image/*"
                               onChange={updateProfileDataChange}
@@ -194,6 +195,7 @@ const ProfileUpdate = () => {
                           <div className="updateProfileInput">
                             <input
                               type="file"
+                              className="package_add imageUpload"
                               name="certificateImagePreview"
                               accept="image/*"
                               onChange={updateCertificateDataChange}

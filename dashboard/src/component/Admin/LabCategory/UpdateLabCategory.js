@@ -103,138 +103,93 @@ const UpdateLabCategory = () => {
 
   return (
     <Fragment>
-      <MetaData title="Update Lab Category" />
-      <div className="dashboard">
-        <SideBar />
-        <div className="newProductContainer">
-          {loading ? (
-            <Loader />
-          ) : (
-            <div className="create_Category">
-              <form
-                className="add_Category_row"
-                encType="multipart/form-data"
-                onSubmit={updateProductSubmitHandler}
-              >
-                <div className="content_create_Category">
-                  <div className="Category_row">
-                    <h1>Update Lab Category</h1>
-                  </div>
-                  <div className="Category_row">
-                    <div className="input_Category">
-                      <div className="update_lab_category_label">
-                        <label>Category Name :</label>
-                        <input
-                          type="text"
-                          placeholder="Category Name"
-                          required
-                          className="category_input"
-                          value={categoryName}
-                          onChange={(e) => setCategoryName(e.target.value)}
-                        />
-                      </div>
+
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <div className="dashboard">
+            <MetaData title="Update Lab Category" />
+            <SideBar />
+            <div className="newProductContainer">
+              <div className="create_Category">
+                <form
+                  className="add_Category_row"
+                  encType="multipart/form-data"
+                  onSubmit={updateProductSubmitHandler}
+                >
+                  <div className="content_create_Category">
+                    <div className="Category_row">
+                      <h1>Update Lab Category</h1>
+
                     </div>
-                    <div className="input_Category_upload">
+                    <div className="Category_row">
                       <div className="input_Category">
                         <div className="update_lab_category_label">
-                          <label>Category Image :</label>
+
+                          <label>Category Name :</label>
                           <input
-                            accept="image/png image/jpeg"
-                            className="Category_add_image"
-                            type="file"
-                            name="categoryImage"
-                            onChange={updateProductImagesChange}
-                            placeholder=" Product Image Upload"
+                            type="text"
+                            placeholder="Category Name"
+                            required
+                            className="category_input"
+                            value={categoryName}
+                            onChange={(e) => setCategoryName(e.target.value)}
+
                           />
                         </div>
-                        <div id="createProductFormImage">
-                          {oldImages &&
-                            oldImages.map((image, index) => (
+                      </div>
+                      <div className="input_Category_upload">
+                        <div className="input_Category">
+                          <div className="update_lab_category_label">
+                            <label>Category Image :</label>
+                            <input
+                              accept="image/png image/jpeg"
+                              className="Category_add_image"
+                              type="file"
+                              name="categoryImage"
+                              onChange={updateProductImagesChange}
+                              placeholder=" Product Image Upload"
+                            />
+                          </div>
+                          <div id="createProductFormImage">
+                            {oldImages &&
+                              oldImages.map((image, index) => (
+                                <img
+                                  key={index}
+                                  src={image.url}
+                                  alt="Old Product Preview"
+                                />
+                              ))}
+                            {imagesPreview.map((image, index) => (
                               <img
                                 key={index}
-                                src={image.url}
-                                alt="Old Product Preview"
+                                src={image}
+                                alt="Product Preview"
                               />
                             ))}
-                          {imagesPreview.map((image, index) => (
-                            <img
-                              key={index}
-                              src={image}
-                              alt="Product Preview"
-                            />
-                          ))}
+                          </div>
                         </div>
-
-                        {/* <div id="createProductFormImage">
-                       
-                      </div> */}
                       </div>
                     </div>
+                    <div className="button_Category">
+                      <button
+                        id="createProductBtn"
+                        type="submit"
+                        disabled={loading ? true : false}
+                      >
+                        Update Lab Category
+                      </button>
+                    </div>
                   </div>
-                  <div className="button_Category">
-                    <button
-                      id="createProductBtn"
-                      type="submit"
-                      disabled={loading ? true : false}
-                    >
-                      Update Lab Category
-                    </button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          )}
 
-          {/* <form
-            className="createProductForm"
-            encType="multipart/form-data"
-            onSubmit={updateProductSubmitHandler}
-          >
-            <h1>Update lab categroy</h1>
+                </form>
+              </div>
 
-            <div>
-              <SpellcheckIcon />
-              <input
-                type="text"
-                placeholder="Lab Category Name"
-                required
-                value={categoryName}
-                onChange={(e) => setCategoryName(e.target.value)}
-              />
             </div>
-            <div id="createProductFormFile">
-              <input
-                type="file"
-                name="avatar"
-                accept="image/*"
-                onChange={updateProductImagesChange}
-                multiple
-              />
-            </div>
-
-            <div id="createProductFormImage">
-              {oldImages &&
-                oldImages.map((image, index) => (
-                  <img key={index} src={image.url} alt="Old Product Preview" />
-                ))}
-            </div>
-
-            <div id="createProductFormImage">
-              {imagesPreview.map((image, index) => (
-                <img key={index} src={image} alt="Product Preview" />
-              ))}
-            </div>
-
-            <Button
-              id="createProductBtn"
-              type="submit"
-              disabled={loading ? true : false}
-            >
-              Update
-            </Button>
-          </form> */}
-        </div>
-      </div>
+          </div>
+        </>
+      )}
     </Fragment>
   );
 };

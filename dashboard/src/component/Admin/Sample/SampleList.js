@@ -123,15 +123,14 @@ const SampleList = () => {
 
   return (
     <Fragment>
-      <MetaData title={`ALL SAMPLES - Admin`} />
-
-      <div className="dashboard">
-        <SideBar />
-        <div className="productListContainer">
-          {loading ? (
-            <Loader />
-          ) : (
-            <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <div className="dashboard">
+            <MetaData title={`ALL SAMPLES - Admin`} />
+            <SideBar />
+            <div className="productListContainer">
               <h1 id="productListHeading">ALL SAMPLES</h1>
               {samples && samples.length > 0 ? (
                 <DataGrid
@@ -146,10 +145,10 @@ const SampleList = () => {
               ) : (
                 <NotFoundProduct />
               )}
-            </>
-          )}
-        </div>
-      </div>
+            </div>
+          </div>
+        </>
+      )}
     </Fragment>
   );
 };

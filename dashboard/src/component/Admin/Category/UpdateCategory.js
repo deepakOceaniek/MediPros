@@ -10,6 +10,7 @@ import MetaData from "../../layout/MetaData";
 import SideBar from "../Sidebar";
 import { UPDATE_PRODUCT_RESET } from "../../../constants/productConstants";
 import { useParams, useNavigate } from "react-router-dom";
+import Loader from "../../layout/Loader/Loader";
 
 const UpdateCategory = () => {
   const dispatch = useDispatch();
@@ -89,64 +90,71 @@ const UpdateCategory = () => {
 
   return (
     <Fragment>
-      <MetaData title="Update Category" />
-      <div className="dashboard">
-        <SideBar />
-        <div className="newProductContainer">
-          <div className="create_Category">
-            <form
-              className="add_Category_row"
-              encType="multipart/form-data"
-              onSubmit={updateProductSubmitHandler}
-            >
-              <div className="content_create_Category">
-                <div className="Category_row_category">
-                  <h1>Update Category</h1>
-                  <div className="Category_row_category">
-                    <div className="input_Category">
-                      <div className="category_label">
-                        <label>Category Name</label>
-                        <input
-                          type="text"
-                          placeholder="Category Name"
-                          required
-                          value={categoryName}
-                          onChange={(e) => setCategoryName(e.target.value)}
-                        />
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          {" "}
+          <div className="dashboard">
+            <MetaData title="Update Category" />
+            <SideBar />
+            <div className="newProductContainer">
+              <div className="create_Category">
+                <form
+                  className="add_Category_row"
+                  encType="multipart/form-data"
+                  onSubmit={updateProductSubmitHandler}
+                >
+                  <div className="content_create_Category">
+                    <div className="Category_row_category">
+                      <h1>Update Category</h1>
+                      <div className="Category_row_category">
+                        <div className="input_Category">
+                          <div className="category_label">
+                            <label>Category Name</label>
+                            <input
+                              type="text"
+                              placeholder="Category Name"
+                              required
+                              value={categoryName}
+                              onChange={(e) => setCategoryName(e.target.value)}
+                            />
+                          </div>
+                        </div>
+
+                        <div className="input_Category_upload">
+                          <div className="category_label">
+                            <label>Category Image</label>
+                            <input
+                              type="file"
+                              name="categoryImage"
+                              accept="image/jpg, image/jpeg"
+                              disabled={loading ? true : false}
+                              onChange={updateProductImagesChange}
+                            />
+                          </div>
+                          <div className="categoryDiv">
+                            <img src={categoryPreview} alt="" />
+                          </div>
+                        </div>
                       </div>
                     </div>
-
-                    <div className="input_Category_upload">
-                      <div className="category_label">
-                        <label>Category Image</label>
-                        <input
-                          type="file"
-                          name="categoryImage"
-                          accept="image/jpg, image/jpeg"
-                          disabled={loading ? true : false}
-                          onChange={updateProductImagesChange}
-                        />
-                      </div>
-                      <div className="categoryDiv">
-                        <img src={categoryPreview} alt="" />
-                      </div>
+                    <div className="button_Category_create">
+                      <button
+                        id="category_Button"
+                        type="submit"
+                        disabled={loading ? true : false}
+                      >
+                        Update
+                      </button>
                     </div>
                   </div>
-                </div>
-                <div className="button_Category_create">
-                  <button
-                    id="category_Button"
-                    type="submit"
-                    disabled={loading ? true : false}
-                  >
-                    Update
-                  </button>
-                </div>
+                </form>
               </div>
-            </form>
+            </div>
           </div>
-        </div>
-      </div>
+        </>
+      )}
     </Fragment>
   );
 };

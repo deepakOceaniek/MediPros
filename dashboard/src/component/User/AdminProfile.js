@@ -27,64 +27,64 @@ const Profile = () => {
         <Loader />
       ) : (
         <>
-          <MetaData title={` ${user.name}'s Profile`} />
           <div className="profileContainer">
+            <MetaData title={` ${user.name}'s Profile`} />
             <Sidebar />
-              <div className="row-profile">
-                <div className="profileTitle">
-                  <p className="profile_title_text">Pharmacy Profile</p>
-                </div>
-                <div className="innerRow">
-                  <div className="content">
-                    <div className="textPart">
-                      {" "}
-                      <label>User Name</label>
-                      <p>{user.name} </p>{" "}
-                    </div>
-                    <div className="textPart">
-                      {" "}
-                      <label>Contact</label>
-                      <p>{user.contact}</p>{" "}
-                    </div>
-                    <div className="textPart">
-                      {" "}
-                      <label>Address</label>
-                      <p>{user.address}</p>{" "}
-                    </div>
+            <div className="row-profile">
+              <div className="profileTitle">
+                <p className="profile_title_text">Pharmacy Profile</p>
+              </div>
+              <div className="innerRow">
+                <div className="content">
+                  <div className="textPart">
+                    {" "}
+                    <label>User Name</label>
+                    <p>{user.name} </p>{" "}
                   </div>
-                  <div className="imgdiv">
-                    <img src={user.certificateImage.url} alt="certificate" />
+                  <div className="textPart">
+                    {" "}
+                    <label>Contact</label>
+                    <p>{user.contact}</p>{" "}
+                  </div>
+                  <div className="textPart">
+                    {" "}
+                    <label>Address</label>
+                    <p>{user.address}</p>{" "}
                   </div>
                 </div>
-                <div className="innerRow">
-                  <div className="imgdiv">
-                    <img src={user.profileImage.url} alt="profile" />
-                  </div>
-                  <div className="content">
-                    <div className="textPart">
-                      {" "}
-                      <label>Category</label>
-                      <p>{user.category}</p>{" "}
-                    </div>
-                    <div className="textPart">
-                      {" "}
-                      <label>Status</label>
-                      <p>{user.status}</p>{" "}
-                    </div>
-                    <div className="textPart">
-                      {" "}
-                      <label>Timing</label>
-                      <p>Opening Time : {user.fromTime} </p>{" "}
-                      <p>Closing &nbsp; Time : {user.toTime}</p>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <span className="edit_btn">
-                    <Link to="/admin/me/update">Edit Profile</Link>
-                  </span>
+                <div className="imgdiv">
+                  <img src={user.certificateImage.url} alt="certificate" />
                 </div>
               </div>
+              <div className="innerRow">
+                <div className="imgdiv">
+                  <img src={user.profileImage.url} alt="profile" />
+                </div>
+                <div className="content">
+                  <div className="textPart">
+                    {" "}
+                    <label>Category</label>
+                    <p>{user.category}</p>{" "}
+                  </div>
+                  <div className="textPart">
+                    {" "}
+                    <label>Status</label>
+                    <p>{user.status}</p>{" "}
+                  </div>
+                  <div className="textPart">
+                    {" "}
+                    <label>Timing</label>
+                    <p>Opening Time : {user.fromTime} </p>{" "}
+                    <p>Closing &nbsp; Time : {user.toTime}</p>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <span className="edit_btn">
+                  <Link to="/admin/me/update">Edit Profile</Link>
+                </span>
+              </div>
+            </div>
           </div>
         </>
       )}
