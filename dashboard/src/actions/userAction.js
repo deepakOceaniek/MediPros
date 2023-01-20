@@ -31,14 +31,14 @@ import {
   CLEAR_ERRORS,
 } from "../constants/userConstants";
 import axios from "axios";
-
+import baseURL from "./baseURL";
 //Login
 export const login = (contact) => async (dispatch) => {
   try {
     dispatch({ type: LOGIN_REQUEST });
     // const config = { headers: { "Content-Type": "application/json" } };
 
-    const { data } = await axios.get(
+    const { data } = await baseURL.get(
       `/api/v1/login?contact=${contact}&channel=sms`
     );
     console.log(`loginData :${data.message}`);
@@ -64,7 +64,7 @@ export const verify = (code, contactNum, formData) => async (dispatch) => {
     const config = { headers: { "Content-Type": "multipart/form-data" } };
 
     // console.log(code, contact, formData);
-    const { data } = await axios.post(`api/v1/verify`, formData, config);
+    const { data } = await baseURL.post(`api/v1/verify`, formData, config);
     dispatch({ type: VERIFY_SUCCESS, payload: data });
     console.log(`VerifyData :${data.user}`);
   } catch (error) {
@@ -80,7 +80,7 @@ export const registerAdmin = (userData) => async (dispatch) => {
     dispatch({ type: REGISTER_ADMIN_REQUEST });
     // const config = { headers: { "Content-Type": "multipart/form-data" } };
 
-    const { data } = await axios.get(
+    const { data } = await baseURL.get(
       `/api/v1/admin/register?contact=${contact}&channel=sms`
       // userData,
       // config
@@ -100,7 +100,7 @@ export const loadadmin = () => async (dispatch) => {
   try {
     dispatch({ type: LOAD_ADMIN_REQUEST });
 
-    const { data } = await axios.get(`/api/v1/admin/me`);
+    const { data } = await baseURL.get(`/api/v1/admin/me`);
     dispatch({ type: LOAD_ADMIN_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: LOAD_ADMIN_FAIL, payload: error.response.data.message });
@@ -110,7 +110,7 @@ export const loadadmin = () => async (dispatch) => {
 //Logout User
 export const logout = () => async (dispatch) => {
   try {
-    await axios.get(`/api/v1/logout`);
+    await baseURL.get(`/api/v1/logout`);
     dispatch({ type: LOGOUT_SUCCESS });
   } catch (error) {
     dispatch({ type: LOGOUT_FAIL, payload: error.response.data.message });
@@ -122,7 +122,7 @@ export const updateProfile = (userData) => async (dispatch) => {
   try {
     dispatch({ type: UPDATE_ADMIN_PROFILE_REQUEST });
     const config = { headers: { "Content-Type": "multipart/form-data" } };
-    const { data } = await axios.put(
+    const { data } = await baseURL.put(
       `/api/v1/admin/me/update`,
       userData,
       config
@@ -141,7 +141,7 @@ export const updateProfile = (userData) => async (dispatch) => {
 export const getAllUsers = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_USERS_REQUEST });
-    const { data } = await axios.get(`/api/v1/admin/users`);
+    const { data } = await baseURL.get(`/api/v1/admin/users`);
 
     dispatch({ type: ALL_USERS_SUCCESS, payload: data.users });
   } catch (error) {
@@ -153,7 +153,7 @@ export const getAllUsers = () => async (dispatch) => {
 export const getUserDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: USER_DETAILS_REQUEST });
-    const { data } = await axios.get(`/api/v1/admin/user/${id}`);
+    const { data } = await baseURL.get(`/api/v1/admin/user/${id}`);
 
     dispatch({ type: USER_DETAILS_SUCCESS, payload: data.user });
   } catch (error) {
@@ -168,7 +168,7 @@ export const updateUser = (id, userData) => async (dispatch) => {
 
     const config = { headers: { "Content-Type": "application/json" } };
 
-    const { data } = await axios.put(
+    const { data } = await baseURL.put(
       `/api/v1/admin/user/${id}`,
       userData,
       config
@@ -188,7 +188,7 @@ export const deleteUser = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_USER_REQUEST });
 
-    const { data } = await axios.delete(`/api/v1/admin/user/${id}`);
+    const { data } = await baseURL.delete(`/api/v1/admin/user/${id}`);
 
     dispatch({ type: DELETE_USER_SUCCESS, payload: data });
   } catch (error) {

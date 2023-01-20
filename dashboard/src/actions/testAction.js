@@ -7,15 +7,12 @@ import {
   NEW_TEST_REQUEST,
   NEW_TEST_SUCCESS,
   NEW_TEST_FAIL,
-  NEW_TEST_RESET,
   UPDATE_TEST_REQUEST,
   UPDATE_TEST_SUCCESS,
   UPDATE_TEST_FAIL,
-  UPDATE_TEST_RESET,
   DELETE_TEST_REQUEST,
   DELETE_TEST_SUCCESS,
   DELETE_TEST_FAIL,
-  DELETE_TEST_RESET,
   TEST_DETAILS_REQUEST,
   TEST_DETAILS_SUCCESS,
   TEST_DETAILS_FAIL,
@@ -25,15 +22,12 @@ import {
   NEW_PACKAGE_REQUEST,
   NEW_PACKAGE_SUCCESS,
   NEW_PACKAGE_FAIL,
-  NEW_PACKAGE_RESET,
   UPDATE_PACKAGE_REQUEST,
   UPDATE_PACKAGE_SUCCESS,
   UPDATE_PACKAGE_FAIL,
-  UPDATE_PACKAGE_RESET,
   DELETE_PACKAGE_REQUEST,
   DELETE_PACKAGE_SUCCESS,
   DELETE_PACKAGE_FAIL,
-  DELETE_PACKAGE_RESET,
   PACKAGE_DETAILS_REQUEST,
   PACKAGE_DETAILS_SUCCESS,
   PACKAGE_DETAILS_FAIL,
@@ -43,22 +37,18 @@ import {
   DELETE_PACKAGE_REVIEW_REQUEST,
   DELETE_PACKAGE_REVIEW_SUCCESS,
   DELETE_PACKAGE_REVIEW_FAIL,
-  DELETE_PACKAGE_REVIEW_RESET,
   ADMIN_LABCATEGORY_REQUEST,
   ADMIN_LABCATEGORY_SUCCESS,
   ADMIN_LABCATEGORY_FAIL,
   NEW_LABCATEGORY_REQUEST,
   NEW_LABCATEGORY_SUCCESS,
   NEW_LABCATEGORY_FAIL,
-  NEW_LABCATEGORY_RESET,
   UPDATE_LABCATEGORY_REQUEST,
   UPDATE_LABCATEGORY_SUCCESS,
   UPDATE_LABCATEGORY_FAIL,
-  UPDATE_LABCATEGORY_RESET,
   DELETE_LABCATEGORY_REQUEST,
   DELETE_LABCATEGORY_SUCCESS,
   DELETE_LABCATEGORY_FAIL,
-  DELETE_LABCATEGORY_RESET,
   LABCATEGORY_DETAILS_REQUEST,
   LABCATEGORY_DETAILS_SUCCESS,
   LABCATEGORY_DETAILS_FAIL,
@@ -68,27 +58,25 @@ import {
   NEW_SAMPLE_REQUEST,
   NEW_SAMPLE_SUCCESS,
   NEW_SAMPLE_FAIL,
-  NEW_SAMPLE_RESET,
   UPDATE_SAMPLE_REQUEST,
   UPDATE_SAMPLE_SUCCESS,
   UPDATE_SAMPLE_FAIL,
-  UPDATE_SAMPLE_RESET,
   DELETE_SAMPLE_REQUEST,
   DELETE_SAMPLE_SUCCESS,
   DELETE_SAMPLE_FAIL,
-  DELETE_SAMPLE_RESET,
   SAMPLE_DETAILS_REQUEST,
   SAMPLE_DETAILS_SUCCESS,
   SAMPLE_DETAILS_FAIL,
   CLEAR_ERRORS,
 } from "../constants/testConstants";
+import baseURL from "./baseURL";
 
 // Get All Test For Admin
 export const getAdminTest = () => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_TEST_REQUEST });
 
-    const { data } = await axios.get("/api/v1/admin/tests");
+    const { data } = await baseURL.get("/api/v1/admin/tests");
 
     dispatch({
       type: ADMIN_TEST_SUCCESS,
@@ -111,7 +99,7 @@ export const createTest = (testData) => async (dispatch) => {
       headers: { "Content-Type": "application/json" },
     };
 
-    const { data } = await axios.post(
+    const { data } = await baseURL.post(
       `/api/v1/admin/test/new`,
       testData,
       config
@@ -138,7 +126,7 @@ export const updateTest = (id, testData) => async (dispatch) => {
       headers: { "Content-Type": "application/json" },
     };
 
-    const { data } = await axios.put(
+    const { data } = await baseURL.put(
       `/api/v1/admin/test/${id}`,
       testData,
       config
@@ -161,7 +149,7 @@ export const deleteTest = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_TEST_REQUEST });
 
-    const { data } = await axios.delete(`/api/v1/admin/test/${id}`);
+    const { data } = await baseURL.delete(`/api/v1/admin/test/${id}`);
 
     dispatch({
       type: DELETE_TEST_SUCCESS,
@@ -181,7 +169,7 @@ export const getTestDetails = (id) => async (dispatch) => {
     dispatch({
       type: TEST_DETAILS_REQUEST,
     });
-    const { data } = await axios.get(`/api/v1/admin/test/${id}`);
+    const { data } = await baseURL.get(`/api/v1/admin/test/${id}`);
     console.log(data);
     dispatch({
       type: TEST_DETAILS_SUCCESS,
@@ -200,7 +188,7 @@ export const getAdminPackage = () => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_PACKAGE_REQUEST });
 
-    const { data } = await axios.get("/api/v1/admin/package");
+    const { data } = await baseURL.get("/api/v1/admin/package");
 
     dispatch({
       type: ADMIN_PACKAGE_SUCCESS,
@@ -222,7 +210,7 @@ export const createPackage = (packageData) => async (dispatch) => {
     const config = {
       headers: { "Content-Type": "application/json" },
     };
-    const { data } = await axios.post(
+    const { data } = await baseURL.post(
       `/api/v1/admin/package/new`,
       packageData,
       config
@@ -249,7 +237,7 @@ export const updatePackage = (id, packageData) => async (dispatch) => {
       headers: { "Content-Type": "application/json" },
     };
 
-    const { data } = await axios.put(
+    const { data } = await baseURL.put(
       `/api/v1/admin/package/${id}`,
       packageData,
       config
@@ -272,7 +260,7 @@ export const deletePackage = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_PACKAGE_REQUEST });
 
-    const { data } = await axios.delete(`/api/v1/admin/package/${id}`);
+    const { data } = await baseURL.delete(`/api/v1/admin/package/${id}`);
 
     dispatch({
       type: DELETE_PACKAGE_SUCCESS,
@@ -292,7 +280,7 @@ export const getPackageDetails = (id) => async (dispatch) => {
     dispatch({
       type: PACKAGE_DETAILS_REQUEST,
     });
-    const { data } = await axios.get(`/api/v1/admin/package/${id}`);
+    const { data } = await baseURL.get(`/api/v1/admin/package/${id}`);
     console.log(data);
     dispatch({
       type: PACKAGE_DETAILS_SUCCESS,
@@ -311,7 +299,7 @@ export const getAllPackageReviews = (id) => async (dispatch) => {
   try {
     dispatch({ type: ALL_PACKAGE_REVIEW_REQUEST });
 
-    const { data } = await axios.get(`/api/v1/packagereview?id=${id}`);
+    const { data } = await baseURL.get(`/api/v1/packagereview?id=${id}`);
 
     dispatch({
       type: ALL_PACKAGE_REVIEW_SUCCESS,
@@ -331,7 +319,7 @@ export const deletePackageReviews =
     try {
       dispatch({ type: DELETE_PACKAGE_REVIEW_REQUEST });
 
-      const { data } = await axios.delete(
+      const { data } = await baseURL.delete(
         `/api/v1/packagereviews?id=${reviewId}&packageId =${packageId}`
       );
 
@@ -352,7 +340,7 @@ export const getAdminLabCategory = () => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_LABCATEGORY_REQUEST });
 
-    const { data } = await axios.get("/api/v1/admin/labcategory");
+    const { data } = await baseURL.get("/api/v1/admin/labcategory");
     dispatch({
       type: ADMIN_LABCATEGORY_SUCCESS,
       payload: data.labCategories,
@@ -374,7 +362,7 @@ export const createLabCategory = (categoryData) => async (dispatch) => {
     const config = {
       headers: { "Content-Type": "application/json" },
     };
-    const { data } = await axios.post(
+    const { data } = await baseURL.post(
       `/api/v1/admin/labcategory/new`,
       categoryData,
       config
@@ -402,7 +390,7 @@ export const updateLabCategory = (id, categoryData) => async (dispatch) => {
       headers: { "Content-Type": "application/json" },
     };
 
-    const { data } = await axios.put(
+    const { data } = await baseURL.put(
       `/api/v1/admin/labcategory/${id}`,
       categoryData,
       config
@@ -424,7 +412,7 @@ export const updateLabCategory = (id, categoryData) => async (dispatch) => {
 export const deleteLabCategory = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_LABCATEGORY_REQUEST });
-    const { data } = await axios.delete(`/api/v1/admin/labcategory/${id}`);
+    const { data } = await baseURL.delete(`/api/v1/admin/labcategory/${id}`);
 
     dispatch({
       type: DELETE_LABCATEGORY_SUCCESS,
@@ -446,7 +434,7 @@ export const getLabCategoryDetails = (id) => async (dispatch) => {
     });
     console.log(id);
 
-    const { data } = await axios.get(`/api/v1/admin/labcategory/${id}`);
+    const { data } = await baseURL.get(`/api/v1/admin/labcategory/${id}`);
     console.log(data);
     dispatch({
       type: LABCATEGORY_DETAILS_SUCCESS,
@@ -465,7 +453,7 @@ export const getAdminSample = () => async (dispatch) => {
   try {
     dispatch({ type: SAMPLE_REQUEST });
 
-    const { data } = await axios.get("/api/v1/admin/sample");
+    const { data } = await baseURL.get("/api/v1/admin/sample");
     dispatch({
       type: SAMPLE_SUCCESS,
       payload: data.samples,
@@ -487,7 +475,7 @@ export const createSample = (testData) => async (dispatch) => {
       headers: { "Content-Type": "application/json" },
     };
 
-    const { data } = await axios.post(
+    const { data } = await baseURL.post(
       `/api/v1/admin/sample/new`,
       testData,
       config
@@ -514,7 +502,7 @@ export const updateSample = (id, testData) => async (dispatch) => {
       headers: { "Content-Type": "application/json" },
     };
 
-    const { data } = await axios.put(
+    const { data } = await baseURL.put(
       `/api/v1/admin/sample/${id}`,
       testData,
       config
@@ -537,7 +525,7 @@ export const deleteSample = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_SAMPLE_REQUEST });
 
-    const { data } = await axios.delete(`/api/v1/admin/sample/${id}`);
+    const { data } = await baseURL.delete(`/api/v1/admin/sample/${id}`);
 
     dispatch({
       type: DELETE_SAMPLE_SUCCESS,
@@ -557,7 +545,7 @@ export const getSampleDetails = (id) => async (dispatch) => {
     dispatch({
       type: SAMPLE_DETAILS_REQUEST,
     });
-    const { data } = await axios.get(`/api/v1/admin/sample/${id}`);
+    const { data } = await baseURL.get(`/api/v1/admin/sample/${id}`);
     console.log(data);
     dispatch({
       type: SAMPLE_DETAILS_SUCCESS,

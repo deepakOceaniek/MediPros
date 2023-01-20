@@ -57,12 +57,6 @@ const NewTest = () => {
     }
   }, [dispatch, alert, error, Navigate, success]);
 
-  // const data = categories &&  categories.map((category)=> console.log(category.categoryName))
-
-  // console.log(Object.values(categories))
-  // console.log(categories)
-  // console.log(data)
-
   const createProductSubmitHandler = (e) => {
     e.preventDefault();
 
@@ -224,7 +218,6 @@ const NewTest = () => {
                             />
                           ))}
                         </div>
-
                       </div>
                     </div>
                   </div>

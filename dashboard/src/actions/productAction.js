@@ -69,13 +69,14 @@ import {
   PRESCRIPTION_DETAILS_FAIL,
   CLEAR_ERRORS,
 } from "../constants/productConstants";
+import baseURL from "./baseURL";
 
 // Get All Products For Admin
 export const getAdminProduct = () => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_PRODUCT_REQUEST });
 
-    const { data } = await axios.get("/api/v1/admin/products");
+    const { data } = await baseURL.get("/api/v1/admin/products");
 
     dispatch({
       type: ADMIN_PRODUCT_SUCCESS,
@@ -98,7 +99,7 @@ export const createProduct = (productData) => async (dispatch) => {
       headers: { "Content-Type": "application/json" },
     };
 
-    const { data } = await axios.post(
+    const { data } = await baseURL.post(
       `/api/v1/admin/product/new`,
       productData,
       config
@@ -125,7 +126,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
       headers: { "Content-Type": "application/json" },
     };
 
-    const { data } = await axios.put(
+    const { data } = await baseURL.put(
       `/api/v1/admin/product/${id}`,
       productData,
       config
@@ -148,7 +149,7 @@ export const deleteProduct = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_PRODUCT_REQUEST });
 
-    const { data } = await axios.delete(`/api/v1/admin/product/${id}`);
+    const { data } = await baseURL.delete(`/api/v1/admin/product/${id}`);
 
     dispatch({
       type: DELETE_PRODUCT_SUCCESS,
@@ -168,7 +169,7 @@ export const getProductDetails = (id) => async (dispatch) => {
     dispatch({
       type: PRODUCT_DETAILS_REQUEST,
     });
-    const { data } = await axios.get(`/api/v1/admin/product/${id}`);
+    const { data } = await baseURL.get(`/api/v1/admin/product/${id}`);
     console.log(data);
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,
@@ -187,7 +188,7 @@ export const getAllReviews = (id) => async (dispatch) => {
   try {
     dispatch({ type: ALL_REVIEW_REQUEST });
 
-    const { data } = await axios.get(`/api/v1/reviews?id=${id}`);
+    const { data } = await baseURL.get(`/api/v1/reviews?id=${id}`);
 
     dispatch({
       type: ALL_REVIEW_SUCCESS,
@@ -206,7 +207,7 @@ export const deleteReviews = (reviewId, productId) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_REVIEW_REQUEST });
 
-    const { data } = await axios.delete(
+    const { data } = await baseURL.delete(
       `/api/v1/reviews?id=${reviewId}&productId=${productId}`
     );
 
@@ -227,7 +228,7 @@ export const getAdminCategory = () => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_CATEGORY_REQUEST });
 
-    const { data } = await axios.get("/api/v1/admin/allcategory");
+    const { data } = await baseURL.get("/api/v1/admin/allcategory");
     dispatch({
       type: ADMIN_CATEGORY_SUCCESS,
       payload: data.categories,
@@ -249,7 +250,7 @@ export const createCategory = (categoryData) => async (dispatch) => {
     const config = {
       headers: { "Content-Type": "application/json" },
     };
-    const { data } = await axios.post(
+    const { data } = await baseURL.post(
       `/api/v1/admin/category/new`,
       categoryData,
       config
@@ -277,7 +278,7 @@ export const updateCategory = (id, categoryData) => async (dispatch) => {
       headers: { "Content-Type": "application/json" },
     };
 
-    const { data } = await axios.put(
+    const { data } = await baseURL.put(
       `/api/v1/admin/category/${id}`,
       categoryData,
       config
@@ -299,7 +300,7 @@ export const updateCategory = (id, categoryData) => async (dispatch) => {
 export const deleteCategory = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_CATEGORY_REQUEST });
-    const { data } = await axios.delete(`/api/v1/admin/category/${id}`);
+    const { data } = await baseURL.delete(`/api/v1/admin/category/${id}`);
 
     dispatch({
       type: DELETE_CATEGORY_SUCCESS,
@@ -321,7 +322,7 @@ export const getCategoryDetails = (id) => async (dispatch) => {
     });
     console.log(id);
 
-    const { data } = await axios.get(`/api/v1/admin/category/${id}`);
+    const { data } = await baseURL.get(`/api/v1/admin/category/${id}`);
     console.log(data);
     dispatch({
       type: CATEGORY_DETAILS_SUCCESS,
@@ -340,7 +341,7 @@ export const getAdminBanner = () => async (dispatch) => {
   try {
     dispatch({ type: BANNER_REQUEST });
 
-    const { data } = await axios.get("/api/v1/admin/banner");
+    const { data } = await baseURL.get("/api/v1/admin/banner");
     dispatch({
       type: BANNER_SUCCESS,
       payload: data.banners,
@@ -361,7 +362,7 @@ export const createBanner = (categoryData) => async (dispatch) => {
     const config = {
       headers: { "Content-Type": "application/json" },
     };
-    const { data } = await axios.post(
+    const { data } = await baseURL.post(
       `/api/v1/admin/banner/new`,
       categoryData,
       config
@@ -389,7 +390,7 @@ export const updateBanner = (id, productData) => async (dispatch) => {
       headers: { "Content-Type": "application/json" },
     };
 
-    const { data } = await axios.put(
+    const { data } = await baseURL.put(
       `/api/v1/admin/banner/${id}`,
       productData,
       config
@@ -412,7 +413,7 @@ export const deleteBannner = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_BANNER_REQUEST });
 
-    const { data } = await axios.delete(`/api/v1/admin/banner/${id}`);
+    const { data } = await baseURL.delete(`/api/v1/admin/banner/${id}`);
 
     dispatch({
       type: DELETE_BANNER_SUCCESS,
@@ -432,7 +433,7 @@ export const getBannerDetails = (id) => async (dispatch) => {
     dispatch({
       type: BANNER_DETAILS_REQUEST,
     });
-    const { data } = await axios.get(`/api/v1/admin/banner/${id}`);
+    const { data } = await baseURL.get(`/api/v1/admin/banner/${id}`);
     console.log(data);
     dispatch({
       type: BANNER_DETAILS_SUCCESS,
@@ -451,7 +452,7 @@ export const getAdminPrscription = () => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_PRESCRIPTION_REQUEST });
 
-    const { data } = await axios.get("/api/v1/admin/prescription");
+    const { data } = await baseURL.get("/api/v1/admin/prescription");
 
     dispatch({
       type: ADMIN_PRESCRIPTION_SUCCESS,
@@ -474,7 +475,7 @@ export const createPrescription = (productData) => async (dispatch) => {
       headers: { "Content-Type": "application/json" },
     };
 
-    const { data } = await axios.post(
+    const { data } = await baseURL.post(
       `/api/v1/admin/prescription/new`,
       productData,
       config
@@ -501,7 +502,7 @@ export const updatePrescription = (id, productData) => async (dispatch) => {
       headers: { "Content-Type": "application/json" },
     };
     console.log(productData);
-    const { data } = await axios.put(
+    const { data } = await baseURL.put(
       `/api/v1/admin/prescription/${id}`,
       productData,
       config
@@ -525,7 +526,7 @@ export const deletePrescription = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_PRESCRIPTION_REQUEST });
 
-    const { data } = await axios.delete(`/api/v1/admin/prescription/${id}`);
+    const { data } = await baseURL.delete(`/api/v1/admin/prescription/${id}`);
 
     dispatch({
       type: DELETE_PRESCRIPTION_SUCCESS,
@@ -545,7 +546,7 @@ export const getPrescriptionDetails = (id) => async (dispatch) => {
     dispatch({
       type: PRESCRIPTION_DETAILS_REQUEST,
     });
-    const { data } = await axios.get(`/api/v1/admin/prescription/${id}`);
+    const { data } = await baseURL.get(`/api/v1/admin/prescription/${id}`);
     console.log(data);
     dispatch({
       type: PRESCRIPTION_DETAILS_SUCCESS,

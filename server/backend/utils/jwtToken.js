@@ -10,8 +10,8 @@ const sendToken = (user, statusCode, res) => {
   };
   // console.log(`token ${token}`);
   // console.log(`user ${user}`);
-
-  res.status(statusCode).cookie("token", token, options).json({
+  console.log(`admiin ${token}`);
+  res.status(statusCode).cookie("jwtoken", token, options).json({
     success: true,
     user,
     token,
