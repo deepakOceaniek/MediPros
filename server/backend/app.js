@@ -28,6 +28,7 @@ const corsConfig = {
 
 app.use(cors(corsConfig));
 app.options("*", cors(corsConfig));
+
 app.use(morgan("dev"));
 app.use(express.json({ limit: "100mb" }));
 app.use(cookieParser());

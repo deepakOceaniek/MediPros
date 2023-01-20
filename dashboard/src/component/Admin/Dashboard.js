@@ -10,6 +10,7 @@ import { getAllUsers } from "../../actions/userAction.js";
 import MetaData from "../layout/MetaData";
 import Chart from "chart.js/auto";
 import Loader from "../layout/Loader/Loader.js";
+import Cookies from "js-cookie";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
