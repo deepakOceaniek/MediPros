@@ -15,13 +15,14 @@ import {
 } from "../constants/orderConstant";
 
 import axios from "axios";
+import baseURL from "./baseURL";
 
 // Get All Orders (admin)
 export const getAllOrders = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_ORDERS_REQUEST });
 
-    const { data } = await axios.get("/api/v1/admin/orders");
+    const { data } = await baseURL.get("/api/v1/admin/orders");
     console.log(data);
     dispatch({ type: ALL_ORDERS_SUCCESS, payload: data.orders });
   } catch (error) {
@@ -42,7 +43,7 @@ export const updateOrder = (id, order) => async (dispatch) => {
         "Content-Type": "application/json",
       },
     };
-    const { data } = await axios.put(
+    const { data } = await baseURL.put(
       `/api/v1/admin/order/${id}`,
       order,
       config
@@ -63,7 +64,7 @@ export const deleteOrder = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_ORDER_REQUEST });
 
-    const { data } = await axios.delete(`/api/v1/admin/order/${id}`);
+    const { data } = await baseURL.delete(`/api/v1/admin/order/${id}`);
 
     dispatch({ type: DELETE_ORDER_SUCCESS, payload: data.success });
   } catch (error) {
@@ -80,7 +81,7 @@ export const getOrderDetails = (id) => async (dispatch) => {
     dispatch({ type: ORDER_DETAILS_REQUEST });
     console.log(id);
 
-    const { data } = await axios.get(`/api/v1/admin/order/${id}`);
+    const { data } = await baseURL.get(`/api/v1/admin/order/${id}`);
     console.log(data);
     dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data.order });
   } catch (error) {
