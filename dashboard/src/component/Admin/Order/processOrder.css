@@ -136,6 +136,8 @@
 }
 .confirmCartItemsContainer > div > p > img {
   margin-left: 4em;
+  height: 6vmax;
+  width: 5vmax;
 }
 
 @media screen and (max-width: 600px) {

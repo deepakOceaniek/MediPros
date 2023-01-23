@@ -178,7 +178,7 @@ const UpdateLabCategory = () => {
                         type="submit"
                         disabled={loading ? true : false}
                       >
-                        Update Lab Category
+                        Update
                       </button>
                     </div>
                   </div>
