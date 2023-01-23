@@ -130,7 +130,7 @@ const NewlabCategory = () => {
                         type="submit"
                         disabled={loading ? true : false}
                       >
-                        Add Lab Category
+                        Add
                       </button>
                     </div>
                   </div>

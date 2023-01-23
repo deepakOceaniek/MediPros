@@ -1,7 +1,6 @@
 /* eslint-disable array-callback-return */
 import React, { Fragment, useEffect, useState } from "react";
 import "./newPackage.css";
-
 import { useSelector, useDispatch } from "react-redux";
 import {
   clearErrors,
@@ -15,6 +14,7 @@ import SideBar from "../Sidebar";
 import Loader from "../../layout/Loader/Loader";
 import { NEW_PACKAGE_RESET } from "../../../constants/testConstants";
 import { useNavigate } from "react-router-dom";
+
 
 const NewPackage = () => {
   const dispatch = useDispatch();
@@ -251,7 +251,7 @@ const NewPackage = () => {
                           <input
                             type="file"
                             name="avatar"
-                            className="package_add"
+                            className="package_add imageUpload"
                             accept="image/*"
                             onChange={createProductImagesChange}
                             multiple

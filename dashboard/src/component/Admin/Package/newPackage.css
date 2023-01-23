@@ -32,7 +32,10 @@
   margin-top: 0.1em;
   padding-left: 0.5em;
 }
-  
+
+.inside-input > div > label{
+  font-weight: 500;
+}
 .package_row > h1 {
   height: 6vh;
   width: 22vw;
@@ -114,12 +117,21 @@
   margin-top: 0.1em;
 }
 #createProductBtn {
-  width: 18vw;
-  font-size: 14px;
-  margin: 2.5em 0em 0em 0em;
+  height: 5vh;
+  width: 10vw;
+  padding: 0.2em;
+  margin-top: 2.5em;
+  border-radius: 8px;
+  text-align: center;
+  color: white;
+  background-color: #308c89;
+  font-family: "Lato";
+  font-weight: 500;
+  font-size: 16px;
 }
 #createProductBtn:hover {
-  background-color: #46ddd8;
+  background-color: #359c98;
+
 }
 .form_Label {
   margin: 1em 0em 0em 0em;

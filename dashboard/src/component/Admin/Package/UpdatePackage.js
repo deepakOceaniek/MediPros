@@ -288,12 +288,12 @@ const UpdatePackage = () => {
                             onChange={(e) => setReport(e.target.value)}
                           />
                         </div>
-                        <div>
+                        <div className="imageUpload">
                           <label>Choose Package Image </label>
                           <input
                             type="file"
                             name="avatar"
-                            className="package_add"
+                            className="package_add imageUpload"
                             accept="image/*"
                             onChange={updateProductImagesChange}
                             multiple
