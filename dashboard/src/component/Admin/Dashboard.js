@@ -44,9 +44,17 @@ const Dashboard = () => {
     dispatch(getAllUsers());
   }, [dispatch, user]);
 
+  let myOrders;
+  if (user.category === "Pharmacy") {
+    myOrders =
+      orders && orders.filter((order) => order.ordersFor === "Pharmacy");
+  } else {
+    myOrders = orders && orders.filter((order) => order.ordersFor === "Lab");
+  }
+
   let totalAmount = 0;
-  orders &&
-    orders.forEach((item) => {
+  myOrders &&
+    myOrders.forEach((item) => {
       totalAmount += item.totalPrice;
     });
 
@@ -111,7 +119,7 @@ const Dashboard = () => {
                     <p></p>
                   </Link>
                   <Link to="/admin/orders">
-                    <p>{`Orders | ${orders && orders.length}`}</p>
+                    <p>{`Orders | ${myOrders && myOrders.length}`}</p>
                   </Link>
                   <Link to="/admin/users">
                     <p>{`Users | ${users && users.length} `}</p>

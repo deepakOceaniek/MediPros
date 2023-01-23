@@ -25,11 +25,11 @@ alexarya@0123!
 
 
 TODO
-1> add package to the cart 
-2> order genrate by package + test include
-3> order created by prescription
-4> Template for report
-5> Add images to all Products and create some more product and test and package
-6> update profile backend part 
-7> Dashboard for lab
-8> differentiate between lab and pharmacy orders and prescriptions
+1> Add images to all Products and create some more product and test and package
+2> add package to the cart 
+3> order genrate by package + test include
+4> order created by prescription  //remark partialy done 
+5> update profile backend part 
+6> Dashboard for lab
+7> differentiate between lab and pharmacy orders and prescriptions //remark done
+8> Template for report

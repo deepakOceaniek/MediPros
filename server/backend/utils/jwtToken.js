@@ -6,12 +6,14 @@ const sendToken = (user, statusCode, res) => {
     expires: new Date(
       Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000
     ),
+    secure: true,
+    sameSite: "None",
     httpOnly: true,
   };
   // console.log(`token ${token}`);
   // console.log(`user ${user}`);
-
-  res.status(statusCode).cookie("token", token, options).json({
+  console.log(`admiin ${token}`);
+  res.status(statusCode).cookie("jwtoken", token, options).json({
     success: true,
     user,
     token,

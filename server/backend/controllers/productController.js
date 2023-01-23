@@ -612,7 +612,7 @@ exports.getCartItems = catchAsyncErrors(async (req, res, next) => {
     },
     {
       path: "products.productId",
-      select: "images name price discount",
+      select: "name price discount images",
     },
   ];
   let cart = await Cart.findOne({ user: userId }).populate(query);
@@ -624,8 +624,6 @@ exports.getCartItems = catchAsyncErrors(async (req, res, next) => {
     console.log(cart);
 
     for (let product of cart.products) {
-      console.log(product);
-
       product = {
         productId: product.productId._id,
         name: product.productId.name,
@@ -635,6 +633,7 @@ exports.getCartItems = catchAsyncErrors(async (req, res, next) => {
         discount: product.productId.discount,
       };
       newProducts.push(product);
+      console.log(product);
 
       totalPrice += product.price * product.quantity;
       afterDiscountPrice +=
@@ -654,7 +653,7 @@ exports.getCartItems = catchAsyncErrors(async (req, res, next) => {
     }
     cart.amountToBePaid = afterDiscountPrice + cart.shippingFee;
     cart.save();
-    console.log(cart);
+    // console.log(cart);
     res.status(200).send(cart);
   } else {
     res.status(200).json({ message: "Your Cart is Empty Add Some Product" });

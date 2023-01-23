@@ -39,8 +39,8 @@ exports.isAuthenticated = catchAsyncError(async (req, res, next) => {
 });
 
 exports.isAuthenticatedAdmin = catchAsyncError(async (req, res, next) => {
-  const { token } = req.cookies;
-  // console.log(token);
+  const token = req.cookies.jwtoken;
+  console.log(`Web Token ${token}`);
   if (!token) {
     return next(new ErrorHandler("Please Login to access this resource", 401));
   }

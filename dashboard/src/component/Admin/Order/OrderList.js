@@ -27,7 +27,9 @@ const OrderList = () => {
   const { loading, error, orders } = useSelector((state) => state.allOrders);
 
   const { error: deleteError, isDeleted } = useSelector((state) => state.order);
+  const { user } = useSelector((state) => state.user);
 
+  console.log(orders);
   const deleteOrderHandler = (id) => {
     dispatch(deleteOrder(id));
   };
@@ -135,11 +137,18 @@ const OrderList = () => {
 
   const rows = [];
 
-  orders &&
-    orders.forEach((item) => {
+  let myOrders;
+  if (user.category === "Pharmacy") {
+    myOrders =
+      orders && orders.filter((order) => order.ordersFor === "Pharmacy");
+  } else {
+    myOrders = orders && orders.filter((order) => order.ordersFor === "Lab");
+  }
+
+  myOrders &&
+    myOrders.forEach((item) => {
       rows.push({
         id: item._id,
-
         ids: `#${item._id.slice(4, 19)}`,
         itemsQty: `${item.orderItems.length} Items`,
         amount: `₹ ${parseFloat(item.amountToBePaid).toFixed(2)}`,

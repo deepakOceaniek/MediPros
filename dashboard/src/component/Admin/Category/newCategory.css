@@ -1,6 +1,5 @@
 /* -------------------Product Category CSS For add And Update------------------------- */
 
-
 .create_Category {
   display: flex;
   flex-direction: column;
@@ -35,21 +34,20 @@
   box-sizing: border-box;
   background-color: #ffffff;
 }
-.update_lab_category_label > label{
+.update_lab_category_label > label {
   font-weight: 500;
   margin-left: 1.5em;
   display: flex;
   flex-direction: column;
 }
-.update_lab_category_label > input{
+.update_lab_category_label > input {
   width: 22vw;
   height: 5vh;
-  margin: .1em 0em 1em 1.3em ;
+  margin: 0.1em 0em 1em 1.3em;
   padding-left: 0.5em;
   border-radius: 8px;
   border: 1px solid #ada7a7;
 }
-
 
 .category_label {
   display: flex;
@@ -89,19 +87,18 @@
   background-color: #359c98;
 }
 
-.categoryDiv {
+.categoryDiv > img {
   margin: 1em 0em 0em 4.5em;
-  height: 11vmax;
-  width: 14vmax;
+  height: 15vmax;
+  width: 12vmax;
 }
 /* -------------------Sample CSS For add And Update------------------------- */
-
 
 
 .Category_row > h1 {
   height: 6vh;
   width: 22vw;
-  margin-left: .8em;
+  margin-left: 0.8em;
   padding: 0.35em;
   border-radius: 5px;
   color: #ffffff;
@@ -111,7 +108,7 @@
 }
 
 .add_new_sample_label {
-  margin:0em 0em 0em 2em;
+  margin: 0em 0em 0em 2em;
   display: flex;
   flex-direction: column;
   width: 90%;
@@ -119,7 +116,7 @@
 .add_new_sample_label > label {
   font-weight: 600;
   /* font-size: 1.2em; */
-  margin-left: .3em;
+  margin-left: 0.3em;
 }
 .add_new_sample_label > input {
   width: 20vw;
@@ -129,13 +126,13 @@
   border-radius: 8px;
   border: 1px solid #ada7a7;
 }
-.input_Category > label{
+.input_Category > label {
   font-weight: 500;
   margin-left: 2em;
   display: flex;
   flex-direction: column;
 }
-.input_Category >input{
+.input_Category > input {
   width: 20vw;
   height: 5vh;
   margin: 0.1em 0em 1em 2em;
@@ -143,7 +140,6 @@
   border-radius: 8px;
   border: 1px solid #ada7a7;
 }
-
 
 #createSampleBtn {
   height: 5vh;
@@ -172,7 +168,6 @@
   font-weight: 500;
   font-size: 16px;
 }
-#create_lab_test_Btn:hover{
+#create_lab_test_Btn:hover {
   background-color: #359c98;
-
 }
