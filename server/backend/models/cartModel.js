@@ -12,9 +12,14 @@ const CartSchema = new mongoose.Schema(
       {
         productId: {
           type: mongoose.Schema.ObjectId,
+          // refPath: "products.onModel",
           ref: "Product",
           required: true,
         },
+        // onModel: {
+        //   type: String,
+        //   enum: ["Product", "Package", "Test"],
+        // },
         name: { type: String },
         price: { type: Number },
         images: [

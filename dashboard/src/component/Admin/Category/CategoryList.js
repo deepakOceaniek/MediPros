@@ -48,7 +48,7 @@ const CategoryList = () => {
 
     if (isDeleted) {
       alert.success("Category Deleted Successfully");
-      Navigate("/admin/dashboard");
+      Navigate("/admin/categories");
       dispatch({ type: DELETE_CATEGORY_RESET });
     }
 

@@ -6,6 +6,7 @@ const Order = require("../models/orderModel");
 const Cart = require("../models/cartModel");
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
+const Prescription = require("../models/prescriptionModel");
 
 const {
   validateWebhookSignature,
@@ -184,33 +185,68 @@ exports.webhookCapture = catchAsyncErrors(async (req, res, next) => {
       let cart = await Cart.findOne({ user: userId });
       // .populate(query);
       console.log(`cart ${cart}`);
+      let prescription = await Prescription.findOne({ user: userId });
 
-      const {
-        user,
-        products,
-        totalPrice,
-        totalSaving,
-        shippingFee,
-        amountToBePaid,
-      } = cart;
-      // console.log(`user ${user}`);
+      if (cart) {
+        const {
+          user,
+          products,
+          totalPrice,
+          totalSaving,
+          shippingFee,
+          amountToBePaid,
+        } = cart;
+        // console.log(`user ${user}`);
 
-      const order = await Order.create({
-        ordersFor: "Pharmacy",
-        orderItems: products,
-        paymentInfo: { id: razorpay_payment_id, status: "succeeded" },
-        totalPrice,
-        totalSaving,
-        shippingFee,
-        amountToBePaid,
-        paidAt: Date.now(),
-        user: userId,
-      });
-      console.log(`order ${order}`);
-      cart.remove(); //Todo uncomment later
-      res.status(200).json({
-        success: "ok",
-      });
+        const order = await Order.create({
+          ordersFor: "Pharmacy",
+          orderItems: products,
+          paymentInfo: { id: razorpay_payment_id, status: "succeeded" },
+          totalPrice,
+          totalSaving,
+          shippingFee,
+          amountToBePaid,
+          paidAt: Date.now(),
+          user,
+        });
+        console.log(`order ${order}`);
+        cart.remove(); //Todo uncomment later
+        res.status(200).json({
+          success: "ok",
+        });
+      } else if (prescription) {
+        const {
+          user,
+          prescriptionFor,
+          images,
+          status,
+          totalPrice,
+          totalSaving,
+          shippingFee,
+          amountToBePaid,
+        } = prescription;
+
+        const order = await Order.create({
+          ordersFor: prescriptionFor,
+          orderItems: images,
+          paymentInfo: { id: razorpay_payment_id, status: "succeeded" },
+          orderStatus: status,
+          totalPrice,
+          totalSaving,
+          shippingFee,
+          amountToBePaid,
+          paidAt: Date.now(),
+          user,
+        });
+        console.log(`order ${order}`);
+        res.status(200).json({
+          success: "ok",
+        });
+      } else {
+        res.status(400).json({
+          success: false,
+        });
+      }
     } else {
       res.status(400).json({
         success: false,

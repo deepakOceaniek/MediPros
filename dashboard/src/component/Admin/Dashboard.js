@@ -10,7 +10,6 @@ import { getAllUsers } from "../../actions/userAction.js";
 import MetaData from "../layout/MetaData";
 import Chart from "chart.js/auto";
 import Loader from "../layout/Loader/Loader.js";
-import Cookies from "js-cookie";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -45,9 +44,17 @@ const Dashboard = () => {
     dispatch(getAllUsers());
   }, [dispatch, user]);
 
+  let myOrders;
+  if (user.category === "Pharmacy") {
+    myOrders =
+      orders && orders.filter((order) => order.ordersFor === "Pharmacy");
+  } else {
+    myOrders = orders && orders.filter((order) => order.ordersFor === "Lab");
+  }
+
   let totalAmount = 0;
-  orders &&
-    orders.forEach((item) => {
+  myOrders &&
+    myOrders.forEach((item) => {
       totalAmount += item.totalPrice;
     });
 
@@ -112,7 +119,7 @@ const Dashboard = () => {
                     <p></p>
                   </Link>
                   <Link to="/admin/orders">
-                    <p>{`Orders | ${orders && orders.length}`}</p>
+                    <p>{`Orders | ${myOrders && myOrders.length}`}</p>
                   </Link>
                   <Link to="/admin/users">
                     <p>{`Users | ${users && users.length} `}</p>

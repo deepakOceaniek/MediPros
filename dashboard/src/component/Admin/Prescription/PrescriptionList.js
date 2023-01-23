@@ -30,6 +30,7 @@ const PrescriptionList = () => {
   const { error: deleteError, isDeleted } = useSelector(
     (state) => state.product
   );
+  const { user } = useSelector((state) => state.user);
 
   const deleteProductHandler = (id) => {
     dispatch(deletePrescription(id));
@@ -151,8 +152,23 @@ const PrescriptionList = () => {
 
   const rows = [];
 
-  prescriptions &&
-    prescriptions.forEach((item) => {
+  let myPrescription;
+  if (user.category === "Pharmacy") {
+    myPrescription =
+      prescriptions &&
+      prescriptions.filter(
+        (prescription) => prescription.prescriptionFor === "Pharmacy"
+      );
+  } else {
+    myPrescription =
+      prescriptions &&
+      prescriptions.filter(
+        (prescription) => prescription.prescriptionFor === "Lab"
+      );
+  }
+
+  myPrescription &&
+    myPrescription.forEach((item) => {
       rows.push({
         id: item._id,
         type: "image",
