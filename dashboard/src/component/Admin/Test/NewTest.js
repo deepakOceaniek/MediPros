@@ -203,7 +203,6 @@ const NewTest = () => {
                           <input
                             type="file"
                             name="avatar"
-                            // className="test_add imageUpload"
                             className="package_add imageUpload"
                             accept="image/*"
                             onChange={createProductImagesChange}

@@ -137,6 +137,8 @@ const OrderList = () => {
 
   const rows = [];
 
+
+
   let myOrders;
   if (user.category === "Pharmacy") {
     myOrders =
@@ -167,7 +169,7 @@ const OrderList = () => {
             <SideBar />
             <div className="productListContainer">
               <h1 id="productListHeading">ALL ORDERS</h1>
-              {orders && orders.length > 0 ? (
+              {myOrders && myOrders.length > 0 ? (
                 <DataGrid
                   rows={rows}
                   columns={columns}

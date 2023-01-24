@@ -91,6 +91,7 @@ const NewBanner = () => {
                         <input
                           type="file"
                           name="avatar"
+                          className="package_add imageUpload"
                           accept="image/*"
                           onChange={createProductImagesChange}
                           multiple

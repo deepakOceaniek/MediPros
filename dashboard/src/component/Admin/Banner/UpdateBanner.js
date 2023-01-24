@@ -121,6 +121,7 @@ const UpdateBanner = () => {
                       <div className="input_banner_upload">
                         <input
                           type="file"
+                            className="package_add imageUpload"
                           name="avatar"
                           accept="image/*"
                           onChange={updateProductImagesChange}

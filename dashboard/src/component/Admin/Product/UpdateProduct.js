@@ -161,7 +161,7 @@ const UpdateProduct = () => {
                   onSubmit={updateProductSubmitHandler}
                 >
                   <div className="product_row">
-                    <h3>Updated Product</h3>
+                    <h1>Updated Product</h1>
 
                   </div>
                   <div className="product_row">
@@ -351,7 +351,7 @@ const UpdateProduct = () => {
                         <label>Product Image</label>
                         <input
                           type="file"
-                          className="addImage"
+                          className="addImage package_add imageUpload"
                           placeholder="Product Image Upload"
                           name="avatar"
                           accept="image/*"
