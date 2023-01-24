@@ -615,15 +615,20 @@ exports.getCartItems = catchAsyncErrors(async (req, res, next) => {
       select: "name price discount images",
     },
   ];
-  let cart = await Cart.findOne({ user: userId }).populate(query);
+  let cart = await Cart.findOne({ user: userId })
+    .populate("products.productId", "name price discount ")
+    .sort({ body: 1 });
+  // console.log(cart.products);
+  // console.log(cart.products);
   if (cart) {
     let totalPrice = 0;
     let afterDiscountPrice = 0;
     let totalSaving = 0;
     let newProducts = [];
-    console.log(cart);
+    console.log(cart.products[0].productId);
 
     for (let product of cart.products) {
+      console.log(product);
       product = {
         productId: product.productId._id,
         name: product.productId.name,

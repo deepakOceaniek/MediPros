@@ -150,7 +150,7 @@ const ProductList = () => {
         id: item._id,
         type: "image",
         image: item.images[0].url,
-        stock: item.stock,
+        stock: `${item.stock} quantity`,
         price: `₹ ${parseFloat(item.price).toFixed(2)}`,
         name: item.name,
       });
@@ -171,7 +171,7 @@ const ProductList = () => {
                 <DataGrid
                   rows={rows}
                   columns={columns}
-                  pageSize={10}
+                  pageSize={8}
                   disableSelectionOnClick
                   className="productListTable"
                   rowHeight={100}

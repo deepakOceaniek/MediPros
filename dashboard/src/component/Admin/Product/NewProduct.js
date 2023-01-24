@@ -104,7 +104,6 @@ const NewProduct = () => {
 
   return (
     <Fragment>
-
       {loading ? (
         <Loader />
       ) : (
@@ -159,6 +158,14 @@ const NewProduct = () => {
                           <option value="Bottle">Bottle</option>
                           <option value="Strip">Strip</option>
                           <option value="Tube">Tube</option>
+                          <option value="Machine">Machine</option>
+                          <option value="Strip">Strip</option>
+                          <option value="Cream">Cream</option>
+                          <option value="Packet">Packet</option>
+                          <option value="Tin">Tin</option>
+                          <option value="Box">Box</option>
+                          <option value="Spary">Spary</option>
+                          <option value="Powder">Powder</option>
                           {/* // ))} */}
                         </select>
                       </div>
@@ -185,7 +192,6 @@ const NewProduct = () => {
                           onChange={(e) => setProductQuantity(e.target.value)}
                         />
                       </div>
-
                     </div>
 
                     <div className="inputdiv">

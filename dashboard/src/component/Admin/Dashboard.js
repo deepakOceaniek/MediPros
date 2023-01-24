@@ -45,17 +45,17 @@ const Dashboard = () => {
   }, [dispatch, user]);
 
   let myOrders;
-  if (user.category === "Pharmacy") {
+  if (user && user.category === "Pharmacy") {
     myOrders =
       orders && orders.filter((order) => order.ordersFor === "Pharmacy");
   } else {
     myOrders = orders && orders.filter((order) => order.ordersFor === "Lab");
   }
 
-  let totalAmount = 0;
+  let amountToBePaid = 0;
   myOrders &&
     myOrders.forEach((item) => {
-      totalAmount += item.totalPrice;
+      amountToBePaid += item.amountToBePaid;
     });
 
   const lineState = {
@@ -68,7 +68,7 @@ const Dashboard = () => {
         data: [
           0,
 
-          totalAmount,
+          amountToBePaid,
           // 4000,
         ],
       },
@@ -110,7 +110,7 @@ const Dashboard = () => {
               <div className="dashboardSummary">
                 <div>
                   <p>
-                    Total Amount <br />₹{totalAmount}
+                    Total Amount <br />₹{amountToBePaid}
                   </p>
                 </div>
                 <div className="dashboardSummaryBox2">
