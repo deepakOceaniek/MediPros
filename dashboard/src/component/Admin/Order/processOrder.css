@@ -13,30 +13,42 @@
   flex-direction: row;
   justify-content: space-around;
 }
-.orderDetailsContainerBox {
-  height: 20vh;
+.orderDetailsContainerBox_firstdiv{
+  height: 13vmax;
   width: 30vw;
   margin: 1em 10em 0em 0em;
   box-shadow: 0px 3px 5px 0px;
-  /* border: 1px solid black; */
-
-  /* border-radius: 10px; */
 }
-.orderDetailsContainerBox> h1 {
+.orderDetailsContainerBox_firstdiv > h1 {
   background-color: #267d6e;
   width: 100%;
   height: 4vh;
   padding-left: 1em;
   color: #ffffff;
-  /* border-radius: 10px 10px 0px 0px; */
 }
-.orderDetailsContainerBox > div {
+
+.orderDetailsContainerBox {
+  height: 15vh;
+  width: 30vw;
+  margin: 1em 10em 0em 0em;
+  box-shadow: 0px 3px 5px 0px;
+
+}
+.orderDetailsContainerBox >h1 {
+  background-color: #267d6e;
+  width: 100%;
+  height: 4vh;
+  padding-left: 1em;
+  color: #ffffff;
+}
+
+.orderDetailsContainerBox >div , .orderDetailsContainerBox_firstdiv >  div {
   display: flex;
   flex-direction: row;
-}
-.orderDetailsContainerBox > div {
   padding: 0.5em 0em 0em 1em;
+
 }
+
 .orderDetailsContainerBox > div p:nth-child(2) {
   padding-left: 2em;
   text-align: center;

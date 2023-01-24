@@ -94,7 +94,7 @@ const NewCategory = () => {
                           <label>Category Image</label>
                           <input
                             accept="image/png, image/jpeg"
-                            className="Category_add"
+                            className="Category_add package_add imageUpload"
                             type="file"
                             name="categoryImage"
                             onChange={createProductImagesChange}

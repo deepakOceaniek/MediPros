@@ -67,7 +67,7 @@ const ProcessOrder = () => {
                     <div>
                       <h2>Order Details :</h2>
                     </div>
-                    <div className="orderDetailsContainerBox">
+                    <div className="orderDetailsContainerBox_firstdiv">
                       <h1>Shipping Info</h1>
                       <div>
                         <p>Name :</p>
@@ -86,6 +86,7 @@ const ProcessOrder = () => {
                       <div>
                         <p>Address:</p>
                         <p>
+                        &nbsp;&nbsp;&nbsp;
                           {order.user &&
                             `${order.user.defaultAddress[0].address}, ${order.user.defaultAddress[0].area}, ${order.user.defaultAddress[0].city}, ${order.user.defaultAddress[0].pinCode}, ${order.user.defaultAddress[0].state}`}
                         </p>

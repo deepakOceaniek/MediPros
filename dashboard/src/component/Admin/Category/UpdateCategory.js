@@ -128,6 +128,7 @@ const UpdateCategory = () => {
                             <input
                               type="file"
                               name="categoryImage"
+                              className="package_add imageUpload"
                               accept="image/jpg, image/jpeg"
                               disabled={loading ? true : false}
                               onChange={updateProductImagesChange}

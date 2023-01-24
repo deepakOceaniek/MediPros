@@ -145,7 +145,7 @@ const UpdateLabCategory = () => {
                             <label>Category Image :</label>
                             <input
                               accept="image/png image/jpeg"
-                              className="Category_add_image"
+                              className="Category_add_image imageUpload package_add imageUpload"
                               type="file"
                               name="categoryImage"
                               onChange={updateProductImagesChange}
