@@ -46,7 +46,7 @@ import UpdatePackage from "./component/Admin/Package/UpdatePackage.js";
 import SampleList from "./component/Admin/Sample/SampleList";
 import NewSample from "./component/Admin/Sample/NewSample";
 import UpdateSample from "./component/Admin/Sample/UpdateSample";
-
+import ReportData from "./component/Admin/Report/ReportData";
 function App() {
   const { loading, isAuthenticated, user } = useSelector((state) => state.user);
   const [contactData, setContactData] = useState("");
@@ -188,6 +188,8 @@ function App() {
           <Route path="/admin/samples" element={<SampleList />} />
           <Route path="/admin/sample" element={<NewSample />} />
           <Route path="/admin/sample/:id" element={<UpdateSample />} />
+
+          <Route path="/admin/report" element={<ReportData />} />
         </Routes>
       </Router>
     </>

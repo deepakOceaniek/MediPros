@@ -145,7 +145,6 @@ const UpdateProduct = () => {
 
   return (
     <Fragment>
-
       {loading ? (
         <Loader />
       ) : (
@@ -162,7 +161,6 @@ const UpdateProduct = () => {
                 >
                   <div className="product_row">
                     <h1>Updated Product</h1>
-
                   </div>
                   <div className="product_row">
                     <div className="inputdiv">
@@ -254,9 +252,10 @@ const UpdateProduct = () => {
                         <label>Choose Category</label>
                         <select
                           className="productadd"
+                          value={category}
                           onChange={(e) => setCategory(e.target.value)}
                         >
-                          <option value={category}>Choose Category</option>
+                          <option>Choose Category</option>
                           {categories &&
                             categories.map((cate) => (
                               <option key={cate.categoryName} value={cate._id}>

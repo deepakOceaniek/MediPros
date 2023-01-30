@@ -573,7 +573,8 @@ exports.deleteBanner = catchAsyncErrors(async (req, res, next) => {
 
 // Add to cart
 exports.addToCart = catchAsyncErrors(async (req, res, next) => {
-  const { productId, quantity } = req.body;
+  const { productId, quantity, type } = req.body;
+  console.log(req.body);
   const user = req.user.id;
   try {
     let cart = await Cart.findOne({ user });
@@ -582,9 +583,10 @@ exports.addToCart = catchAsyncErrors(async (req, res, next) => {
       let itemIndex = cart.products.findIndex((p) => p.productId == productId);
       if (itemIndex > -1) {
         cart.products[itemIndex].quantity = quantity;
+        cart.products[itemIndex].type = type;
       } else {
         //product does not exists in cart, add new item
-        cart.products.push({ productId, quantity });
+        cart.products.push({ productId, quantity, type });
       }
       cart = await cart.save();
       // return res.status(201).send(cart);
@@ -592,7 +594,7 @@ exports.addToCart = catchAsyncErrors(async (req, res, next) => {
       //no cart for user, create new cart
       cart = await Cart.create({
         user,
-        products: [{ productId, quantity }],
+        products: [{ productId, quantity, type }],
       });
     }
     return res.status(201).send(cart);
@@ -605,6 +607,7 @@ exports.addToCart = catchAsyncErrors(async (req, res, next) => {
 // Get card Details
 exports.getCartItems = catchAsyncErrors(async (req, res, next) => {
   const userId = req.user.id;
+
   const query = [
     {
       path: "user",
@@ -612,12 +615,10 @@ exports.getCartItems = catchAsyncErrors(async (req, res, next) => {
     },
     {
       path: "products.productId",
-      select: "name price discount images",
+      select: "_id name price discount images",
     },
   ];
-  let cart = await Cart.findOne({ user: userId })
-    .populate("products.productId", "name price discount ")
-    .sort({ body: 1 });
+  let cart = await Cart.findOne({ user: userId }).populate(query);
   // console.log(cart.products);
   // console.log(cart.products);
   if (cart) {
@@ -625,10 +626,11 @@ exports.getCartItems = catchAsyncErrors(async (req, res, next) => {
     let afterDiscountPrice = 0;
     let totalSaving = 0;
     let newProducts = [];
-    console.log(cart.products[0].productId);
+
+    // console.log(`cartsProduct ${cart.products} `);
 
     for (let product of cart.products) {
-      console.log(product);
+      // console.log(`Inside loop Product${product}`);
       product = {
         productId: product.productId._id,
         name: product.productId.name,
@@ -636,9 +638,10 @@ exports.getCartItems = catchAsyncErrors(async (req, res, next) => {
         images: product.productId.images,
         quantity: product.quantity,
         discount: product.productId.discount,
+        type: product.type,
       };
       newProducts.push(product);
-      console.log(product);
+      // console.log(product);
 
       totalPrice += product.price * product.quantity;
       afterDiscountPrice +=
@@ -657,7 +660,7 @@ exports.getCartItems = catchAsyncErrors(async (req, res, next) => {
       cart.shippingFee = 0;
     }
     cart.amountToBePaid = afterDiscountPrice + cart.shippingFee;
-    cart.save();
+    cart.update();
     // console.log(cart);
     res.status(200).send(cart);
   } else {

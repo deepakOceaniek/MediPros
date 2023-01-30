@@ -110,6 +110,7 @@ const NewlabCategory = () => {
                           className="Category_add package_add imageUpload"
                           type="file"
                           name="categoryImage"
+                          multiple
                           onChange={createProductImagesChange}
                           placeholder=" Product Image Upload"
                         />
