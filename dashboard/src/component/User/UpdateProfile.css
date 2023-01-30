@@ -114,7 +114,7 @@
   margin-left: .3em;
   font-weight: 500;
 }
-.updateProfileInput >input{
+.updateProfileInput >input , select{
   width: 24vw;
   height: 5vh;
   padding-left: 0.8em;

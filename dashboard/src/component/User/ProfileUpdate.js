@@ -206,14 +206,14 @@ const ProfileUpdate = () => {
                       <div className="profile_update_label">
                         <label>Status</label>
                         <div className="updateProfileInput">
-                          <input
-                            type="text"
-                            placeholder="Status"
-                            required
-                            name="status"
+                          <select
                             value={status}
                             onChange={(e) => setStatus(e.target.value)}
-                          />
+                            id="status"
+                          >
+                            <option value="open"> Open </option>
+                            <option value="close"> Close</option>
+                          </select>
                         </div>
                       </div>
                       <div className="profile_update_label">

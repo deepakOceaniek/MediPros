@@ -31,7 +31,6 @@ import BannerList from "./component/Admin/Banner/BannerList.js";
 import NewBanner from "./component/Admin/Banner/NewBanner.js";
 import UpdateBanner from "./component/Admin/Banner/UpdateBanner";
 import ProfileUpdate from "./component/User/ProfileUpdate";
-
 import Home from "./component/User/payment/Home.js";
 import PaymentSuccess from "./component/User/payment/PaymentSuccess.js";
 import NewlabCategory from "./component/Admin/LabCategory/NewlabCategory";
@@ -46,7 +45,9 @@ import UpdatePackage from "./component/Admin/Package/UpdatePackage.js";
 import SampleList from "./component/Admin/Sample/SampleList";
 import NewSample from "./component/Admin/Sample/NewSample";
 import UpdateSample from "./component/Admin/Sample/UpdateSample";
+import LabDashboard from "./component/Admin/LabDashboard";
 import ReportData from "./component/Admin/Report/ReportData";
+
 function App() {
   const { loading, isAuthenticated, user } = useSelector((state) => state.user);
   const [contactData, setContactData] = useState("");
@@ -189,6 +190,7 @@ function App() {
           <Route path="/admin/sample" element={<NewSample />} />
           <Route path="/admin/sample/:id" element={<UpdateSample />} />
 
+          <Route path="/admin/labdashboard" element={<LabDashboard />}/>
           <Route path="/admin/report" element={<ReportData />} />
         </Routes>
       </Router>

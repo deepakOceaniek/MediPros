@@ -165,7 +165,7 @@ const NewPackage = () => {
                           <label>Package Tests</label>
                           <input
                             type="text"
-                            placeholder="tests"
+                            placeholder="Tests"
                             className="package_add"
                             required
                             onChange={(e) => setTests(e.target.value)}
@@ -175,7 +175,7 @@ const NewPackage = () => {
                           <label>Number Of Test</label>
                           <input
                             type="Number"
-                            placeholder="numOfTest"
+                            placeholder="Num of Test"
                             className="package_add"
                             required
                             onChange={(e) => setNumOfTest(e.target.value)}
@@ -186,7 +186,7 @@ const NewPackage = () => {
 
                           <input
                             type="text"
-                            placeholder="testTiming"
+                            placeholder="Test Timing"
                             className="package_add"
                             required
                             onChange={(e) => setTestTiming(e.target.value)}
@@ -240,7 +240,7 @@ const NewPackage = () => {
 
                           <input
                             type="text"
-                            placeholder="report"
+                            placeholder="Report"
                             className="package_add"
                             required
                             onChange={(e) => setReport(e.target.value)}
