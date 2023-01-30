@@ -157,7 +157,7 @@ const Sidebar = () => {
             <Link to="/">
               <img src="/Images/logo.png" alt="MediPros" />
             </Link>
-            <Link to="/admin/dashboard">
+            <Link to="/admin/labdashboard">
               <p>
                 <DashboardIcon /> Dashboard
               </p>

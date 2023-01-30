@@ -1,0 +1,18 @@
+.dashboardSummaryBoxlab {
+  display: flex;
+  justify-content: space-around;
+}
+
+.CircularProgressbar-path {
+  stroke: rgb(28, 161, 123);
+}
+.CircularProgressbar-trail {
+  stroke: gray;
+}
+.CircularProgressbar-text {
+  fill: rgb(218, 25, 25);
+  transform: translate(-15px, 5px);
+}
+/* .CircularProgressbar-background {
+    fill: green;
+  } */

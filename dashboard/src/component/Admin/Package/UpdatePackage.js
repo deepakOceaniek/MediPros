@@ -260,7 +260,7 @@ const UpdatePackage = () => {
                         </div>
                       </div>
 
-                      <div className="inside-input">
+                      <div className="inside-input third_row">
                         <div>
                           <label>Choose Sample </label>
                           <select
