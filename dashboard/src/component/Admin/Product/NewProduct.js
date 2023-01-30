@@ -159,13 +159,13 @@ const NewProduct = () => {
                           <option value="Strip">Strip</option>
                           <option value="Tube">Tube</option>
                           <option value="Machine">Machine</option>
-                          <option value="Strip">Strip</option>
                           <option value="Cream">Cream</option>
                           <option value="Packet">Packet</option>
                           <option value="Tin">Tin</option>
                           <option value="Box">Box</option>
                           <option value="Spary">Spary</option>
                           <option value="Powder">Powder</option>
+                          <option value="Paste">Paste</option>
                           {/* // ))} */}
                         </select>
                       </div>
@@ -186,7 +186,7 @@ const NewProduct = () => {
 
                         <input
                           className="productadd"
-                          type="number"
+                          type="text"
                           placeholder="Enter No. Of Tablet/ml/gm"
                           required
                           onChange={(e) => setProductQuantity(e.target.value)}

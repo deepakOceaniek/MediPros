@@ -190,6 +190,11 @@ const Sidebar = () => {
                 <FilterIcon /> Add Prescription
               </p>
             </Link>
+            <Link to="/admin/report">
+              <p>
+                <FilterIcon /> Genrate Report
+              </p>
+            </Link>
             <Link>
               <TreeView
                 defaultCollapseIcon={<ExpandMoreIcon />}

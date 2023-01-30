@@ -3,12 +3,12 @@ const Razorpay = require("razorpay");
 const dotenv = require("dotenv");
 const connectDatabase = require("./config/database");
 const cloudinary = require("cloudinary");
-//Handling Uncaught error
-process.on("uncaughtException", (err) => {
-  console.log(`Error:${err.message}`);
-  console.log(`Shutting down the server due to Uncaught Exception`);
-  process.exit(1);
-});
+// //Handling Uncaught error
+// process.on("uncaughtException", (err) => {
+//   console.log(`Error:${err.message}`);
+//   console.log(`Shutting down the server due to Uncaught Exception`);
+//   process.exit(1);
+// });
 
 // uncaught error
 // console.log(youtube); // YouTube is not define
@@ -27,10 +27,10 @@ const server = app.listen(process.env.PORT, () => {
 });
 
 // Unhandled Promise Rejection  //--> data base ki string khrab kr di aghr for example so this is the method how to handle it
-process.on("unhandledRejection", (err) => {
-  console.log(`Error:${err.message}`);
-  console.log(`Shutting down the server due to Unhandled Promise Rejection`);
-  server.close(() => {
-    process.exit(1);
-  });
-});
+// process.on("unhandledRejection", (err) => {
+//   console.log(`Error:${err.message}`);
+//   console.log(`Shutting down the server due to Unhandled Promise Rejection`);
+//   server.close(() => {
+//     process.exit(1);
+//   });
+// });

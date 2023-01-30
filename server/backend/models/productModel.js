@@ -15,9 +15,9 @@ const productSchema = mongoose.Schema({
     required: [true, "please Enter Product Price"],
     maxLength: [8, "Price can not exceed 8 character"],
   },
-  safetyInformation:{
-    type:String,
-    required:true
+  safetyInformation: {
+    type: String,
+    required: true,
   },
   type: {
     type: String,
@@ -37,7 +37,7 @@ const productSchema = mongoose.Schema({
   },
 
   productQuantity: {
-    type: Number,
+    type: String,
     required: [true, "please Enter tablet per strip"],
   },
 

@@ -12,14 +12,16 @@ const CartSchema = new mongoose.Schema(
       {
         productId: {
           type: mongoose.Schema.ObjectId,
-          // refPath: "onModel",
-          ref: "Product",
+          refPath: "products.type",
+          // ref: "Product",
           required: true,
         },
-        // onModel: {
-        //   type: String,
-        //   enum: ["Product", "Package", "Test"],
-        // },
+        type: {
+          type: String,
+          // required: true,
+          enum: ["Product", "Package", "Test"],
+          // default: "Product",
+        },
         name: { type: String },
         price: { type: Number },
         images: [
@@ -53,5 +55,8 @@ const CartSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+// CartSchema.pre("save",function (next){
+
+// })
 
 module.exports = mongoose.model("Cart", CartSchema);

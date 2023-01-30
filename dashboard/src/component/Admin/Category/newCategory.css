@@ -86,14 +86,17 @@
 #category_Button:hover {
   background-color: #359c98;
 }
-
+.categoryDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
 .categoryDiv > img {
   margin: 1em 0em 0em 4.5em;
-  height: 15vmax;
-  width: 12vmax;
+  height: 10vmax;
+  width: 8vmax;
 }
 /* -------------------Sample CSS For add And Update------------------------- */
-
 
 .Category_row > h1 {
   height: 6vh;
