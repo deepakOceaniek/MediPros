@@ -1,10 +1,15 @@
 .add_test_row {
   box-shadow: 0px 1px 5px 1px;
-  width: 60vw;
-  height: 80vh;
+  width: 40vw;
+  height: 70vh;
   background-color: #fff;
   padding-top: 1em;
-  margin-top: 4em;
+  margin-top: 8em;
+}
+.content_add_test {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .test_row {
@@ -38,15 +43,18 @@
   color: #5b5e61;
   border: 1px solid #5b5e61;
   margin-top: 0.1em;
-  padding-left: .5em;
+  padding-left: 0.5em;
 }
 
-
+#createTestFormImage {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 #createTestFormImage > img {
   width: 8vw;
   height: 10vh;
-  margin: 0 3vmax;
-  margin:  0em 0em 0em 4.5em  ;
+  margin: 1vmax 3vmax;
   /* border: 5px solid #555; */
 }
 
@@ -70,6 +78,6 @@
   width: 100%;
   /* height: 13vh; */
 }
-.input-inside >div >label{
+.input-inside > div > label {
   font-weight: 500;
 }

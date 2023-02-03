@@ -23,6 +23,7 @@ import BloodtypeIcon from "@mui/icons-material/Bloodtype";
 import BiotechIcon from "@mui/icons-material/Biotech";
 import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 import FilterIcon from "@mui/icons-material/Filter";
+import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 
 const Sidebar = () => {
   const { loading, isAuthenticated, user } = useSelector((state) => state.user);
@@ -192,7 +193,7 @@ const Sidebar = () => {
             </Link>
             <Link to="/admin/report">
               <p>
-                <FilterIcon /> Genrate Report
+                <PictureAsPdfIcon /> Genrate Report
               </p>
             </Link>
             <Link>

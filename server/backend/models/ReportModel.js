@@ -1,23 +1,33 @@
 const mongoose = require("mongoose");
 
 const reportSchema = mongoose.Schema({
-  testOne: {
-    type: mongoose.Schema.ObjectId,
-    ref: "Test",
-    required: true,
-  },
-  testTwo: {
-    type: mongoose.Schema.ObjectId,
-    ref: "Test",
-  },
-  testThird: {
-    type: mongoose.Schema.ObjectId,
-    ref: "Test",
-  },
-  testForth: {
-    type: mongoose.Schema.ObjectId,
-    ref: "Test",
-  },
+  report: [
+    {
+      package: {
+        type: String,
+      },
+      test: [
+        {
+          testName: {
+            type: mongoose.Schema.ObjectId,
+            ref: "Test",
+            required: true,
+          },
+          refRange: {
+            type: String,
+            required: true,
+          },
+          value: {
+            type: Number,
+            required: true,
+          },
+        },
+      ],
+    },
+  ],
+
+  //array package ke test array mai dalna hai
+  //
 
   sample: {
     type: mongoose.Schema.ObjectId,

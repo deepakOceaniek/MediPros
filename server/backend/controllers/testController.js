@@ -9,28 +9,28 @@ const Sample = require("../models/sampleModel");
 
 // Create Test --admin
 exports.createTest = catchAsyncErrors(async (req, res, next) => {
-  let images = [];
+  // let images = [];
 
-  if (typeof req.body.images === "string") {
-    images.push(req.body.images);
-  } else {
-    images = req.body.images;
-  }
+  // if (typeof req.body.images === "string") {
+  //   images.push(req.body.images);
+  // } else {
+  //   images = req.body.images;
+  // }
 
-  const imagesLinks = [];
+  // const imagesLinks = [];
 
-  for (let i = 0; i < images.length; i++) {
-    const result = await cloudinary.v2.uploader.upload(images[i], {
-      folder: "tests",
-    });
+  // for (let i = 0; i < images.length; i++) {
+  //   const result = await cloudinary.v2.uploader.upload(images[i], {
+  //     folder: "tests",
+  //   });
 
-    imagesLinks.push({
-      public_id: result.public_id,
-      url: result.secure_url,
-    });
-  }
+  //   imagesLinks.push({
+  //     public_id: result.public_id,
+  //     url: result.secure_url,
+  //   });
+  // }
 
-  req.body.images = imagesLinks;
+  // req.body.images = imagesLinks;
   req.body.user = req.user.id;
   console.log(req.body);
   const test = await Test.create(req.body);
@@ -103,35 +103,35 @@ exports.updateTest = catchAsyncErrors(async (req, res, next) => {
   }
 
   // Images Start Here
-  let images = [];
+  // let images = [];
 
-  if (typeof req.body.images === "string") {
-    images.push(req.body.images);
-  } else {
-    images = req.body.images;
-  }
+  // if (typeof req.body.images === "string") {
+  //   images.push(req.body.images);
+  // } else {
+  //   images = req.body.images;
+  // }
 
-  if (images !== undefined) {
-    // Deleting Images From Cloudinary
-    for (let i = 0; i < test.images.length; i++) {
-      await cloudinary.v2.uploader.destroy(test.images[i].public_id);
-    }
+  // if (images !== undefined) {
+  //   // Deleting Images From Cloudinary
+  //   for (let i = 0; i < test.images.length; i++) {
+  //     await cloudinary.v2.uploader.destroy(test.images[i].public_id);
+  //   }
 
-    const imagesLinks = [];
+  //   const imagesLinks = [];
 
-    for (let i = 0; i < images.length; i++) {
-      const result = await cloudinary.v2.uploader.upload(images[i], {
-        folder: "tests",
-      });
+  //   for (let i = 0; i < images.length; i++) {
+  //     const result = await cloudinary.v2.uploader.upload(images[i], {
+  //       folder: "tests",
+  //     });
 
-      imagesLinks.push({
-        public_id: result.public_id,
-        url: result.secure_url,
-      });
-    }
+  //     imagesLinks.push({
+  //       public_id: result.public_id,
+  //       url: result.secure_url,
+  //     });
+  //   }
 
-    req.body.images = imagesLinks;
-  }
+  //   req.body.images = imagesLinks;
+  // }
 
   test = await Test.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
@@ -149,9 +149,9 @@ exports.deleteTest = catchAsyncErrors(async (req, res, next) => {
   }
 
   //Deleting Images from Cloudinary
-  for (let i = 0; i < test.images.length; i++) {
-    await cloudinary.v2.uploader.destroy(test.images[i].public_id);
-  }
+  // for (let i = 0; i < test.images.length; i++) {
+  //   await cloudinary.v2.uploader.destroy(test.images[i].public_id);
+  // }
 
   await test.remove();
   res
@@ -161,6 +161,9 @@ exports.deleteTest = catchAsyncErrors(async (req, res, next) => {
 
 // Create package --admin
 exports.createPackage = catchAsyncErrors(async (req, res, next) => {
+  console.log(`Test List ${req.body.testList}`);
+  console.log(`Test List ${JSON.parse(req.body.testList)}`);
+  console.log(` JSON of TEST LIST  ${JSON.stringify(req.body.testList)}`);
   let images = [];
 
   if (typeof req.body.images === "string") {
@@ -185,6 +188,9 @@ exports.createPackage = catchAsyncErrors(async (req, res, next) => {
   req.body.images = imagesLinks;
   req.body.user = req.user.id;
   console.log(req.body);
+  console.log(`${req.body.testList}`);
+  console.log(`${JSON.stringify(req.body.testList)}`);
+
   const package = await Package.create(req.body);
   console.log(package);
   res.status(201).json({

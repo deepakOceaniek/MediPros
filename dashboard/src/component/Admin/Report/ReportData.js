@@ -23,13 +23,15 @@ const NewTest = () => {
   const { loading, error, success } = useSelector((state) => state.newTest);
 
   const [patientName, setPatientName] = useState("");
-  const [patientAdress, setPatientAddress] = useState("");
+  const [patientGender, setPatientGender] = useState("");
   const [contact, setContact] = useState(0);
   const [sample, setSample] = useState("");
   const [testOne, setTestOne] = useState("");
   const [testTwo, setTestTwo] = useState("");
   const [testThree, setTestThree] = useState("");
   const [refBy, setRefBy] = useState("");
+  const [centerAddress, setCenterAddress] = useState("");
+  const [reportStatus, setReportStatus] = useState("");
   const [sampleDrownDate, setSampleDrownDate] = useState("");
   const [sampleReceived, setSampleReceived] = useState("");
 
@@ -62,13 +64,15 @@ const NewTest = () => {
     const myForm = new FormData();
 
     myForm.set("patientName", patientName);
-    myForm.set("patientAdress", patientAdress);
+    myForm.set("patientGender", patientGender);
     myForm.set("contact", contact);
     myForm.set("sample", sample);
     myForm.set("testOne", testOne);
     myForm.set("testTwo", testTwo);
     myForm.set("testThree", testThree);
+    myForm.set("centerAddress", centerAddress);
     myForm.set("refBy", refBy);
+    myForm.set("reportStatus", reportStatus);
     myForm.set("sampleDrownDate", sampleDrownDate);
     myForm.set("sampleReceived", sampleReceived);
 
@@ -108,155 +112,175 @@ const NewTest = () => {
             <MetaData title="Genrate Report" />
             <SideBar />
             <div className="newProductContainer">
-              <div className="test">
+              <div className="addproductrow">
                 <form
-                  className="add_test_row"
+                  className="content_addproduct"
                   encType="multipart/form-data"
                   onSubmit={createProductSubmitHandler}
                 >
-                  <div className="content_add_test">
-                    <div className="test_row">
-                      <h1>Report Data</h1>
-                    </div>
-                    <div className="test_row">
-                      <div className="input-inside">
-                        <div>
-                          <label> Patient Name</label>
+                  {/* <div className="content_add_"> */}
+                  <div className="product_row">
+                    <h1>Report Data</h1>
+                  </div>
+                  <div className="product_row">
+                    <div className="input-inside">
+                      <div>
+                        <label> Patient Name</label>
 
-                          <select
-                            className="test_add"
-                            onChange={(e) => setPatientName(e.target.value)}
-                          >
-                            <option value="">Patient Name</option>
-                            {users &&
-                              users.map((user) => (
-                                <option key={user.name} value={user._id}>
-                                  {user.name}
-                                </option>
-                              ))}
-                          </select>
-                        </div>
-                        <div>
-                          <label> Patient Address</label>
-                          <input
-                            placeholder=" Patient Address"
-                            className="test_add"
-                            onChange={(e) => setPatientAddress(e.target.value)}
-                          />
-                        </div>
-                        <div>
-                          <label>Contact</label>
-                          <input
-                            type="number"
-                            placeholder="Contact"
-                            required
-                            className="test_add"
-                            onChange={(e) => setContact(e.target.value)}
-                          />
-                        </div>
-                        <div>
-                          <label>Sample</label>
-                          <select
-                            className="test_add"
-                            onChange={(e) => setSample(e.target.value)}
-                          >
-                            <option value="">Choose Sample</option>
-                            {samples &&
-                              samples.map((sam) => (
-                                <option key={sam.name} value={sam._id}>
-                                  {sam.name}
-                                </option>
-                              ))}
-                          </select>
-                        </div>
-
-                        <div>
-                          <label>Test One</label>
-                          <select
-                            className="test_add"
-                            onChange={(e) => setTestOne(e.target.value)}
-                          >
-                            <option value="">Select Test One </option>
-                            {tests &&
-                              tests.map((test) => (
-                                <option key={test.name} value={test._id}>
-                                  {test.name}
-                                </option>
-                              ))}
-                          </select>
-                        </div>
+                        <select
+                          className="test_add"
+                          onChange={(e) => setPatientName(e.target.value)}
+                        >
+                          <option value="">Patient Name</option>
+                          {users &&
+                            users.map((user) => (
+                              <option key={user.name} value={user._id}>
+                                {user.name}
+                              </option>
+                            ))}
+                        </select>
+                      </div>
+                      <div>
+                        <label>Center Address</label>
+                        <input
+                          type="text"
+                          placeholder="Center Address"
+                          required
+                          className="test_add"
+                          onChange={(e) => setCenterAddress(e.target.value)}
+                        />
                       </div>
 
-                      <div className="input-inside">
-                        <div>
-                          <label>Test Two </label>
-                          <select
-                            className="test_add"
-                            onChange={(e) => setTestTwo(e.target.value)}
-                          >
-                            <option value="">Select Test Two</option>
-                            {tests &&
-                              tests.map((test) => (
-                                <option key={test.name} value={test._id}>
-                                  {test.name}
-                                </option>
-                              ))}
-                          </select>
-                        </div>
+                      <div>
+                        <label>Sample</label>
+                        <select
+                          className="test_add"
+                          onChange={(e) => setSample(e.target.value)}
+                        >
+                          <option value="">Choose Sample</option>
+                          {samples &&
+                            samples.map((sam) => (
+                              <option key={sam.name} value={sam._id}>
+                                {sam.name}
+                              </option>
+                            ))}
+                        </select>
+                      </div>
 
-                        <div>
-                          <label>Test Three</label>
-                          <select
-                            className="test_add"
-                            onChange={(e) => setTestThree(e.target.value)}
-                          >
-                            <option value="">Select Test Third</option>
-                            {tests &&
-                              tests.map((test) => (
-                                <option key={test.name} value={test._id}>
-                                  {test.name}
-                                </option>
-                              ))}
-                          </select>
-                        </div>
+                      <div>
+                        <label>Test One</label>
+                        <select
+                          className="test_add"
+                          onChange={(e) => setTestOne(e.target.value)}
+                        >
+                          <option value="">Select Test One </option>
+                          {tests &&
+                            tests.map((test) => (
+                              <option key={test.name} value={test._id}>
+                                {test.name}
+                              </option>
+                            ))}
+                        </select>
+                      </div>
+                    </div>
+                    <div className="input-inside">
+                      <div>
+                        <label> Patient Gender</label>
+                        <input
+                          placeholder=" Patient Gender"
+                          className="test_add"
+                          onChange={(e) => setPatientGender(e.target.value)}
+                        />
+                      </div>
+                      <div>
+                        <label>Ref By</label>
+                        <input
+                          type="text"
+                          placeholder="Ref By"
+                          required
+                          className="test_add"
+                          onChange={(e) => setRefBy(e.target.value)}
+                        />
+                      </div>
+                      <div>
+                        <label>Sample Drown Date</label>
+                        <input
+                          type="date"
+                          placeholder="SampleDrownDate"
+                          required
+                          className="test_add"
+                          onChange={(e) => setSampleDrownDate(e.target.value)}
+                        />
+                      </div>
 
-                        <div>
-                          <label>Ref By</label>
-                          <input
-                            type="text"
-                            placeholder="Ref By"
-                            required
-                            className="test_add"
-                            onChange={(e) => setRefBy(e.target.value)}
-                          />
-                        </div>
+                      <div>
+                        <label>Test Two </label>
+                        <select
+                          className="test_add"
+                          onChange={(e) => setTestTwo(e.target.value)}
+                        >
+                          <option value="">Select Test Two</option>
+                          {tests &&
+                            tests.map((test) => (
+                              <option key={test.name} value={test._id}>
+                                {test.name}
+                              </option>
+                            ))}
+                        </select>
+                      </div>
+                    </div>
+                    <div className="input-inside">
+                      <div>
+                        <label>Contact</label>
+                        <input
+                          type="number"
+                          placeholder="Contact"
+                          required
+                          className="test_add"
+                          onChange={(e) => setContact(e.target.value)}
+                        />
+                      </div>
+                      <div>
+                        <label>Report Status</label>
+                        <input
+                          type="text"
+                          placeholder="Report Status"
+                          required
+                          className="test_add"
+                          onChange={(e) => setReportStatus(e.target.value)}
+                        />
+                      </div>
 
-                        <div>
-                          <label>Sample Drown Date</label>
-                          <input
-                            type="date"
-                            placeholder="SampleDrownDate"
-                            required
-                            className="test_add"
-                            onChange={(e) => setSampleDrownDate(e.target.value)}
-                          />
-                        </div>
+                      <div>
+                        <label>Sample Received</label>
+                        <input
+                          type="date"
+                          placeholder="Sample Received"
+                          required
+                          className="test_add"
+                          onChange={(e) => setSampleReceived(e.target.value)}
+                        />
+                      </div>
 
-                        <div>
-                          <label>Sample Received</label>
-                          <input
-                            type="date"
-                            placeholder="Sample Received"
-                            required
-                            className="test_add"
-                            onChange={(e) => setSampleReceived(e.target.value)}
-                          />
-                        </div>
+                      <div>
+                        <label>Test Three</label>
+                        <select
+                          className="test_add"
+                          onChange={(e) => setTestThree(e.target.value)}
+                        >
+                          <option value="">Select Test Third</option>
+                          {tests &&
+                            tests.map((test) => (
+                              <option key={test.name} value={test._id}>
+                                {test.name}
+                              </option>
+                            ))}
+                        </select>
                       </div>
                     </div>
                   </div>
 
-                  <div className="test_row">
+                  <div className="product_row">
                     <button
                       id="createTestButton"
                       type="submit"
@@ -265,6 +289,7 @@ const NewTest = () => {
                       Genrate Report
                     </button>
                   </div>
+                  {/* </div> */}
                 </form>
               </div>
             </div>

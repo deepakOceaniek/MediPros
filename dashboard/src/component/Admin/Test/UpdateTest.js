@@ -23,10 +23,10 @@ const UpdateTest = () => {
   const Navigate = useNavigate();
 
   const { error, test } = useSelector((state) => state.testDetails);
-  const { labCategories } = useSelector((state) => state.labCategories);
-  const { packages } = useSelector((state) => state.packages);
-  const { samples } = useSelector((state) => state.samples);
-
+  // const { labCategories } = useSelector((state) => state.labCategories);
+  // const { packages } = useSelector((state) => state.packages);
+  // const { samples } = useSelector((state) => state.samples);
+  console.log(test);
   const {
     loading,
     error: updateError,
@@ -34,14 +34,15 @@ const UpdateTest = () => {
   } = useSelector((state) => state.testPackage);
 
   const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [price, setPrice] = useState(0);
-  const [category, setCategory] = useState("");
-  const [packageTest, setPackageTest] = useState("");
-  const [sample, setSample] = useState("");
-  const [images, setImages] = useState([]);
-  const [oldImages, setOldImages] = useState([]);
-  const [imagesPreview, setImagesPreview] = useState([]);
+  const [referenceRange, setReferenceRange] = useState("");
+  // const [description, setDescription] = useState("");
+  // const [price, setPrice] = useState(0);
+  // const [category, setCategory] = useState("");
+  // const [packageTest, setPackageTest] = useState("");
+  // const [sample, setSample] = useState("");
+  // const [images, setImages] = useState([]);
+  // const [oldImages, setOldImages] = useState([]);
+  // const [imagesPreview, setImagesPreview] = useState([]);
 
   const testId = id;
 
@@ -53,12 +54,13 @@ const UpdateTest = () => {
       dispatch(getAdminSample());
     } else {
       setName(test.name);
-      setDescription(test.description);
-      setPrice(test.price);
-      setPackageTest(test.packageTest);
-      setCategory(test.category);
-      setSample(test.sample);
-      setOldImages(test.images);
+      // setDescription(test.description);
+      // setPrice(test.price);
+      // setPackageTest(test.packageTest);
+      setReferenceRange(test.referenceRange);
+      // setCategory(test.category);
+      // setSample(test.sample);
+      // setOldImages(test.images);
     }
     if (error) {
       alert.error(error);
@@ -83,37 +85,38 @@ const UpdateTest = () => {
     const myForm = new FormData();
 
     myForm.set("name", name);
-    myForm.set("description", description);
-    myForm.set("price", price);
-    myForm.set("packageTest", packageTest);
-    myForm.set("category", category);
-    myForm.set("sample", sample);
-    images.forEach((image) => {
-      myForm.append("images", image);
-    });
+    // myForm.set("description", description);
+    // myForm.set("price", price);
+    // myForm.set("packageTest", packageTest);
+    // myForm.set("category", category);
+    // myForm.set("sample", sample);
+    myForm.set("referenceRange", referenceRange);
+    // images.forEach((image) => {
+    //   myForm.append("images", image);
+    // });
     dispatch(updateTest(testId, myForm));
   };
 
-  const updateProductImagesChange = (e) => {
-    const files = Array.from(e.target.files);
+  // const updateProductImagesChange = (e) => {
+  //   const files = Array.from(e.target.files);
 
-    setImages([]);
-    setImagesPreview([]);
-    setOldImages([]);
+  //   setImages([]);
+  //   setImagesPreview([]);
+  //   setOldImages([]);
 
-    files.forEach((file) => {
-      const reader = new FileReader();
+  //   files.forEach((file) => {
+  //     const reader = new FileReader();
 
-      reader.onload = () => {
-        if (reader.readyState === 2) {
-          setImagesPreview((old) => [...old, reader.result]);
-          setImages((old) => [...old, reader.result]);
-        }
-      };
+  //     reader.onload = () => {
+  //       if (reader.readyState === 2) {
+  //         setImagesPreview((old) => [...old, reader.result]);
+  //         setImages((old) => [...old, reader.result]);
+  //       }
+  //     };
 
-      reader.readAsDataURL(file);
-    });
-  };
+  //     reader.readAsDataURL(file);
+  //   });
+  // };
 
   return (
     <Fragment>
@@ -149,6 +152,17 @@ const UpdateTest = () => {
                           />
                         </div>
                         <div>
+                          <label>Reference Range</label>
+                          <input
+                            type="text"
+                            placeholder="Reference Range"
+                            required
+                            value={referenceRange}
+                            className="test_add"
+                            onChange={(e) => setReferenceRange(e.target.value)}
+                          />
+                        </div>
+                        {/* <div>
                           <label>Test Description </label>
                           <input
                             placeholder="Test Description"
@@ -168,13 +182,14 @@ const UpdateTest = () => {
                             onChange={(e) => setPrice(e.target.value)}
                           />
                         </div>
+
                         <div>
                           <label>Choose Sample </label>
                           <select
                             className="test_add"
                             onChange={(e) => setSample(e.target.value)}
                           >
-                            <option value="">Choose Sample</option>
+                            <option value={sample}>Choose Sample</option>
                             {samples &&
                               samples.map((sam) => (
                                 <option key={sam._id} value={sam._id}>
@@ -182,16 +197,16 @@ const UpdateTest = () => {
                                 </option>
                               ))}
                           </select>
-                        </div>
+                        </div> */}
                       </div>
-                      <div className="input-inside">
+                      {/* <div className="input-inside">
                         <div>
                           <label>Choose Package </label>
                           <select
                             className="test_add"
                             onChange={(e) => setPackageTest(e.target.value)}
                           >
-                            <option value="">Choose Package</option>
+                            <option value={packageTest}>Choose Package</option>
                             {packages &&
                               packages.map((pack) => (
                                 <option key={pack._id} value={pack._id}>
@@ -200,15 +215,17 @@ const UpdateTest = () => {
                               ))}
                           </select>
                         </div>
+                      
 
                         <div>
                           <label>Choose Lab Category </label>
                           <select
                             className="test_add"
-                            value={category}
                             onChange={(e) => setCategory(e.target.value)}
                           >
-                            <option value="">Choose Lab Category</option>
+                            <option value={category}>
+                              Choose Lab Category
+                            </option>
                             {labCategories &&
                               labCategories.map((cate) => (
                                 <option key={cate._id} value={cate._id}>
@@ -217,7 +234,6 @@ const UpdateTest = () => {
                               ))}
                           </select>
                         </div>
-
 
                         <div className="test_labels_name_image">
                           <label>Choose Image </label>
@@ -230,31 +246,25 @@ const UpdateTest = () => {
                             multiple
                           />
                         </div>
-                        <div className="oldAndNewImg">
-                          <div id="createTestFormImage">
-                            {oldImages &&
-                              oldImages.map((image, index) => (
-                                <img
-                                  key={index}
-                                  src={image.url}
-                                  alt="Old Product Preview"
-                                />
-                              ))}
-                          </div>
-
-                          <div id="createTestFormImage">
-                            {imagesPreview.map((image, index) => (
-
-                              <img
-                                key={index}
-                                src={image}
-                                alt="Product Preview"
-                              />
-                            ))}
-                          </div>
-                        </div>
-                      </div>
+                      </div> */}
                     </div>
+                    {/* <div id="createTestFormImage">
+                      {oldImages &&
+                        oldImages.map((image, index) => (
+                          <img
+                            key={index}
+                            src={image.url}
+                            alt="Old Product Preview"
+                          />
+                        ))}
+                    </div> */}
+
+                    {/* <div id="createTestFormImage">
+                      {imagesPreview.map((image, index) => (
+                        <img key={index} src={image} alt="Product Preview" />
+                      ))}
+                    </div> */}
+
                     <div className="test_row">
                       <button
                         id="createTestButton"

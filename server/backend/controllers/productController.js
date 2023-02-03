@@ -615,7 +615,7 @@ exports.getCartItems = catchAsyncErrors(async (req, res, next) => {
     },
     {
       path: "products.productId",
-      select: "_id name price discount images",
+      select: "_id name price discount images type",
     },
   ];
   let cart = await Cart.findOne({ user: userId }).populate(query);
@@ -660,7 +660,7 @@ exports.getCartItems = catchAsyncErrors(async (req, res, next) => {
       cart.shippingFee = 0;
     }
     cart.amountToBePaid = afterDiscountPrice + cart.shippingFee;
-    cart.update();
+    cart.save();
     // console.log(cart);
     res.status(200).send(cart);
   } else {

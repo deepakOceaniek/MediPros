@@ -142,7 +142,6 @@ const UpdatePackage = () => {
 
   return (
     <Fragment>
-
       {loading ? (
         <Loader />
       ) : (
@@ -262,6 +261,17 @@ const UpdatePackage = () => {
 
                       <div className="inside-input third_row">
                         <div>
+                          <label>Discount </label>
+                          <input
+                            type="text"
+                            placeholder="report"
+                            className="package_add"
+                            required
+                            value={discount}
+                            onChange={(e) => setDiscount(e.target.value)}
+                          />
+                        </div>
+                        <div>
                           <label>Choose Sample </label>
                           <select
                             className="package_add"
@@ -299,32 +309,23 @@ const UpdatePackage = () => {
                             multiple
                           />
                         </div>
-
-                        <div id="createPackageFormImage">
-                          {oldImages &&
-                            oldImages.map((image, index) => (
-                              <img
-                                key={index}
-                                src={image.url}
-                                alt="Old Product Preview"
-                              />
-                            ))}
-                        </div>
-                        <div id="createPackageFormImage">
-                          {imagesPreview.map((image, index) => (
-
-                            <img
-                              key={index}
-                              src={image}
-                              alt="Product Preview"
-                            />
-                          ))}
-                        </div>
                       </div>
-
                     </div>
-
-
+                    <div id="createPackageFormImage">
+                      {oldImages &&
+                        oldImages.map((image, index) => (
+                          <img
+                            key={index}
+                            src={image.url}
+                            alt="Old Product Preview"
+                          />
+                        ))}
+                    </div>
+                    <div id="createPackageFormImage">
+                      {imagesPreview.map((image, index) => (
+                        <img key={index} src={image} alt="Product Preview" />
+                      ))}
+                    </div>
                     <div className="package_row">
                       <button
                         id="createPackageBtn"

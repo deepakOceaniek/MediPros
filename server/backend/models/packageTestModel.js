@@ -35,10 +35,15 @@ const packageTestSchema = mongoose.Schema({
   //   },
   // ],
 
-  tests: {
-    type: String,
-    required: true,
-  },
+  testList: [
+    {
+      test: {
+        type: mongoose.Schema.ObjectId,
+        ref: "Test",
+        required: true,
+      },
+    },
+  ],
 
   numOfTest: {
     type: Number,
@@ -113,6 +118,10 @@ const packageTestSchema = mongoose.Schema({
     type: mongoose.Schema.ObjectId,
     ref: "User",
     required: true,
+  },
+  type: {
+    type: String,
+    default: "Package",
   },
   createdAt: {
     type: Date,

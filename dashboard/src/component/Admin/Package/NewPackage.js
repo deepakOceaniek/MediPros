@@ -7,6 +7,7 @@ import {
   createPackage,
   getAdminLabCategory,
   getAdminSample,
+  getAdminTest,
 } from "../../../actions/testAction";
 import { useAlert } from "react-alert";
 import MetaData from "../../layout/MetaData";
@@ -14,7 +15,6 @@ import SideBar from "../Sidebar";
 import Loader from "../../layout/Loader/Loader";
 import { NEW_PACKAGE_RESET } from "../../../constants/testConstants";
 import { useNavigate } from "react-router-dom";
-
 
 const NewPackage = () => {
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ const NewPackage = () => {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
   const [verify, setVerify] = useState("");
-  const [tests, setTests] = useState("");
+  // const [tests, setTests] = useState("");
   const [numOfTest, setNumOfTest] = useState(0);
   const [testTiming, setTestTiming] = useState("");
   const [category, setCategory] = useState("");
@@ -36,13 +36,17 @@ const NewPackage = () => {
   const [discount, setDiscount] = useState("");
   const [images, setImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
+  const [testList, setTestList] = useState([{ test: "" }]);
 
   const { labCategories } = useSelector((state) => state.labCategories);
   const { samples } = useSelector((state) => state.samples);
+  const { tests } = useSelector((state) => state.tests);
+  // console.log(`test ${tests}`);
 
   useEffect(() => {
     dispatch(getAdminLabCategory());
     dispatch(getAdminSample());
+    dispatch(getAdminTest());
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
@@ -64,13 +68,16 @@ const NewPackage = () => {
     myForm.set("description", description);
     myForm.set("price", price);
     myForm.set("verify", verify);
-    myForm.set("tests", tests);
     myForm.set("numOfTest", numOfTest);
     myForm.set("testTiming", testTiming);
     myForm.set("category", category);
     myForm.set("sample", sample);
     myForm.set("report", report);
     myForm.set("discount", discount);
+    myForm.set("testList", testList);
+
+    console.log(`testList ${JSON.stringify(testList)}`);
+    console.log(`testList ${testList}`);
 
     images.forEach((image) => {
       myForm.append("images", image);
@@ -98,9 +105,29 @@ const NewPackage = () => {
     });
   };
 
+  const handleServiceChange = (e, index) => {
+    const { name, value } = e.target;
+    console.log(`name ${name} ...... value ${value}`);
+    const list = [...testList];
+    console.log(`List1.....${JSON.stringify(list)}`);
+    list[index][name] = value;
+    console.log(list[index][name]);
+    console.log(`List2.....${JSON.stringify(list)}`);
+    setTestList(list);
+  };
+
+  const handleServiceRemove = (index) => {
+    const list = [...testList];
+    list.splice(index, 1);
+    setTestList(list);
+  };
+
+  const handleServiceAdd = () => {
+    setTestList([...testList, { test: "" }]);
+  };
+
   return (
     <Fragment>
-
       {loading ? (
         <Loader />
       ) : (
@@ -161,7 +188,7 @@ const NewPackage = () => {
                         </div>
                       </div>
                       <div className="inside-input">
-                        <div>
+                        {/* <div>
                           <label>Package Tests</label>
                           <input
                             type="text"
@@ -169,6 +196,16 @@ const NewPackage = () => {
                             className="package_add"
                             required
                             onChange={(e) => setTests(e.target.value)}
+                          />
+                        </div> */}
+                        <div>
+                          <label>Discount</label>
+                          <input
+                            type="text"
+                            placeholder="Tests"
+                            className="package_add"
+                            required
+                            onChange={(e) => setDiscount(e.target.value)}
                           />
                         </div>
                         <div>
@@ -195,7 +232,6 @@ const NewPackage = () => {
                         <div>
                           <label>Choose Lab Category</label>
 
-
                           <select
                             className="package_add"
                             onChange={(e) => setCategory(e.target.value)}
@@ -214,11 +250,9 @@ const NewPackage = () => {
                         </div>
                       </div>
 
-
                       <div className="inside-input">
                         <div>
                           <label>Choose Sample</label>
-
 
                           <select
                             className="package_add"
@@ -233,7 +267,6 @@ const NewPackage = () => {
                               ))}
                           </select>
                         </div>
-
 
                         <div>
                           <label>Report</label>
@@ -257,6 +290,7 @@ const NewPackage = () => {
                             multiple
                           />
                         </div>
+
                         <div id="createPackageFormImage">
                           {imagesPreview.map((image, index) => (
                             <img
@@ -268,6 +302,81 @@ const NewPackage = () => {
                         </div>
                       </div>
                     </div>
+
+                    <label htmlFor="test">Tests</label>
+                    <div className="add_test">
+                      {/* <div className="form-field"> */}
+
+                      {testList.map((singleTest, index) => (
+                        <div key={index} className="test-input">
+                          <div className="first-division">
+                            {/* <input
+                              name="service"
+                              type="text"
+                              id="service"
+                              className="package_add"
+                              value={singleTest.test}
+                              onChange={(e) => handleServiceChange(e, index)}
+                              required
+                            /> */}
+
+                            <select
+                              className="package_add"
+                              onChange={(e) => handleServiceChange(e, index)}
+                              name="test"
+                            >
+                              <option
+                              // value={singleTest.test}
+                              >
+                                Choose Test
+                              </option>
+                              {tests &&
+                                tests.map((test) => (
+                                  <option key={test._id} value={test._id}>
+                                    {test.name}
+                                  </option>
+                                ))}
+                            </select>
+
+                            {testList.length - 1 === index &&
+                              testList.length < 8 && (
+                                <button
+                                  type="button"
+                                  onClick={handleServiceAdd}
+                                  className="add-btn"
+                                >
+                                  <span>Add a Test</span>
+                                </button>
+                              )}
+                          </div>
+                          <div className="second-division">
+                            {testList.length !== 1 && (
+                              <button
+                                type="button"
+                                onClick={() => handleServiceRemove(index)}
+                                className="remove-btn"
+                              >
+                                <span>Remove</span>
+                              </button>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+
+                      {/* </div> */}
+                      {/* <div className="output">
+                        <h2>Output</h2>
+                        {serviceList &&
+                          serviceList.map((singleService, index) => (
+                            <ul key={index}>
+                              {singleService.service && (
+                                <li>{singleService.service}</li>
+                              )}
+                            </ul>
+                          ))}
+                      </div> */}
+                    </div>
+
                     <div className="package_row">
                       <button
                         id="createPackageBtn"
@@ -280,7 +389,6 @@ const NewPackage = () => {
                   </div>
                 </form>
               </div>
-
             </div>
           </div>
         </>

@@ -25,14 +25,15 @@ const NewTest = () => {
   const { loading, error, success } = useSelector((state) => state.newTest);
 
   const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
+  // const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
-  const [sample, setSample] = useState("");
-  const [category, setCategory] = useState("");
+  // const [sample, setSample] = useState("");
+  // const [category, setCategory] = useState("");
   const [packageTest, setPackageTest] = useState("");
+  const [referenceRange, setReferenceRange] = useState("");
 
-  const [images, setImages] = useState([]);
-  const [imagesPreview, setImagesPreview] = useState([]);
+  // const [images, setImages] = useState([]);
+  // const [imagesPreview, setImagesPreview] = useState([]);
 
   const { labCategories } = useSelector((state) => state.labCategories);
   const { packages } = useSelector((state) => state.packages);
@@ -63,37 +64,38 @@ const NewTest = () => {
     const myForm = new FormData();
 
     myForm.set("name", name);
-    myForm.set("description", description);
+    // myForm.set("description", description);
     myForm.set("price", price);
-    myForm.set("sample", sample);
+    // myForm.set("sample", sample);
     myForm.set("packageTest", packageTest);
-    myForm.set("category", category);
+    myForm.set("referenceRange", referenceRange);
+    // myForm.set("category", category);
 
-    images.forEach((image) => {
-      myForm.append("images", image);
-    });
+    // images.forEach((image) => {
+    //   myForm.append("images", image);
+    // });
     dispatch(createTest(myForm));
   };
 
-  const createProductImagesChange = (e) => {
-    const files = Array.from(e.target.files);
+  // const createProductImagesChange = (e) => {
+  //   const files = Array.from(e.target.files);
 
-    setImages([]);
-    setImagesPreview([]);
+  //   setImages([]);
+  //   setImagesPreview([]);
 
-    files.forEach((file) => {
-      const reader = new FileReader();
+  //   files.forEach((file) => {
+  //     const reader = new FileReader();
 
-      reader.onload = () => {
-        if (reader.readyState === 2) {
-          setImagesPreview((old) => [...old, reader.result]);
-          setImages((old) => [...old, reader.result]);
-        }
-      };
+  //     reader.onload = () => {
+  //       if (reader.readyState === 2) {
+  //         setImagesPreview((old) => [...old, reader.result]);
+  //         setImages((old) => [...old, reader.result]);
+  //       }
+  //     };
 
-      reader.readAsDataURL(file);
-    });
-  };
+  //     reader.readAsDataURL(file);
+  //   });
+  // };
 
   return (
     <Fragment>
@@ -128,14 +130,17 @@ const NewTest = () => {
                           />
                         </div>
                         <div>
-                          <label>Test Description</label>
+                          <label>Reference Range</label>
                           <input
-                            placeholder="Test Description"
+                            type="text"
+                            placeholder="Reference Range"
+                            required
                             className="test_add"
-                            onChange={(e) => setDescription(e.target.value)}
+                            onChange={(e) => setReferenceRange(e.target.value)}
                           />
                         </div>
-                        <div>
+
+                        {/* <div>
                           <label>Price</label>
                           <input
                             type="number"
@@ -144,8 +149,8 @@ const NewTest = () => {
                             className="test_add"
                             onChange={(e) => setPrice(e.target.value)}
                           />
-                        </div>
-                        <div>
+                        </div> */}
+                        {/* <div>
                           <label>Choose Sample</label>
                           <select
                             className="test_add"
@@ -159,11 +164,11 @@ const NewTest = () => {
                                 </option>
                               ))}
                           </select>
-                        </div>
+                        </div> */}
                       </div>
 
-                      <div className="input-inside">
-                        <div>
+                      {/* <div className="input-inside"> */}
+                      {/* <div>
                           <label>Choose Package</label>
                           <select
                             className="test_add"
@@ -177,9 +182,18 @@ const NewTest = () => {
                                 </option>
                               ))}
                           </select>
-                        </div>
+                        </div> */}
 
-                        <div>
+                      {/* <div>
+                          <label>Test Description</label>
+                          <input
+                            placeholder="Test Description"
+                            className="test_add"
+                            onChange={(e) => setDescription(e.target.value)}
+                          />
+                        </div> */}
+
+                      {/* <div>
                           <label>Choose Category</label>
                           <select
                             className="test_add"
@@ -196,8 +210,8 @@ const NewTest = () => {
                                 </option>
                               ))}
                           </select>
-                        </div>
-
+                        </div> */}
+                      {/* 
                         <div className="test_labels_name_image">
                           <label>Test Image</label>
                           <input
@@ -208,29 +222,24 @@ const NewTest = () => {
                             onChange={createProductImagesChange}
                             multiple
                           />
-                        </div>
-                        <div id="createTestFormImage">
-                          {imagesPreview.map((image, index) => (
-                            <img
-                              key={index}
-                              src={image}
-                              alt="Product Preview"
-                            />
-                          ))}
-                        </div>
-                      </div>
+                        </div> */}
+                      {/* </div> */}
+                    </div>
+                    <div className="test_row">
+                      <button
+                        id="createTestButton"
+                        type="submit"
+                        disabled={loading ? true : false}
+                      >
+                        Add Test
+                      </button>
                     </div>
                   </div>
-
-                  <div className="test_row">
-                    <button
-                      id="createTestButton"
-                      type="submit"
-                      disabled={loading ? true : false}
-                    >
-                      Add Test
-                    </button>
-                  </div>
+                  {/* <div id="createTestFormImage">
+                    {imagesPreview.map((image, index) => (
+                      <img key={index} src={image} alt="Product Preview" />
+                    ))}
+                  </div> */}
                 </form>
               </div>
             </div>

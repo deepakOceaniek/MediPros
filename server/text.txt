@@ -28,9 +28,12 @@ alexarya@0123!
 -> Template for report 
 -> Dashboard for lab          // remark kulvinder working on it 
 -> update profile backend part 
+-> Stock  changes in proccess order from lab side 
+->
 
 // FIXME:
 -> order created by prescription  //remark partialy done 
+-> Order and prescription comming for which side  for lab and pharmacy 
 -> Invoice Template dynamic  //remark partialy done
 -> Download Invoice    // remark partialy done
 

@@ -25,7 +25,7 @@ const TestList = () => {
   const alert = useAlert();
 
   const { loading, error, tests } = useSelector((state) => state.tests);
-
+  console.log(tests);
   const { error: deleteError, isDeleted } = useSelector(
     (state) => state.testPackage
   );
@@ -73,49 +73,58 @@ const TestList = () => {
       headerAlign: "center",
       align: "center",
     },
-    {
-      field: "image",
-      headerName: "Image",
-      minWidth: 300,
-      flex: 0.5,
-      headerAlign: "center",
-      align: "center",
+    // {
+    //   field: "image",
+    //   headerName: "Image",
+    //   minWidth: 300,
+    //   flex: 0.5,
+    //   headerAlign: "center",
+    //   align: "center",
 
-      renderCell: (params) => {
-        return (
-          <div style={{ height: "90px", width: "200px", borderRadius: "30%" }}>
-            {" "}
-            <img
-              style={{ height: "100%", width: "100%" }}
-              src={params.value}
-              alt="package"
-            />
-          </div>
-        );
-      },
-      // editable: true,
-    },
-    {
-      field: "category",
-      headerName: "Category",
-      minWidth: 250,
-      flex: 0.3,
-      headerAlign: "center",
-      align: "center",
-    },
-    {
-      field: "description",
-      headerName: "Description",
-      minWidth: 250,
-      flex: 0.3,
-      headerAlign: "center",
-      align: "center",
-    },
+    //   renderCell: (params) => {
+    //     return (
+    //       <div style={{ height: "90px", width: "200px", borderRadius: "30%" }}>
+    //         {" "}
+    //         <img
+    //           style={{ height: "100%", width: "100%" }}
+    //           src={params.value}
+    //           alt="package"
+    //         />
+    //       </div>
+    //     );
+    //   },
+    //   // editable: true,
+    // },
+    // {
+    //   field: "category",
+    //   headerName: "Category",
+    //   minWidth: 250,
+    //   flex: 0.3,
+    //   headerAlign: "center",
+    //   align: "center",
+    // },
+    // {
+    //   field: "description",
+    //   headerName: "Description",
+    //   minWidth: 250,
+    //   flex: 0.3,
+    //   headerAlign: "center",
+    //   align: "center",
+    // },
+
+    // {
+    //   field: "price",
+    //   headerName: "Price",
+    //   type: "number",
+    //   minWidth: 200,
+    //   headerAlign: "center",
+    //   align: "center",
+    //   flex: 0.5,
+    // },
 
     {
-      field: "price",
-      headerName: "Price",
-      type: "number",
+      field: "referenceRange",
+      headerName: "Reference Range",
       minWidth: 200,
       headerAlign: "center",
       align: "center",
@@ -157,12 +166,13 @@ const TestList = () => {
     tests.forEach((item) => {
       rows.push({
         id: item._id,
-        type: "image",
-        image: item.images[0].url,
-        price: `₹ ${parseFloat(item.price).toFixed(1)}`,
-        category: item.category,
-        description: item.description,
+        // type: "image",
+        // image: item.images[0].url,
+        // price: `₹ ${parseFloat(item.price).toFixed(1)}`,
+        // category: item.category,
+        // description: item.description,
         name: item.name,
+        referenceRange: item.referenceRange,
       });
     });
 

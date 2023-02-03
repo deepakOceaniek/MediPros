@@ -30,7 +30,7 @@ const UpdateProduct = () => {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
   const [salt, setSalt] = useState("");
-  const [type, setType] = useState("");
+  const [medicineType, setMedicineType] = useState("");
   const [safetyInformation, setSafetyInformation] = useState("");
   const [expired, setExpired] = useState("");
   const [productQuantity, setProductQuantity] = useState("");
@@ -57,7 +57,7 @@ const UpdateProduct = () => {
       setDescription(product.description);
       setPrice(product.price);
       setSalt(product.salt);
-      setType(product.type);
+      setMedicineType(product.medicineType);
       setExpired(product.expired);
       setSafetyInformation(product.safetyInformation);
       setProductQuantity(product.productQuantity);
@@ -104,7 +104,7 @@ const UpdateProduct = () => {
     myForm.set("name", name);
     myForm.set("description", description);
     myForm.set("price", price);
-    myForm.set("type", type);
+    myForm.set("medicineType", medicineType);
     myForm.set("salt", salt);
     myForm.set("safetyInformation", safetyInformation);
     myForm.set("productQuantity", productQuantity);
@@ -188,14 +188,14 @@ const UpdateProduct = () => {
                         />
                       </div>
                       <div className="add_product_label">
-                        <label>Product Type</label>
+                        <label>Medicine Type</label>
                         <input
                           type="text"
                           className="productadd"
                           placeholder="Product Type"
                           required
-                          value={type}
-                          onChange={(e) => setPrice(e.target.value)}
+                          value={medicineType}
+                          onChange={(e) => setMedicineType(e.target.value)}
                         />
                       </div>
                       <div className="add_product_label">

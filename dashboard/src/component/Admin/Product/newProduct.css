@@ -111,6 +111,20 @@
   width: 20vw;
 }
 
+/*-----------  Report Css ------------- */
+.input-inside > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.content_addproduct > .product_row > .input-inside {
+  /* display: flex;
+  flex-direction: row; */
+  /* justify-content: space-around; */
+  /* background-color: yellow; */
+  width: 22vw;
+}
+
 /* .newProductContainer {
   width: 100%;
   box-sizing: border-box;

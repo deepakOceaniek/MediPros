@@ -19,7 +19,7 @@ const productSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  type: {
+  MedicineType: {
     type: String,
     required: true,
   },
@@ -109,6 +109,10 @@ const productSchema = mongoose.Schema({
     type: mongoose.Schema.ObjectId,
     ref: "User",
     required: true,
+  },
+  type: {
+    type: String,
+    default: "Product",
   },
   createdAt: {
     type: Date,

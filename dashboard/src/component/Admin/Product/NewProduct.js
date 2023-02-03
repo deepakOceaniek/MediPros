@@ -24,7 +24,7 @@ const NewProduct = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
-  const [type, setType] = useState("");
+  const [medicineType, setMedicineType] = useState("");
   const [safetyInformation, setSafetyInformation] = useState("");
   const [salt, setSalt] = useState("");
   const [expired, setExpired] = useState("");
@@ -63,7 +63,7 @@ const NewProduct = () => {
     myForm.set("name", name);
     myForm.set("description", description);
     myForm.set("price", price);
-    myForm.set("type", type);
+    myForm.set("medicineType", medicineType);
     myForm.set("salt", salt);
     myForm.set("safetyInformation", safetyInformation);
     myForm.set("expired", expired);
@@ -150,7 +150,7 @@ const NewProduct = () => {
                         <label>Medicine Type</label>
                         <select
                           className="productadd"
-                          onChange={(e) => setType(e.target.value)}
+                          onChange={(e) => setMedicineType(e.target.value)}
                         >
                           <option value="">Choose Type</option>
                           {/* {categories && */}
