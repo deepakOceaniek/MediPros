@@ -9,6 +9,7 @@ import MetaData from "../layout/MetaData";
 import { getAllOrders } from "../../actions/orderAction";
 import { getAdminProduct } from "../../actions/productAction";
 import { getAllUsers } from "../../actions/userAction.js";
+import { getAdminPackage, getAdminTest } from "../../actions/testAction.js";
 import { CircularProgressbar } from "react-circular-progressbar";
 import { textAlign } from "@mui/system";
 
@@ -25,6 +26,8 @@ const LabDashboard = () => {
   const { orders } = useSelector((state) => state.allOrders);
 
   const { users } = useSelector((state) => state.allUsers);
+  const { packages } = useSelector((state) => state.packages);
+  const { tests } = useSelector((state) => state.tests);
 
   let outOfStock = 0;
 
@@ -43,6 +46,8 @@ const LabDashboard = () => {
     dispatch(getAdminProduct());
     dispatch(getAllOrders());
     dispatch(getAllUsers());
+    dispatch(getAdminPackage());
+    dispatch(getAdminTest());
   }, [dispatch, user]);
 
   let myOrders;
@@ -106,8 +111,8 @@ const LabDashboard = () => {
                     }}
                   >
                     <CircularProgressbar
-                      value={user}
-                      text={`${user * 100}%`}
+                      value={users && users.length / 100}
+                      text={`${users && users.length / 100}%`}
                       styles={{
                         root: {},
                         // Customize the text
@@ -119,11 +124,11 @@ const LabDashboard = () => {
                         },
                       }}
                     />
-                    <p>{`Users | ${users && users.length} `}</p>
+                    <p> {`User | ${users && users.length}`} </p>
                   </div>
                 </Link>
 
-                <Link to="/admin/products">
+                <Link to="/admin/packages">
                   <div
                     className="CircularProgressbar"
                     style={{
@@ -134,8 +139,8 @@ const LabDashboard = () => {
                     }}
                   >
                     <CircularProgressbar
-                      value={50}
-                      text={`${1 * 100}%`}
+                      value={packages && packages.length / 100}
+                      text={`${packages && packages.length / 100}%`}
                       styles={{
                         root: {},
                         // Customize the text
@@ -147,10 +152,10 @@ const LabDashboard = () => {
                         },
                       }}
                     />
+                    <p>{`Packages | ${packages && packages.length}`}</p>
                   </div>
-                  <p>{`Products | ${products && products.length} `}</p>
                 </Link>
-                <Link to="/admin/orders">
+                <Link to="/admin/tests">
                   <div
                     className="CircularProgressbar"
                     style={{
@@ -159,8 +164,8 @@ const LabDashboard = () => {
                     }}
                   >
                     <CircularProgressbar
-                      value={50}
-                      text={`${1 * 100}%`}
+                      value={tests && tests.length / 100}
+                      text={`${tests && tests.length / 100}%`}
                       styles={{
                         root: {},
                         // Customize the text
@@ -172,17 +177,18 @@ const LabDashboard = () => {
                         },
                       }}
                     />
+                    <p>{`Test | ${tests && tests.length}`}</p>
                   </div>
-                  <p>{`Orders | ${myOrders && myOrders.length}`}</p>
                 </Link>
 
+                <Link to ="/admin/orders">
                 <div
                   className="CircularProgressbar"
                   style={{ width: 100, height: 100 }}
                 >
                   <CircularProgressbar
-                    value={50}
-                    text={`${1* 100}%`}
+                    value={myOrders && myOrders.length / 100}
+                    text={`${myOrders && myOrders.length / 100}%`}
                     styles={{
                       root: {},
                       // Customize the text
@@ -194,6 +200,28 @@ const LabDashboard = () => {
                       },
                     }}
                   />
+                  <p>{`Booked Test | ${myOrders && myOrders.length}`} </p>
+                </div>
+                </Link>
+                <div
+                  className="CircularProgressbar"
+                  style={{ width: 100, height: 100 }}
+                >
+                  <CircularProgressbar
+                    value={50}
+                    text={`${1 * 100}%`}
+                    styles={{
+                      root: {},
+                      // Customize the text
+                      text: {
+                        // Text color
+                        fill: "#f88",
+                        // Text size
+                        fontSize: "16px",
+                      },
+                    }}
+                  />
+                  <p>Delivered |</p>
                 </div>
 
                 <div
@@ -217,9 +245,9 @@ const LabDashboard = () => {
                       },
                     }}
                   />
+                  <p>Pending |</p>
                 </div>
               </div>
-
               <div className="lineChart">
                 <Line data={lineState} />
               </div>

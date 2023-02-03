@@ -40,10 +40,10 @@ const Sidebar = () => {
       {user && user.category === "Pharmacy" ? (
         <>
           <div className="sidebar">
-            <Link to="/">
+            <Link to={ user && user.category==="Pharmacy"? "/admin/dashboard" :"/admin/labdashboard" }>
               <img src="/Images/logo.png" alt="MediPros" />
             </Link>
-            <Link to="/admin/dashboard">
+            <Link to={user && user.category === "Pharmacy"? "/admin/dashboard":"/admin/labdashboard"  }>
               <p>
                 <DashboardIcon /> Dashboard
               </p>
@@ -154,7 +154,7 @@ const Sidebar = () => {
       ) : (
         <>
           <div className="sidebar">
-            <Link to="/">
+            <Link to={ user && user.category==="Pharmacy"? "/admin/dashboard" :"/admin/labdashboard" }>
               <img src="/Images/logo.png" alt="MediPros" />
             </Link>
             <Link to="/admin/labdashboard">

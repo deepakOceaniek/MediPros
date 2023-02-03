@@ -176,7 +176,7 @@ const TestList = () => {
             <MetaData title={`ALL TEST - Admin`} />
             <SideBar />
             <div className="productListContainer">
-              <h1 id="productListHeading">ALL Test</h1>
+              <h1 id="productListHeading">ALL TEST</h1>
               {tests && tests.length > 0 ? (
                 <DataGrid
                   rows={rows}

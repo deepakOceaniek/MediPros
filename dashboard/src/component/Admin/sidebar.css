@@ -4,7 +4,6 @@
   flex-direction: column;
   height: 100vh;
   overflow-y: scroll;
-  /* padding: 1rem 0; */
 }
 .sidebar::-webkit-scrollbar {
   display: none;
@@ -41,7 +40,18 @@
 .sidebar a > p > svg {
   margin-right: 0.5rem;
 }
-
-/* .MuiTypography-root {
-  background-color: #308c89 !important;
-} */
+/* ---------Responsive---------------- */
+@media screen and (min-width: 1920px) {
+  .sidebar {
+    height: 100vh;
+    width: 25vw;
+  } 
+  .sidebar a > P {
+    font-size: 40px;
+  }
+  .sidebar a > p > svg {
+    margin-right: 0.5rem;
+    height: 3vh;
+    width: 2vw;
+  }
+}
