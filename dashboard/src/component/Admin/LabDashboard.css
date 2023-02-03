@@ -1,18 +1,44 @@
 .dashboardSummaryBoxlab {
   display: flex;
   justify-content: space-around;
+  text-align: center;
+  font-weight: 500;
+  margin: 4em 1em;
 }
 
 .CircularProgressbar-path {
-  stroke: rgb(28, 161, 123);
+  stroke: #10fa07;
 }
+
 .CircularProgressbar-trail {
-  stroke: gray;
+  stroke: #e1e5e6;
 }
+
 .CircularProgressbar-text {
   fill: rgb(218, 25, 25);
   transform: translate(-15px, 5px);
 }
-/* .CircularProgressbar-background {
-    fill: green;
-  } */
+
+/* ----------Responsive------------- */
+@media screen and (max-width: 1920px) {
+  .dashboardSummaryBoxlab {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    font-weight: 700;
+    margin: 4em 1em;
+  }
+
+  .CircularProgressbar-path {
+    stroke: #10fa07;
+  }
+
+  .CircularProgressbar-trail {
+    stroke: #e1e5e6;
+  }
+
+  .CircularProgressbar-text {
+    fill: rgb(218, 25, 25);
+    transform: translate(-15px, 5px);
+  }
+}

@@ -51,16 +51,25 @@ const Profile = () => {
                     <label>Address</label>
                     <p>{user.address}</p>{" "}
                   </div>
+                  <div className="text2Part">
+                    <label>Profile Image</label>
+                  </div>
                 </div>
                 <div className="imgdiv">
+
                   <img src={user.certificateImage.url} alt="certificate" />
+                
                 </div>
               </div>
               <div className="innerRow">
                 <div className="imgdiv">
+                
                   <img src={user.profileImage.url} alt="profile" />
                 </div>
                 <div className="content">
+                <div className="text2Part">
+                    <label>Certificate Image</label>
+                  </div>
                   <div className="textPart">
                     {" "}
                     <label>Category</label>

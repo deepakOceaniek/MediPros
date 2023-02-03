@@ -487,7 +487,6 @@ export const createSample = (testData) => async (dispatch) => {
     });
   } catch (error) {
     dispatch({
-      type: NEW_SAMPLE_FAIL,
       payload: error.response.data.message,
     });
   }
